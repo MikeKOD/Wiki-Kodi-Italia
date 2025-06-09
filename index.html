@@ -18,90 +18,86 @@
     .question {
       cursor: pointer;
       margin: 10px 0;
-      padding: 12px;
+      padding: 10px;
       background-color: #333;
       border: 1px solid #ccc;
-      border-radius: 4px;
+      color: #fff;
     }
     .answer {
-      padding: 10px 20px;
-      margin-bottom: 10px;
+      display: none;
+      padding: 10px;
       border-left: 3px solid #fff;
       background-color: #444;
-      border-radius: 0 4px 4px 0;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    img {
+      max-width: 80%;
+      height: auto;
+      display: block;
+      margin: 0 auto 20px;
+    }
+    a {
+      color: #1e90ff;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <img src="7ddd367fa7ac86ba6faf5.png" alt="Logo del canale t.me/kodiitalia" style="max-width:80%; height:auto; display:block; margin:0 auto 20px;" />
-  <div id="root"></div>
-
-  
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-  
-  <script type="text/babel">
-    const { useState } = React;
-
-    function FAQItem({ number, question, answer }) {
-      const [isVisible, setIsVisible] = useState(false);
-      return (
-        <div>
-          <div className="question" onClick={() => setIsVisible(!isVisible)}>
-            {number}. {question}
-          </div>
-          {isVisible && <div className="answer">{answer}</div>}
-        </div>
-      );
-    }
-
-    function FAQ() {
+  <img src="7ddd367fa7ac86ba6faf5.png" alt="Logo del canale t.me/kodiitalia" />
+  <h1>Domande Frequenti</h1>
+  <div class="faq">
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script>
+      const { useState } = React;
       const faqs = [
         { question: "Dove posso trovare delle liste IPTV?", answer: "Liste IPTV stabili sono difficili da trovare, ma ti possiamo consigliare un paio di addons che fanno al caso tuo: digita !addons sul canale Telegram e leggi i nostri consigli." },
-        { question: "Non trovo addons che trattano sport, ne avete qualcuno da suggerire?", answer: "Prova quelli che trattano eventi sportivi o live come Stefano The Groovev360, Mandrakodi e Gruppo Italia." },
-        { question: "Hai problemi con un determinato addon?", answer: "Prima di cercare qui, prova a chiedere nel gruppo di supporto (scrivi nel gruppo Kodiitalia !addons). Qualcuno potrebbe aiutarti!" },
-        { question: "Hai installato mod o pack e Kodi non funziona?", answer: "Disinstalla tutto e ricomincia da capo seguendo i nostri consigli: mod e pack spesso compromettono il funzionamento di Kodi." },
-        { question: "Impossibile installare addon, dipendenza Python non soddisfatta?", answer: "Hai ancora Kodi 18.x: installa l'ultima versione di Kodi dal sito ufficiale kodi.tv." },
-        { question: "Come installo l'ultima versione di Kodi?", answer: "Scaricalo da kodi.tv/download: l'APK sul Play Store non sempre è aggiornato come il sito ufficiale. Versioni iOS e WebOS esistono, ma non hanno 100% di funzionalità. Per Linux: LibreELEC e CoreELEC sono valide alternative." },
-        { question: "Si può installare Kodi su iPhone o iPad?", answer: "Sì, esiste una versione per iOS, ma serve jailbreak o un alt store con repository BigBoss. Maggiori info su kodi.tv/download/ios." },
-        { question: "Ho un box con Kodi preinstallato: va bene?", answer: "Meglio installare sempre una versione ufficiale: quelle preinstallate possono essere modificate e creare problemi futuri." },
-        { question: "Schermo nero al primo avvio di Kodi?", answer: "Su Android imposta il refresh dello schermo a 60 Hz nelle impostazioni del dispositivo." },
-        { question: "Come installo Kodi sulla Fire Stick?", answer: "Abilita opzioni sviluppatore, installa Downloader, naviga su kodi.tv, mostra :/ caratteri premendo #$%, scegli Android ARM (arm64-v8a per 4K, armeabi-v7a altrimenti), scarica e installa." },
-        { question: "Impossibile riprodurre, controlla log: cosa fare?", answer: "Installa Kodi LogFile Uploader dal repository ufficiale, carica il log e condividi il link nel gruppo." },
-        { question: "Dove posso trovare una buona VPN?", answer: "Dipende dall'uso: per cambiare geolocalizzazione scegli un provider efficiente per quei paesi; per privacy totale nessuna VPN è perfetta—tutte loggano e possono cedere dati su richiesta legale." },
-        { question: "Il mio Kodi è lento: cancellare la cache aiuta?", answer: "Cancella solo cartelle Thumbnail e Packages per mantenere pulita la cache: non resettare i dati dell'app, usa addon di manutenzione come Rock Cleaner." },
-        { question: "Copertina errata in libreria: come risolvere?", answer: "Apri il menu contestuale (click destro o tasto 'c'), seleziona Informazioni e clicca Ricarica per scegliere la copertina corretta." },
-        { question: "Modalità finestra su PC, non va in fullscreen: soluzione?", answer: "Premi il tasto '\\' per passare da finestra a fullscreen e viceversa." },
-        { question: "Nessun audio in Kodi: come risolvere?", answer: "Su PC premi F8 per disattivare il mute; su Android usa tastiera o Yatse; su Linux stesso procedimento di Android." },
-        { question: "Elementum rimane su 'si sta avviando': cosa fare?", answer: "Prova a riavviare Kodi o reinstalla Elementum." },
-        { question: "Problemi dopo aggiornamento da 18 a 19: soluzioni?", answer: "Spesso serve installazione pulita: Kodi 18 usa Python 2.x, Kodi 19 Python 3.x, quindi incompatibilità con addon legacy." },
-        { question: "Come collego un HDD al modem TIM?", answer: "Abilita SMBv1 nelle impostazioni Servizi > File sharing, riavvia, aggiungi sorgente nel File manager con il percorso di rete fornito dal modem." },
-        { question: "Ho nascosto la scheda Impostazioni: come ripristino?", answer: "Con l'app Kore (Android) o Kore Remote (iOS) apri il menu impostazioni e riabilita la voce mancante nella skin." },
-        { question: "Elementum non trova risultati: cosa manca?", answer: "Installa Burst, la dipendenza scraper di Elementum: https://elementumorg.github.io/." },
-        { question: "Buffer continuo: perché?", answer: "È il pre-caricamento del video: dipende da dimensione file, velocità del server di streaming e tua connessione." },
-        { question: "Connessione lenta nello streaming: motivi?", answer: "Dipende da tua banda e da quella del server: spesso il server non ha sufficiente upload per più flussi." },
-        { question: "Film 1080p non in HD: perché?", answer: "Per risparmiare spazio e banda, server riducono bitrate; per qualità migliore usa Elementum e torrent." },
-        { question: "Impossibile connettersi al server di rete: soluzioni?", answer: "Controlla l'URL della repository: correggi eventuali errori di digitazione." },
-        { question: "Perché cambiare DNS e come si fa?", answer: "DNS traduce nomi in IP: cambiare da quelli imposti dall'ISP (es. TIM) a Google (8.8.8.8, 8.8.4.4) o Cloudflare (1.1.1.1, 1.0.0.1) evita blocchi e migliora privacy." }
+        { question: "Non trovo addons che trattano sport, ne avete qualcuno da suggerire?", answer: "Basta vedere quelli che trattano eventi sportivi o eventi live come Stefano The Groovev360, Mandrakodi e Gruppo Italia." },
+        { question: "Hai problemi con un determinato addon?", answer: "Prima di cercare qui, prova a chiedere nel gruppo di supporto (scrivi nel gruppo Kodiitalia !addons). Se nella guida non trovi l'addon, qualcuno nel gruppo potrebbe aiutarti." },
+        { question: "Hai problemi con un addon ma hai installato una mod o un pack?", answer: "Disinstalla tutto e ricomincia da capo seguendo i nostri consigli, perché mod e pack spesso compromettono il funzionamento di Kodi." },
+        { question: "Dipendenza di Python 2.0 non soddisfatta durante l'installazione di un addon?", answer: "Stai ancora usando Kodi 18.x: installa l'ultima versione dal sito ufficiale: <a href=\"https://kodi.tv\" target=\"_blank\">kodi.tv</a>." },
+        { question: "Vuoi installare l'ultima versione di Kodi?", answer: "Scaricala dal sito ufficiale: <a href=\"https://kodi.tv/download\" target=\"_blank\">kodi.tv/download</a>. Le versioni su Play Store non sempre sono aggiornate come quelle sul sito. Esistono anche versioni per Linux (LibreELEC, CoreELEC) e sperimentali per iOS/WebOS." },
+        { question: "Si può installare Kodi su iPhone o iPad?", answer: "Sì, esiste una versione per iOS, ma è installabile solo su dispositivi con <strong>jailbreak</strong> o tramite un AltStore che supporti il repository BigBoss. Maggiori info: <a href=\"https://kodi.tv/download/ios/\" target=\"_blank\">kodi.tv/download/ios</a>." },
+        { question: "Ho acquistato un box con Kodi preinstallato, va bene?", answer: "Consigliamo sempre una versione ufficiale: le app preinstallate spesso sono modificate e possono causare problemi futuri." },
+        { question: "Schermo nero al primo avvio di Kodi?", answer: "Su Android imposta il refresh rate dello schermo a 60 Hz nelle impostazioni del dispositivo." },
+        { question: "Come si installa Kodi sulla Fire Stick?", answer: "Abilita Opzioni Sviluppatore, installa Downloader dallo store, naviga su <a href=\"https://kodi.tv\" target=\"_blank\">kodi.tv</a> (usa #$% per i caratteri speciali), scegli Android ARM 64-bit per 4K o ARMv7 per altri, scarica e installa." },
+        { question: "Impossibile riprodurre, controlla il log: cosa fare?", answer: "Installa <a href=\"https://kodi.tv/addon?content=kodi-logfile-upload\" target=\"_blank\">Kodi Logfile Uploader</a> e inviaci il link generato." },
+        { question: "Dove posso trovare una buona VPN?", answer: "Dipende dall'uso: per geolocalizzarti scegli in base al Paese di partenza e destinazione. Se cerchi anonimato totale, sappi che i maggiori provider loggano gli accessi e li consegnano alle autorità su richiesta. In generale, i principali sono equivalenti nelle stesse fasce di prezzo." },
+        { question: "Il mio Kodi è lento: cancellare la cache aiuta?", answer: "La cache salva informazioni su film e dati addon. Cancellarla può rallentare alcuni addon. Per pulire basta rimuovere cartelle Thumbnail e Packages in <a href=\"https://kodi.wiki/view/Kodi_data_folder\" target=\"_blank\">Kodi data folder</a> o usare addon di manutenzione come The Groove o Rock Cleaner." },
+        { question: "Kodi aggiunge copertina errata: come correggere?", answer: "Tenendo premuto o cliccando con il tasto destro su un titolo, seleziona Informazioni, poi Ricarica per scegliere manualmente i metadata corretti." },
+        { question: "Solo modalità finestra su PC: come abilitare fullscreen?", answer: "Premi il tasto '\\' per passare da finestra a schermo intero e viceversa." },
+        { question: "Kodi non riproduce audio: soluzioni?", answer: "Su PC premi F8 per disattivare mute. Su Android collegaci una tastiera e premi F8, o usa Yatse su un altro dispositivo. Su Linux analogamente o con un telecomando Kodi." },
+        { question: "Elementum rimane su 'Si sta avviando': cosa fare?", answer: "Nella maggior parte dei casi basta riavviare Kodi o reinstallare Elementum, ma non è garantito: a volte serve un ripristino completo o attendere un aggiornamento." },
+        { question: "Problemi dopo aggiornamento Kodi 18→19: come risolvere?", answer: "Poiché Kodi 18 usa Python 2.x e Kodi 19 Python 3.x, spesso serve un'installazione pulita e reinstallazione degli addon." },
+        { question: "Come collego un HDD al modem TIM?", answer: "Abilita SMBv1 in Kodi (Impostazioni > Servizi > Avanzate > Versione SMBv1), riavvia, poi aggiungi sorgente in Gestione file inserendo il percorso di rete del modem." },
+        { question: "Ho nascosto la scheda Impostazioni nella home: come ripristinarla?", answer: "Usa l'app Kore (Android) o Kodi Remote (iOS), apri Impostazioni e modifica il menu della skin per riaggiungere la voce." },
+        { question: "Ho installato Elementum ma non trova nulla: cosa fare?", answer: "Installa Burst (scraper di Elementum): <a href=\"https://elementumorg.github.io/?ref_type=headsm\" target=\"_blank\">elementum.org</a>." },
+        { question: "Continua il buffer: cosa significa?", answer: "Il buffer è il pre-caricamento del video per garantire playback fluido. Dipende da dimensione del file, velocità del server e della tua connessione." },
+        { question: "Streaming lento: perché?", answer: "Dipende dalla tua connessione e da quella del server di streaming. Spesso il server non ha abbastanza banda per gestire i flussi." },
+        { question: "Film a 1080p non in HD: perché?", answer: "Chi carica deve bilanciare spazio e banda: file HD possono pesare 30–40 GB. Per qualità elevata usa Elementum e torrent." },
+        { question: "Impossibile connettersi al server di rete: soluzioni?", answer: "Controlla il link della repository: se è errato, correggilo e riprova." },
+        { question: "Perché cambiare DNS e come farlo?", answer: "I DNS traducono domini in IP. Alcuni provider limitano siti con DNS proprietari. Puoi usare Google (8.8.8.8 / 8.8.4.4) o Cloudflare (1.1.1.1 / 1.0.0.1) impostandoli sul modem o sul dispositivo." }
       ];
 
-      return (
-        <div className="faq">
-          {faqs.map((faq, idx) => (
-            <FAQItem
-              key={idx}
-              number={idx + 1}
-              question={faq.question}
-              answer={faq.answer}
-            />
-          ))}
-        </div>
-      );
-    }
+      function FAQItem({ number, question, answer }) {
+        const [open, setOpen] = useState(false);
+        return React.createElement(
+          'div', { className: 'faq-section' },
+          React.createElement('div', { className: 'question', onClick: () => setOpen(!open) }, `${number}. ${question}`),
+          open && React.createElement('div', { className: 'answer' }, React.createElement('span', { dangerouslySetInnerHTML: { __html: answer } }))
+        );
+      }
 
-    ReactDOM.createRoot(document.getElementById('root')).render(<FAQ />);
-  </script>
+      function FAQ() {
+        return React.createElement(
+          'div', { className: 'faq' },
+          faqs.map((faq, idx) => React.createElement(FAQItem, { key: idx, number: idx + 1, question: faq.question, answer: faq.answer }))
+        );
+      }
+
+      ReactDOM.render(React.createElement(FAQ), document.getElementById('root'));
+    </script>
+  </div>
 </body>
 </html>
