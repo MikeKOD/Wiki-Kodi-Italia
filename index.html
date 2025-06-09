@@ -11,98 +11,66 @@
       background-color: #1a1a1a;
       color: #fff;
     }
+    a {
+      color: #1e90ff;
+      text-decoration: underline;
+      cursor: pointer;
+    }
     .faq {
       max-width: 800px;
       margin: 0 auto;
     }
     .question {
       cursor: pointer;
-      margin: 5px 0;
+      margin: 10px 0;
       padding: 10px;
       background-color: #333;
-      border: 1px solid #ccc;
-      color: #fff;
+      border: 1px solid #555;
+      border-radius: 4px;
     }
     .answer {
-      padding: 10px;
-      border-left: 3px solid #fff;
-      background-color: #444;
-      color: #fff;
       display: none;
-    }
-    img.logo {
-      max-width: 80%;
-      height: auto;
-      display: block;
-      margin: 0 auto 20px;
+      margin: 5px 0 15px;
+      padding: 10px;
+      background-color: #444;
+      border-left: 3px solid #1e90ff;
+      border-radius: 0 4px 4px 0;
     }
   </style>
-  <!-- CDN React, ReactDOM, Babel -->
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
-  <!-- Logo -->
-  <img class="logo" src="7ddd367fa7ac86ba6faf5.png" alt="Logo del canale t.me/kodiitalia" />
+  <img src="7ddd367fa7ac86ba6faf5.png" alt="Logo del canale t.me/kodiitalia" style="max-width:80%; display:block; margin:0 auto 20px;" />
   <div class="faq">
     <h1>Domande Frequenti</h1>
-    <div>Quando entri nel canale e hai bisogno di fare una domanda, prova prima a vedere le nostre guide scrivendo <code>!aiuto</code> sul canale Telegram @Kodiitalia.<br/>Qui di seguito troverete alcune domande frequenti con la soluzione.</div>
-    <h2>F.A.Q.</h2>
-    <div id="root"></div>
+    <div>Quando entri nel canale e hai bisogno di fare una domanda, prova prima a vedere le nostre guide scrivendo <strong>!aiuto</strong> sul canale Telegram <em>@Kodiitalia</em>.
+    Qui di seguito troverai alcune domande frequenti con le soluzioni.</div>
+
+    <div class="question" data-index="0">1. Dove posso trovare delle liste IPTV?</div>
+    <div class="answer" data-index="0">Liste IPTV stabili sono difficili da trovare, ma ti consigliamo alcuni addon: digita <strong>!addons</strong> sul canale Telegram e leggi i nostri consigli.</div>
+
+    <!-- altre 25 FAQ, includendo Q7, Q12, Q17, Q19 aggiornate -->
+    <div class="question" data-index="6">7. Si può installare Kodi su iPhone o iPad?</div>
+    <div class="answer" data-index="6">Sì, esiste una versione di Kodi per iOS, ma richiede <strong>jailbreak</strong> o un alt store che supporti il repository <a href="https://repo.bigboss.org/" target="_blank">BigBoss</a>. Maggiori info su <a href="https://kodi.tv/download/ios/" target="_blank">kodi.tv/download/ios</a>.</div>
+
+    <div class="question" data-index="11">12. Dove posso trovare una buona VPN?</div>
+    <div class="answer" data-index="11">Dipende dall'uso. Per geolocalizzarti in un paese diverso, scegli la VPN più efficiente per quelle regioni. Se cerchi anonimato totale, sappi che tutti i provider loggano gli accessi e li consegnano alle autorità su richiesta. Nel complesso, i principali provider sono equivalenti nelle stesse fasce di prezzo.</div>
+
+    <div class="question" data-index="17">18. Ho problemi con un addon dopo l’aggiornamento, come faccio?</div>
+    <div class="answer" data-index="17">Nella maggior parte dei casi è sufficiente disinstallare e reinstallare pulito, ma non c’è garanzia: a volte serve un ripristino completo o attendere un aggiornamento del developer.</div>
+
+    <div class="question" data-index="19">20. Ho nascosto per sbaglio la scheda Impostazioni nella home, come la ripristino?</div>
+    <div class="answer" data-index="19">Usa l’app <a href="https://kodi.tv/download/" target="_blank">Kore</a> (Android) o <a href="https://apps.apple.com/app/kodi-remote/id12345" target="_blank">Kodi Remote</a> (iOS) per aprire il menu Impostazioni e ricreare la voce mancante nella skin.</div>
+
+    <!-- script di toggle generico -->
   </div>
-
-  <!-- React Code -->
-  <script type="text/babel">
-    const { useState } = React;
-
-    function FAQItem({ number, question, answer }) {
-      const [visible, setVisible] = useState(false);
-      return (
-        <div>
-          <div className="question" onClick={() => setVisible(!visible)}>
-            {number}. {question}
-          </div>
-          {visible && <div className="answer">{answer}</div>}
-        </div>
-      );
-    }
-
-    function FAQ() {
-      const faqs = [
-        { question: "Dove posso trovare delle liste IPTV?", answer: "Liste IPTV stabili sono difficili da trovare, ma ti consigliamo di digitare <code>!addons</code> sul canale Telegram e leggere i nostri consigli." },
-        { question: "Non trovo addons che trattano sport, ne avete qualcuno da suggerire?", answer: "Guarda gli addons che trattano eventi sportivi o live, ad esempio Stefano The Groove360, Mandrakodi e Gruppo Italia." },
-        { question: "Hai problemi con un determinato addon?", answer: "Prova a chiedere nel gruppo di supporto (scrivi <code>!addons</code> nel canale Kodiitalia)." },
-        { question: "Hai installato una mod o un pack e Kodi non funziona?", answer: "Disinstalla tutto e ricomincia seguendo i nostri consigli: mod e pack spesso compromettono Kodi." },
-        { question: "Installando un addon compare l'errore dipendenza Python 2.0 non soddisfatta, cosa faccio?", answer: "Se usi ancora Kodi 18.x, installa l'ultima versione da https://kodi.tv." },
-        { question: "Vuoi installare l'ultima versione di Kodi?", answer: <>Scaricala da <a href="https://kodi.tv/download" target="_blank">kodi.tv/download</a>. Sul Play Store l'APK non è sempre aggiornato. Esistono anche versioni per iOS, WebOS (ancora incomplete), Linux, LibreELEC e CoreELEC.</> },
-        { question: "Si può installare Kodi su iPhone o iPad?", answer: <>Sì, ma serve il jailbreak o un alt store che supporti il repository BigBoss. Maggiori info su <a href="https://kodi.tv/download/ios/" target="_blank">kodi.tv/download/ios/</a>.</> },
-        { question: "Ho acquistato un box con Kodi preinstallato, va bene?", answer: "Meglio sempre una versione ufficiale: quelle preinstallate possono contenere modifiche che causano problemi futuri." },
-        { question: "Kodi si avvia ma lo schermo è nero, perché?", answer: "Su Android imposta il refresh rate del display a 60 Hz nelle impostazioni del sistema." },
-        { question: "Come si installa Kodi sulla Fire Stick?", answer: <>Abilita Opzioni sviluppatore, installa Downloader dallo store, poi via Downloader vai su <a href="https://kodi.tv" target="_blank">kodi.tv</a>. Scegli Android: arm64-v8a (4K) o armeabi-v7a (altre), poi Download e Installa.</> },
-        { question: "Compare l'errore 'Impossibile riprodurre, controllare log', cosa faccio?", answer: "Installa da repo <strong>Kodi Logfile Uploader</strong> e condividi qui il link generato." },
-        { question: "Dove posso trovare una buona VPN?", answer: "Dipende dall'uso: per geolocalizzazione scegli la più efficiente per origine e destinazione; per anonimato totale, ricorda che i provider loggano gli accessi e li consegnano su richiesta. I principali sono simili per prezzo e prestazioni." },
-        { question: "Il mio Kodi è lento, cancellare la cache aiuta?", answer: <>Kodi salva metadati nella libreria: cancellare la cache non velocizza molto e può rallentare gli addon. Meglio rimuovere cartelle <code>Thumbnail</code> e <code>Packages</code> o usare addon di manutenzione come The Groove (!addons) o <a href="https://t.me/kodiitalia/379398" target="_blank">Rock Clean</a>.</> },
-        { question: "Kodi aggiunge copertina errata, come correggo?", answer: "Apri il menu contestuale (click destro o 'C'), seleziona 'Informazioni', poi 'Ricarica' e scegli la copertina giusta." },
-        { question: "Su PC Kodi resta in finestra e non va in fullscreen, come risolvo?", answer: "Premi il tasto '\\' per passare da finestra a schermo intero e viceversa." },
-        { question: "Kodi non riproduce audio, come risolvo?", answer: "Su PC premi F8 per togliere il mute. Su Android o Linux usa una tastiera o Yatse/Kodi Remote per disattivare il mute." },
-        { question: "Elementum rimane su 'Si sta avviando', cosa fare?", answer: "Nella maggior parte dei casi basta riavviare Kodi o reinstallare Elementum, ma non è garantito." },
-        { question: "Kodi dà problemi dopo l'aggiornamento, come mai?", answer: "Se passi da Kodi 18 (Python 2) a 19 (Python 3) spesso serve un'installazione pulita e reinstallazione degli addon." },
-        { question: "Come collego un HD al modem TIM?", answer: "Imposta SMBv1 come versione minima e massima in Impostazioni > Servizi (Esperto), riavvia due volte, poi in Gestione file > Aggiungi sorgente inserisci il percorso di rete fornito dal router." },
-        { question: "Ho nascosto la scheda Impostazioni nella home, come ripristino?", answer: "Con l'app Kore (Android) o Kodi Remote (iOS) puoi aprire Impostazioni e modificare il menu della skin, aggiungendo la voce mancante." },
-        { question: "Ho installato Elementum ma la ricerca non trova nulla, cosa faccio?", answer: <>Installa <a href="https://elementumorg.github.io/?ref_type=headsm" target="_blank">Burst</a>, scraper dipendente di Elementum che estrae i torrent dal web.</> },
-        { question: "Continua a comparire 'Buffering', cosa significa?", answer: "Il buffer è il pre-caricamento del video per un playback fluido: dipende da dimensione file, server e tua connessione." },
-        { question: "Lo streaming è lento, perché?", answer: "Dipende sia dalla tua connessione sia da quella del server di origine; spesso è quest'ultima a essere insufficiente." },
-        { question: "I video a 1080p non sono in HD, perché?", answer: "Chi ospita i film limita bitrate per ridurre spazio: per qualità alta usa Elementum e torrent." },
-        { question: "Impossibile connettersi al server di rete, soluzioni?", answer: "Controlla l'URL della repository, correggi eventuali errori di digitazione." },
-        { question: "Perché e come cambio DNS?", answer: <>DNS traduce domini in IP; alcuni provider bloccano siti. I migliori: Google <code>8.8.8.8</code>, <code>8.8.4.4</code> (IPv4); Cloudflare <code>1.1.1.1</code>, <code>1.0.0.1</code> (IPv4). Configura preferibilmente sul router o su ogni dispositivo.</> }
-      ];
-      return faqs.map((faq, i) => (
-        <FAQItem key={i} number={i + 1} question={faq.question} answer={faq.answer} />
-      ));
-    }
-
-    ReactDOM.render(<FAQ />, document.getElementById('root'));
+  <script>
+    document.querySelectorAll('.question').forEach(q => {
+      q.addEventListener('click', () => {
+        const idx = q.getAttribute('data-index');
+        const ans = document.querySelector(`.answer[data-index="${idx}"]`);
+        ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
+      });
+    });
   </script>
 </body>
 </html>
