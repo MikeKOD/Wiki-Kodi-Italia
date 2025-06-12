@@ -84,11 +84,6 @@ Qui di seguito troverete alcune domane frequenti che ci vengono fatte sul canale
     </div>
     
     <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(26)">domanda 1 copiata</div>
-        <div class="faq-answer" id="answer-26">risposta 1 copiata.</div>
-    </div>
-    
-    <div class="faq-section">
         <div class="faq-question" onclick="toggleAnswer(7)"> Ho appena acquistato un box e c'è l'app Kodi preinstallata, va bene? </div>
         <div class="faq-answer" id="answer-7">In linea di massima, consigliamo di installare sempre una versione ufficiale, quelle preinstallate dalla casa madre sono sempre app modificate e questo non consente a noi di escludere che in futuro possiate avere problemi.</div>
     </div>
@@ -183,7 +178,7 @@ Qui di seguito troverete alcune domane frequenti che ci vengono fatte sul canale
         <div class="faq-answer" id="answer-25">DNS è l'acronimo di Domain Name System, un sistema che traduce i nomi di dominio in indirizzi IP. In altre parole, il DNS è una sorta di rubrica che permette di connettersi ai siti web digitando il loro nome, anziché il loro indirizzo IP. Alcuni gestori della rete telefonica (TIM, Vodafone, etc...) impostano sui propri routuer-modem delle impostazioni per limitare il cambio e imporre i propri DNS in cui hanno la possibilità di bloccare l'accesso a determinati siti internet, per cui se non li cambi non avrai accesso a determianti contenuti.
 per cambiarli ci sono vari metodi, dal settarli su modem o sui singoli dispositivi, sarebbe meglio la prima voce, ma non sempre è fattibile, come scritto sopra. Ongi dispositivo ha un metodo diverso, quindi non scriverò qui ogni metodo, ma mi limiterò a scrivere i migliori, quelli di google 8.8.8.8 (primario) e 8.8.4.4 (secondario) per IPv4 e cloudeflare 1.1.1.1 (primario) 1.0.0.1 (secondario).</div>
     </div>
-    <script><script>
+    <script>
         function toggleAnswer(index) {
             var answer = document.getElementById('answer-' + index);
             if (answer.style.display === 'none' || answer.style.display === '') {
@@ -195,17 +190,7 @@ per cambiarli ci sono vari metodi, dal settarli su modem o sui singoli dispositi
     document.addEventListener("DOMContentLoaded", function() {
         const faqQuestions = document.querySelectorAll(".faq-question");
         faqQuestions.forEach((question, index) => {
-        const question = section.querySelector(".faq-question");
-        const answer = section.querySelector(".faq-answer");
-
-        // Assegna la numerazione automatica alle domande
             question.innerHTML = <strong>${index + 1}.: </strong>  + question.innerHTML.replace(/^\d+\sQ:\s/, "");
-
-        // Aggiorna dinamicamente gli ID delle risposte
-        answer.setAttribute("id", answer-${index});
-
-        // Imposta il parametro onclick corretto per ogni domanda
-        question.setAttribute("onclick", toggleAnswer(${index}));
 });
 });
     </script>
