@@ -1,149 +1,203 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAQ - Kodi Italia</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #1a1a1a;
-      color: #fff;
-    }
-    img.logo {
-      max-width: 80%;
-      display: block;
-      margin: 0 auto 20px;
-    }
-    .faq-wrapper {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .question {
-      cursor: pointer;
-      margin: 10px 0;
-      padding: 10px;
-      background-color: #333;
-      border: 1px solid #555;
-    }
-    .answer {
-      /* RIMOSSO display: none; */
-      padding: 10px;
-      border-left: 3px solid #fff;
-      background-color: #444;
-      margin-bottom: 10px;
-    }
-    a {
-      color: #1e90ff;
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #1a1a1a; /* Colore nero al 90% */
+            color: #fff; /* Testo bianco per contrasto */
+        }
+        h1 {
+            color: #fff;
+        }
+        .faq-section {
+            margin-bottom: 20px;
+        }
+        .faq-question {
+            cursor: pointer;
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #333;
+            border: 1px solid #ccc;
+            color: #fff;
+        }
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            border-left: 3px solid #fff;
+            background-color: #444;
+            color: #fff;
+        }
+        img {
+            max-width: 80%; /* Dimensione massima 100% della larghezza del contenitore */
+            height: auto; /* Altezza automatica per mantenere le proporzioni */
+            display: block; /* Rimuove lo spazio bianco intorno all'immagine */
+            margin: 0 auto; /* Centra l'immagine orizzontalmente */
+        }
+
+    </style>
 </head>
 <body>
-  <img src="7ddd367fa7ac86ba6faf5.png" alt="Logo del canale t.me/kodiitalia" class="logo" />
-  <h1>Domande Frequenti</h1>
-  <p>Quando entri nel canale e hai bisogno di fare una domanda, prova prima a vedere le nostre guide scrivendo <strong>!aiuto</strong> sul canale Telegram <em>@Kodiitalia</em>. Qui di seguito troverai le domande frequenti e le relative soluzioni.</p>
-  <div id="root" class="faq-wrapper"></div>
-
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script type="text/babel">
-    const { useState } = React;
-
-    const faqs = [
-      { question: "Dove posso trovare delle liste IPTV?", answer: "Liste IPTV stabili sono difficili da trovare, ma ti consigliamo alcuni <strong>addons</strong>: digita <code>!addons</code> nel canale Telegram e leggi i nostri consigli." },
-      { question: "Non trovo addons che trattano sport, ne avete qualcuno da suggerire?", answer: "Prova gli addons che gestiscono eventi live come <em>Stefano The Groovev360</em>, <em>Mandrakodi</em> e <em>Gruppo Italia</em>." },
-      { question: "Hai problemi con un determinato addon?", answer: "Prima di chiedere qui, prova a scrivere nel gruppo di supporto <code>!addons</code>. Se non trovi l'addon nella guida, qualcuno nel gruppo potrà aiutarti." },
-      { question: "Hai installato una mod o un pack e Kodi non funziona?", answer: "Disinstalla tutto e reinstalla seguendo i nostri consigli: mod e pack spesso compromettono a lungo andare il funzionamento di Kodi." },
-      { question: "Impossibile installare addon: dipendenza di Python 2.0 non soddisfatta?", answer: "Se hai ancora Kodi 18.x, installa l'ultima versione di Kodi dal sito ufficiale: <a href=\"https://kodi.tv\" target=\"_blank\">kodi.tv</a>." },
-      { question: "Come installo l'ultima versione di Kodi?", answer: "Scarica l'APK aggiornata da <a href=\"https://kodi.tv/download\" target=\"_blank\">kodi.tv/download</a>. Le versioni su Play Store possono essere obsolete. Esistono anche versioni per iOS, WebOS, Linux (LibreELEC, CoreELEC)." },
-      { question: "Si può installare Kodi su iPhone o iPad?", answer: "Esiste una versione per iOS, ma richiede jailbreak o un alt store che supporti il repository BigBoss. Maggiori info: <a href=\"https://kodi.tv/download/ios/\" target=\"_blank\">kodi.tv/download/ios</a>." },
-      { question: "Ho un box con Kodi preinstallato, va bene?", answer: "Consigliamo sempre la versione ufficiale: quelle preinstallate dai produttori sono spesso modificate e potrebbero causare problemi futuri." },
-      { question: "Schermo nero al primo avvio di Kodi, come mai?", answer: "Su Android imposta il refresh rate del display a 60 Hz nelle impostazioni di sistema." },
-      { question: "Come installo Kodi sulla Fire Stick?", answer: "Abilita le Opzioni Sviluppatore, installa Downloader dallo store Fire, poi naviga su <a href=\"https://kodi.tv\" target=\"_blank\">kodi.tv</a> (usa '#$%' per mostrare :/), seleziona Android arm64-v8a o armeabi-v7a e installa." },
-      { question: "Impossibile riprodurre, controlla log: cosa fare?", answer: "Installa l'addon <em>Kodi LogFile Upload</em> da repository ufficiale e incolla il link restituito qui." },
-      { question: "Dove posso trovare una buona VPN?", answer: "Dipende dall'uso. Per geolocalizzarti, scegli un server efficiente nella regione desiderata. Se cerchi anonimato totale, sappi che i maggiori provider loggano gli accessi e possono consegnarli alle autorità. Nel complesso, i provider più noti sono equivalenti per prezzo e prestazioni." },
-      { question: "Il mio Kodi è lento, cancellare la cache accelera?", answer: "La cache memorizza dati della libreria e degli addons. Cancellarla può ridurre anteprime (Thumbnail) e zip (Packages), ma non resetta Kodi. Per una pulizia manuale, rimuovi cartelle Thumbnail e Packages nella <a href=\"https://kodi.wiki/view/Kodi_data_folder\" target=\"_blank\">Cartella dati di Kodi</a>, o usa addon di manutenzione come <em>The Groove</em> o <a href=\"https://t.me/kodiitalia/379398\" target=\"_blank\">Rock Clean</a>." },
-      { question: "Kodi mostra copertina errata, come correggo?", answer: "Apri menu contestuale (tasto destro o 'c'), seleziona 'Informazioni', poi clicca su 'Ricarica' e scegli il contenuto corretto." },
-      { question: "Come passare da finestra a fullscreen su PC?", answer: "Premi il tasto '\\' per alternare tra finestra e schermo intero." },
-      { question: "Nessun audio in Kodi, come risolvere?", answer: "Su PC premi F8 per togliere mute. Su Android collega tastiera e premi F8 o usa app <em>Yatse</em>. Su Linux stessa procedura o usa telecomando per Kodi." },
-      { question: "Elementum rimane su 'Si sta avviando', cosa fare?", answer: "Riavvia Kodi o reinstalla Elementum. Nella maggior parte dei casi basta questa procedura, ma non garantisce sempre il successo." },
-      { question: "Problemi dopo aggiornamento da Kodi 18 a 19, come risolvo?", answer: "Kodi 18 usa Python 2.x, Kodi 19 Python 3.x: per sicurezza esegui installazione pulita e reinstalla addon." },
-      { question: "Come collego un HDD al modem TIM?", answer: "Abilita SMBv1 in <em>Impostazioni > Servizi</em> (livello Esperto), riavvia due volte. Poi in <em>Gestione File</em> aggiungi sorgente con percorso offerto dal pannello del modem." },
-      { question: "Ho nascosto la scheda Impostazioni nella home, come ripristino?", answer: "Usa l'app Kore (Android) o Kodi Remote (iOS) per aprire il menu Impostazioni e ricreare la voce mancante nella skin." },
-      { question: "Elementum non trova contenuti, cosa fare?", answer: "Installa la dipendenza <em>Burst</em> da <a href=\"https://elementumorg.github.io/?ref_type=headsm\" target=\"_blank\">elementumorg.github.io</a>, è lo scraper che fornisce i torrent a Elementum." },
-      { question: "Cosa significa caricamento Buffer continuo?", answer: "Il buffer pre-carica parte del video per garantire flusso fluido. Dipende da fattori come dimensione del file, capacità del server e velocità della tua connessione." },
-      { question: "Streaming lento, come mai?", answer: "Dipende dalla tua banda e da quella del server di streaming. Il server spesso non ha sufficiente throughput per più flussi contemporanei." },
-      { question: "Ho notato che la maggior parte dei contenuti hanno una risoluzione massima di 720p e in aluni casi 1080p, perchè?", answer: "Chi ospita i video equilibra spazio su server e bitrate. Film 30-40 GB richiedono server potenti; su streaming si riduce il bitrate per risparmiare banda." },
-      { question: "Errore 'Impossibile connettersi al server di rete', soluzioni?", answer: "Verifica di aver digitato correttamente l'URL della repository da cui installi l'addon." },
-      { question: "Perché cambiare DNS e come?", answer: "Il DNS traduce nomi a IP. Alcuni router impongono DNS proprietari che possono bloccare siti. Puoi impostare DNS Google (8.8.8.8, 8.8.4.4) o Cloudflare (1.1.1.1, 1.0.0.1) sul modem o sui singoli dispositivi." }
-    ];
-
-    function FAQ() {
-      return (
-        <div className="faq-wrapper">
-          {faqs.map((faq, idx) => (
-            <FAQItem
-              key={idx}
-              number={idx + 1}
-              question={faq.question}
-              answer={faq.answer}
-            />
-          ))}
-        </div>
-      );
-    }
-
-    function FAQItem({ number, question, answer }) {
-      const [isVisible, setIsVisible] = useState(false);
-      
-      // Funzione per convertire il markup HTML in elementi React
-      const renderAnswer = () => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(answer, 'text/html');
-        return Array.from(doc.body.childNodes).map((node, i) => {
-          if (node.nodeType === Node.TEXT_NODE) {
-            return node.textContent;
-          } else if (node.nodeName === 'A') {
-            return (
-              <a 
-                key={i} 
-                href={node.getAttribute('href')} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                style={{ color: '#1e90ff', textDecoration: 'underline' }}
-              >
-                {node.textContent}
-              </a>
-            );
-          } else if (node.nodeName === 'STRONG') {
-            return <strong key={i}>{node.textContent}</strong>;
-          } else if (node.nodeName === 'EM') {
-            return <em key={i}>{node.textContent}</em>;
-          } else if (node.nodeName === 'CODE') {
-            return <code key={i}>{node.textContent}</code>;
-          }
-          return node.textContent;
+    <img src="7ddd367fa7ac86ba6faf5.png" alt="Logo del canale t.me/kodiitlia">
+    <h1>Domande Frequenti</h1>
+    <div>Quando entri nel canale e hai bisogno di fare una domanda, prova prima a vedere le nostre guide scrivendo !aiuto sul canale telegram @Kodiitalia.
+Qui di seguito troverete alcune domande frequenti che ci vengono fatte sul canale con la soluzione.</div>
+<h2>F.A.Q.</h2>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(0)">Dove posso trovare delle liste IPTV?</div>
+        <div class="faq-answer" id="answer-0">Liste IPTV stabili sono difficili da trovare, ma ti possiamo consigliare un paio di addons che fanno al caso tuo, digita !addons sul canale telegram e leggi i nostri consigli.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(1)">Non trovo addons che trattano sport, avete da suggerirmene qualcuna?</div>
+        <div class="faq-answer" id="answer-1">Basta vedere quelli che trattano eventi sportivi o eventi live come Stefano The Groovev360, Mandrakodi e Gruppo Italia.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(2)">Hai problemi con un determinato addon?</div>
+        <div class="faq-answer" id="answer-2">Prima di cercare qui, prova a chiedere nel gruppo di supporto (scrivi nel gruppo Kodiitalia !addons). Se nella guida non trovi l'addon non è detto che qualcuno nel gruppo possa esservi di aiuto.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(3)">Hai problemi con un addon, ma hai installato una mod o un pack?</div>
+        <div class="faq-answer" id="answer-3">Disinstalla tutto e ricomincia da capo seguendo i nostri consigli. Tutto questo perché mod e pack molte volte e a lungo andare compromettono il funzionamento di Kodi.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(4)">prova</div>
+        <div class="faq-answer" id="answer-4">funziona.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(5)">Installando un addon, ti mostra impossibile installare, dipendenza di python 2.0 non soddisfatta? </div>
+        <div class="faq-answer" id="answer-5">Hai ancora Kodi 18.x installa l'ultima versione di Kodi dal sito kodi.tv.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(6)">Vuoi installare l'ultima versione di Kodi? </div>
+        <div class="faq-answer" id="answer-6">Puoi installarlo dal sito ufficiale kodi.tv/download. Sul Play Store non sempre l'apk è aggiornata come quella sul sito ufficiale. Siamo a conoscenza dell'esistenza di versioni per iOS e WebOS, ma sono versioni complicate da installare e non hanno ancora tutti i componenti funzionanti al 100%. Poi c'è la versione linux, LibreElect e CoreElect sempre performanti e molto diffuse.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(7)">Come si installa kodi su iOS? </div>
+        <div class="faq-answer" id="answer-7">Per iPhone hai tre opzioni: jailbreak, paghi o metodo alt store</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(8)">Ho appena acquistato un box e c'è l'app Kodi preinstallata, va bene? </div>
+        <div class="faq-answer" id="answer-8">In linea di massima, consigliamo di installare sempre una versione ufficiale, quelle preinstallate dalla casa madre sono sempre app modificate e questo non consente a noi di escludere che in futuro possiate avere problemi.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(9)">Ho installato e avviato per la prima volta kodi sul mio dispositivo, ma lo schermo è nero, come mai? </div>
+        <div class="faq-answer" id="answer-9">Se hai un dispositivo android devi settare il refresh del tuo schermo a 60 Hz.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(10)">come si installa kodi sulla Fire Stick? </div>
+        <div class="faq-answer" id="answer-10">Abilita prima le opzioni sviluppatore, poi devi installare Downloader dallo store Fire, poi navigare sul sito Kodi.tv (i caratteri : e / vanno resi visibili cliccando sul tasto #$%), selezionare la tua piattaforma Android, arm64-v8a per le versione 4K e armeabi-v7a per tutte le altre clicca Download e alla fine su installa.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(11)">Mi compare impossibile riprodurre controllare log, cosa devo fare? </div>
+        <div class="faq-answer" id="answer-11">Dal repo di kodi installa Kodi LogFile Upload e scrivici qui il link che ti restituisce.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(12)">Mi consigliate una buona VPN? </div>
+        <div class="faq-answer" id="answer-12">Le VPN servono solo per vedere contenuti bloccati nel proprio paese o che necessitano di geolocalizzazione in uno stato diverso da quello in cui ci si trova. Se si desidera installarle per la sicurezza di non essere tracciati, si è probabilmente sulla strada sbagliata; non servono a nascondere come mostrato nei film.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(13)">Il mio kodi è lento, cancellando la cache si velocizzerà? </div>
+        <div class="faq-answer" id="answer-13">Kodi scarica tutte le informazioni dei film che aggiungi alla libreria e li salva nei dati, quindi cancellare la cache non risolve di molto la vita. La cache viene usata molto anche dagli addons, quindi rischi di rallentare il funzionamento di questi, ma non pensare di cancellare i dati dalle impostazioni memoria dell'app (android) perchè così facendo resetterai il tuo kodi alle impostazioni di fabbrica. Per tenerlo pulito basta cancellare alcune cartelle non importanti come Thumbnail (tutte le anteprime delle copertine) e Packages (contenente tutti gli zip degli addon aggiornati), questa operazione si può fare in manuale accedendo alla <a href="https://kodi.wiki/view/Kodi_data_folder">cartella principale di Kodi</a> oppure si possono usare degli addons specifici di manutenzione, come quello di The Groove (!addons sul gruppo telegram) oppure <a href="https://t.me/kodiitalia/379398">Rock Cleane</a>.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(14)">Kodi aggiunge la copertina errata al film o serie TV che ho aggiunto in libreria, come mai? </div>
+        <div class="faq-answer" id="answer-14">Kodi si basa su The Movie Database per aggiungere i film o le serie TV in libreria, ma se ha poche info su cui basarsi, si affida al contenuto più vecchio che ha in archivio, quindi potresti trovarti un remake di un film con la copertina di quello originale. Per risolvere devi cliccare prolungatamente (o click destro da pc o tasto c della tastiera) per far comparire il menu contestuale e cliccare su informazioni, in base alla skin ci saranno delle icone cliccando su ricarica far ricaricare le informazioni e selezionare il contenuto giusto.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(15)">Su PC Kodi mi si avvia solo in modalità finestra e non mi va più in fullscreen, come risolvo? </div>
+        <div class="faq-answer" id="answer-15">Premendo il tasto \ potrai passare da modalità finestra a tutto schermo e viceversa.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(16)">Kodi non mi riproduce più l'audio, come risolvo? </div>
+        <div class="faq-answer" id="answer-16">In questo caso ci sono più soluzioni diverse in base al tuo dispositivo. Pc: Premi il tasto F8 per togliere il mute di kodi. Android: collega una tastiera al dispositivo e premi F8, o in alternativa installa Yatse (telecomando virtuale per kodi) su un altro dispositivo e togli il mute da li. Linux: uguale ad android, usa una tastiera o installa un telecomando per kodi.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(17)">Elementum non mi funziona, rimane su si sta avviando</div>
+        <div class="faq-answer" id="answer-17">Prova a riavviare Kodi, o prova a reinstallare Elementum.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(18)">Ho kodi che mi dà problemi dopo l'aggiornamento, come mai?</div>
+        <div class="faq-answer" id="answer-18">Se hai fatto un aggiornamento da kodi 18.x a kodi 19.x sarebbe il caso di fare una installazione pulita di Kodi e reinstallando tutto. Questo perché Kodi 18 è stato programmato in Python 2.x e la versione 19 in Python 3.0 per questo motivo gli addons e kodi stesso potrebbe avere problemi.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(19)">Come collego un hd al modem della Tim?</div>
+        <div class="faq-answer" id="answer-19">Devi abilitare versione massima e minima SMBv1: kodi > Impostazioni  > Servizi > abilitare in basso la versione Esperto  > e settare versione minima e massima su SMBv1 e riavviare quando lo chiede (2 volte). Poi vanno abilitate le fonti da Impostazioni > Gestione file > Aggiungi sorgente > inserire il percorso di rete che vi dà il pannello di controllo del vostro modem/router e confermare. In caso di errore ricontrollare il link inserito</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(20)">ho per sbaglio nascosto la scheda impostazioni della home come la ripristino?</div>
+        <div class="faq-answer" id="answer-20">Con l'app kore (android) o kodiremote (iphone) puoi aprire il menu impostazioni e da lì navigare per modificare il menu della skin.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(21)">Ho installato Elementum, dalla ricerca non trova niente, cosa faccio?</div>
+        <div class="faq-answer" id="answer-21">Devi installare Burst una dipendenza di Elementum (<a href="https://elementumorg.github.io/?ref_type=headsm">sito ufficiale</a>). Burst è lo scraper di elementum. In pratica è quello che legge i siti ed estrapola le informazioni ad elementum che poi manda in play il flusso del torrent.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(22)">Continua a comparirmi il caricamento Buffer, cosa vuol dire?</div>
+        <div class="faq-answer" id="answer-22">Il buffer non è altro che un pre-caricamento di parte del video che visualizzi per mostrarti sempre un flusso video fluido, questo dipende da un sacco di fattori, dimensione del file, connessione del server che ha fisicamente il file e tua connessione.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(23)">Lo streaming mi dà connessione lenta, ma come mai?</div>
+        <div class="faq-answer" id="answer-23">Il problema dipende da 2 tipi di connessione, la tua connessione e quella del server che trasmette il file. Mentre nel primo caso si può tentare di risolvere il problema, nel secondo caso, che è la variante che capita più spesso, il server di Streaming non ha abbastanza connessione per gestire il tuo singolo flusso o più flussi assieme.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(24)">Come mai i filmati che trovo a 1080 non sono in hd o comunque non ci sono film con qualità decente?</div>
+        <div class="faq-answer" id="answer-24">Dovete capire che chi carica questi filmati ha da tenere in conto 2 fattori, lo spazio sul proprio server (più la qualità è alta meno film ci stanno) e la connessione con cui trasmette lo streaming. Un film di qualità ha pesi che raggiungono i 30/40 GB cosa che difficilmente troverete su un server di streaming perchè opteranno a tenere un bitrate più basso per ridurre notevolmente il peso del file stesso. Per avere una ottima qualità dovrete passare allo streaming tramite Elementum e i torrent.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(25)">Come mai quando avvio kodi compare IMPOSSIBILE CONNETTERSI AL SERVER DI RETE, soluzioni?</div>
+        <div class="faq-answer" id="answer-25">Probabilmente hai inserito male il link della repository da cui vuoi installare l'addon, ricontrolla di averlo scritto correttamente.</div>
+    </div>
+    
+    <div class="faq-section">
+        <div class="faq-question" onclick="toggleAnswer(26)">Perche devo cambiare i miei DNS e come lo faccio?</div>
+        <div class="faq-answer" id="answer-26">DNS è l'acronimo di Domain Name System, un sistema che traduce i nomi di dominio in indirizzi IP. In altre parole, il DNS è una sorta di rubrica che permette di connettersi ai siti web digitando il loro nome, anziché il loro indirizzo IP. Alcuni gestori della rete telefonica (TIM, Vodafone, etc...) impostano sui propri router-modem delle impostazioni per limitare il cambio e imporre i propri DNS in cui hanno la possibilità di bloccare l'accesso a determinati siti internet, per cui se non li cambi non avrai accesso a determinati contenuti.
+per cambiarli ci sono vari metodi, dal settarli su modem o sui singoli dispositivi, sarebbe meglio la prima voce, ma non sempre è fattibile, come scritto sopra. Ogni dispositivo ha un metodo diverso, quindi non scriverò qui ogni metodo, ma mi limiterò a scrivere i migliori, quelli di google 8.8.8.8 (primario) e 8.8.4.4 (secondario) per IPv4 e cloudflare 1.1.1.1 (primario) 1.0.0.1 (secondario).</div>
+    </div>
+    <script>
+        function toggleAnswer(index) {
+            var answer = document.getElementById('answer-' + index);
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        }
+    document.addEventListener("DOMContentLoaded", function() {
+        const faqQuestions = document.querySelectorAll(".faq-question");
+        faqQuestions.forEach((question, index) => {
+            question.innerHTML = `<strong>${index + 1}: </strong> ` + question.innerHTML.replace(/^\d+\sQ:\s/, "");
         });
-      };
-
-      return (
-        <div>
-          <div className="question" onClick={() => setIsVisible(!isVisible)}>
-            {number}. {question}
-          </div>
-          {isVisible && (
-            <div className="answer">
-              {renderAnswer()}
-            </div>
-          )}
-        </div>
-      );
-    }
-
-    ReactDOM.render(<FAQ />, document.getElementById('root'));
-  </script>
+    });
+    </script>
 </body>
 </html>
