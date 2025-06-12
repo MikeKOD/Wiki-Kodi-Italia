@@ -187,6 +187,12 @@ per cambiarli ci sono vari metodi, dal settarli su modem o sui singoli dispositi
                 answer.style.display = 'none';
             }
         }
+    document.addEventListener("DOMContentLoaded", function() {
+        const faqQuestions = document.querySelectorAll(".faq-question");
+        faqQuestions.forEach((question, index) => {
+            question.innerHTML = `<strong>${index + 1}. Q:</strong> ` + question.innerHTML.replace(/^\d+\sQ:\s/, "");
+});
+});
     </script>
 </body>
 </html>
