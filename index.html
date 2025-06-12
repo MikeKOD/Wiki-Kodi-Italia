@@ -190,18 +190,11 @@ per cambiarli ci sono vari metodi, dal settarli su modem o sui singoli dispositi
     document.addEventListener("DOMContentLoaded", function() {
         const faqQuestions = document.querySelectorAll(".faq-question");
         faqQuestions.forEach((question, index) => {
-            question.innerHTML = `<strong>${index + 1}: </strong> ` + question.innerHTML.replace(/^\d+\sQ:\s/, "");
-});
-});
-        document.addEventListener("DOMContentLoaded", function() {
-    const faqSections = document.querySelectorAll(".faq-section");
-
-    faqSections.forEach((section, index) => {
         const question = section.querySelector(".faq-question");
         const answer = section.querySelector(".faq-answer");
 
         // Aggiorna la domanda con numerazione automatica
-        question.innerHTML = `<strong>${index + 1}. Q:</strong> ` + question.innerHTML.replace(/^\d+\.\s+/, "");
+            question.innerHTML = `<strong>${index + 1}: </strong> ` + question.innerHTML.replace(/^\d+\sQ:\s/, "");
 
         // Imposta ID automatico alla risposta
         answer.setAttribute("id", `answer-${index}`);
@@ -210,7 +203,6 @@ per cambiarli ci sono vari metodi, dal settarli su modem o sui singoli dispositi
         question.setAttribute("onclick", `toggleAnswer(${index})`);
 });
 });
-
     </script>
 </body>
 </html>
