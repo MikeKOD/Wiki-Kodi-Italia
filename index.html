@@ -188,5 +188,12 @@ per cambiarli ci sono vari metodi, dal settarli su modem o sui singoli dispositi
             }
         }
     </script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const faqItems = document.querySelectorAll(".faq-item"); // Seleziona tutte le FAQ
+    faqItems.forEach((item, index) => {
+      item.innerHTML = `<strong>${index + 1}. </strong>` + item.innerHTML;
+});
+</script>
 </body>
 </html>
