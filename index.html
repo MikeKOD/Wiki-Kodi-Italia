@@ -84,7 +84,7 @@ Qui di seguito troverete alcune domane frequenti che ci vengono fatte sul canale
     </div>
     
     <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(7)"> Ho appena acquistato un box e c'è l'app Kodi preinstallata, va bene? </div>
+        <div class="faq-question" onclick="toggleAnswer(7)">Ho appena acquistato un box e c'è l'app Kodi preinstallata, va bene? </div>
         <div class="faq-answer" id="answer-7">In linea di massima, consigliamo di installare sempre una versione ufficiale, quelle preinstallate dalla casa madre sono sempre app modificate e questo non consente a noi di escludere che in futuro possiate avere problemi.</div>
     </div>
     
@@ -99,7 +99,7 @@ Qui di seguito troverete alcune domane frequenti che ci vengono fatte sul canale
     </div>
     
     <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(10)">mi compare impossibile riprodurre controllare log, cosa devo fare? </div>
+        <div class="faq-question" onclick="toggleAnswer(10)">Mi compare impossibile riprodurre controllare log, cosa devo fare? </div>
         <div class="faq-answer" id="answer-10">Dal repo di kodi installa Kodi LogFile Upload e scrivici qui il link che ti restiusce.</div>
     </div>
     
@@ -190,7 +190,7 @@ per cambiarli ci sono vari metodi, dal settarli su modem o sui singoli dispositi
     document.addEventListener("DOMContentLoaded", function() {
         const faqQuestions = document.querySelectorAll(".faq-question");
         faqQuestions.forEach((question, index) => {
-            question.innerHTML = <strong>${index + 1}.: </strong>  + question.innerHTML.replace(/^\d+\sQ:\s/, "");
+            question.innerHTML = `<strong>${index + 1}: </strong> ` + question.innerHTML.replace(/^\d+\sQ:\s/, "");
 });
 });
     </script>
