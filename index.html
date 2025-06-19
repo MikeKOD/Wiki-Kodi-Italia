@@ -288,7 +288,6 @@
             padding: 15px;
             margin: 15px 0;
             border-radius: 0 8px 8px 0;
-            font-size: 0.95rem;
         }
         
         .warning {
@@ -297,7 +296,6 @@
             padding: 15px;
             margin: 15px 0;
             border-radius: 0 8px 8px 0;
-            font-size: 0.95rem;
         }
         
         .dns-grid {
@@ -763,7 +761,7 @@
                 <div class="faq-header">
                     <i class="fas fa-chevron-right"></i>
                     <div class="faq-number">11</div>
-                    <div class="faq-title">Mi compare "impossibile riprodurre controllare log", cosa devo fare?</div>
+                    <div class="faq-title">Mi compare "IMPOSSIBILE RIPRODURRE CONTROLLARE LOG", cosa devo fare?</div>
                 </div>
                 <div class="faq-content">
                     <div class="faq-answer">
@@ -1291,29 +1289,37 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Gestione apertura/chiusura FAQ
             const faqHeaders = document.querySelectorAll('.faq-header');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const faqCards = document.querySelectorAll('.faq-card');
+            const exampleBtns = document.querySelectorAll('.example-btn');
+            const imageOverlay = document.getElementById('imageOverlay');
+            const overlayImage = document.getElementById('overlayImage');
+            const imageCaption = document.getElementById('imageCaption');
+            const closeBtn = document.querySelector('.close-btn');
             
             faqHeaders.forEach(header => {
                 header.addEventListener('click', function() {
                     const card = this.parentElement;
+                    const isActive = card.classList.contains('active');
+                    
+                    faqCards.forEach(otherCard => {
+                        if (otherCard !== card) {
+                            otherCard.classList.remove('active');
+                        }
+                    });
+                    
                     card.classList.toggle('active');
                 });
             });
-            
-            // Filtro categorie
-            const categoryBtns = document.querySelectorAll('.category-btn');
-            const faqCards = document.querySelectorAll('.faq-card');
             
             categoryBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     const category = this.getAttribute('data-category');
                     
-                    // Aggiorna bottoni attivi
                     categoryBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Mostra/nascondi FAQ
                     faqCards.forEach(card => {
                         if(category === 'all' || card.getAttribute('data-category') === category) {
                             card.style.display = 'block';
@@ -1324,14 +1330,6 @@
                 });
             });
             
-            // Gestione degli esempi DNS
-            const exampleBtns = document.querySelectorAll('.example-btn');
-            const imageOverlay = document.getElementById('imageOverlay');
-            const overlayImage = document.getElementById('overlayImage');
-            const imageCaption = document.getElementById('imageCaption');
-            const closeBtn = document.querySelector('.close-btn');
-            
-            // Immagini di esempio - solo Fastweb e Vodafone
             const dnsExamples = {
                 fastweb: {
                     image: 'fastweb-example.jpg',
@@ -1356,15 +1354,13 @@
                 });
             });
 
-            // Chiudi overlay
             closeBtn.addEventListener('click', function() {
                 imageOverlay.classList.remove('active');
             });
 
-            // Chiudi overlay cliccando sullo sfondo
             imageOverlay.addEventListener('click', function(e) {
-                if(e.target === imageOverlay) {
-                    imageOverlay.classList.remove('active');
+                if(e.target === this) {
+                    this.classList.remove('active');
                 }
             });
         });
