@@ -1130,3 +1130,253 @@
                                 <h4><i class="fas fa-ipv4"></i> IPv4 - Cloudflare</h4>
                                 <ul>
                                     <li>Primario: 1.1.1.1</li>
+                                    <li>Secondario: 1.0.0.1</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="dns-card">
+                                <h4><i class="fas fa-ipv6"></i> IPv6 - Cloudflare</h4>
+                                <ul>
+                                    <li>Primario: 2606:4700:4700::1111</li>
+                                    <li>Secondario: 2606:4700:4700::1001</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="dns-secure">
+                            <div class="dns-secure-content">
+                                <h3>DNS sicuro/protetto</h3>
+                                <p>Alcuni operatori hanno abilitato per impostazione predefinita il "DNS sicuro" o servizi simili che rendono inefficace il cambio dei DNS finché l'opzione non viene disattivata nel pannello di controllo del modem.</p>
+                                
+                                <div class="instruction-box">
+                                    <h4>Per disattivarlo:</h4>
+                                    <ul>
+                                        <li>Accedi al pannello di controllo del modem (es. 192.168.1.1)</li>
+                                        <li>Cerca la sezione "Sicurezza" o "Protezione famiglia"</li>
+                                        <li>Disabilita "DNS sicuro", "Safe Browsing" o opzioni simili</li>
+                                        <li><strong>Nota:</strong> Per alcuni operatori (es. TIM) potrebbe essere necessario utilizzare l'app mobile ufficiale per disattivare il "DNS sicuro", poiché l'opzione non è disponibile nel pannello web</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="instruction-box">
+                                    <h4>Modalità avanzata/esperto:</h4>
+                                    <ul>
+                                        <li>In alcuni modem, le opzioni DNS sono disponibili solo dopo aver abilitato la modalità avanzata/esperto</li>
+                                        <li>Cerca un'opzione "Modalità avanzata" o "Impostazioni esperto" nel pannello di controllo</li>
+                                        <li>Attiva questa modalità per accedere a tutte le opzioni di configurazione</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Pulsanti per gli esempi - Solo Fastweb e Vodafone -->
+                                <div class="example-buttons">
+                                    <button class="example-btn" data-example="fastweb">
+                                        <i class="fas fa-eye"></i> Guarda un esempio per Fastweb
+                                    </button>
+                                    <button class="example-btn" data-example="vodafone">
+                                        <i class="fas fa-eye"></i> Guarda un esempio per Vodafone
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <!-- Sezione per Wind Tre -->
+                        <div class="operator-box">
+                            <h4><i class="fas fa-tower-cell"></i> Configurazione DNS per Wind Tre (modem Zyxel)</h4>
+                            <p>Per gli utenti Wind Tre con modem router Zyxel, è necessario modificare le impostazioni DNS:</p>
+                            <ul>
+                                <li>Accedi al pannello di controllo del modem (192.168.1.1)</li>
+                                <li>Vai in <strong>Impostazioni di rete</strong> > <strong>Configurazione DNS</strong></li>
+                                <li><strong>Per IPv4:</strong> Cambia da "DNS Proxy" a "Statico"</li>
+                                <li><strong>Per IPv6:</strong> Cambia da "DNS Proxy" a "Statico"</li>
+                                <li>Inserisci manualmente i DNS scelti per entrambi i protocolli</li>
+                                <li>Salva le impostazioni e riavvia il modem</li>
+                            </ul>
+                            <div class="warning">
+                                <strong>Importante:</strong> Se non effettui questa modifica, il modem continuerà a utilizzare i DNS di Wind Tre anche se imposti DNS personalizzati.
+                            </div>
+                        </div>
+                        
+                        <!-- Sezione per Fastweb IPv6 -->
+                        <div class="operator-box">
+                            <h4><i class="fas fa-wifi"></i> Disattivazione IPv6 per Fastweb</h4>
+                            <p>Il protocollo IPv6 sui modem FastGate di Fastweb può causare problemi di connessione. È consigliabile disattivarlo:</p>
+                            
+                            <h5>Disattivazione tramite modem FastGate:</h5>
+                            <ul>
+                                <li>Accedi al pannello di controllo del modem (192.168.1.254)</li>
+                                <li>Vai in <strong>Impostazioni avanzate</strong> > <strong>Impostazioni IP</strong></li>
+                                <li>Trova la sezione "IPv6"</li>
+                                <li>Disabilita l'opzione "Abilita IPv6"</li>
+                                <li>Salva le impostazioni e riavvia il modem</li>
+                            </ul>
+                            
+                            <h5>Disattivazione tramite Area Clienti:</h5>
+                            <ul>
+                                <li>Accedi all'Area Clienti Fastweb</li>
+                                <li>Vai nella sezione "Gestione linea" o "Impostazioni modem"</li>
+                                <li>Cerca l'opzione per gestire il protocollo IPv6</li>
+                                <li>Disabilita IPv6 e salva le modifiche</li>
+                            </ul>
+                            
+                            <div class="warning">
+                                <strong>Avviso:</strong> La disattivazione di IPv6 può risolvere problemi di connessione intermittente e migliorare la stabilità della rete.
+                            </div>
+                        </div>
+                        
+                        <h3>Come cambiare i DNS:</h3>
+                        <p>Puoi impostare i DNS a due livelli diversi:</p>
+                        
+                        <h4>1. Sul modem/router:</h4>
+                        <div class="instruction-box">
+                            <ul>
+                                <li>Accedi al pannello di controllo del modem (di solito all'indirizzo 192.168.1.1)</li>
+                                <li>Cerca le impostazioni "DNS" nella sezione rete o connessione Internet</li>
+                                <li><strong>Nota:</strong> In alcuni modem (es. TIM) potrebbe essere necessario abilitare la modalità avanzata/esperto per vedere le opzioni DNS</li>
+                                <li>Sostituisci i DNS predefiniti con quelli scelti</li>
+                                <li>Salva le impostazioni e riavvia il modem</li>
+                            </ul>
+                        </div>
+                        
+                        <h4>2. Sul singolo dispositivo:</h4>
+                        <div class="instruction-box">
+                            <p><strong>Windows:</strong></p>
+                            <ul>
+                                <li>Pannello di controllo > Rete e Internet > Centro connessioni di rete</li>
+                                <li>Fai clic destro sulla connessione > Proprietà</li>
+                                <li>Seleziona "Protocollo Internet versione 4 (TCP/IPv4)" > Proprietà</li>
+                                <li>Seleziona "Utilizza i seguenti indirizzi server DNS"</li>
+                                <li>Inserisci i DNS scelti</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="instruction-box">
+                            <p><strong>Android:</strong></p>
+                            <ul>
+                                <li>Impostazioni > Rete e Internet > Wi-Fi</li>
+                                <li>Tocca a lungo sulla rete connessa > Modifica rete</li>
+                                <li>Mostra opzioni avanzate > Impostazioni IP > Statico</li>
+                                <li>Inserisci i DNS nei campi appositi</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="instruction-box">
+                            <p><strong>iOS:</strong></p>
+                            <ul>
+                                <li>Impostazioni > Wi-Fi</li>
+                                <li>Tocca l'icona ⓘ accanto alla rete connessa</li>
+                                <li>Scorri fino a "Configura DNS" > Manuale</li>
+                                <li>Aggiungi i server DNS</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="note">
+                            <strong>Suggerimento:</strong> Dopo aver cambiato i DNS, svuota la cache DNS sul tuo dispositivo per applicare immediatamente le modifiche:
+                            <ul>
+                                <li>Windows: <code>ipconfig /flushdns</code> nel prompt dei comandi</li>
+                                <li>macOS/Linux: <code>sudo dscacheutil -flushcache</code></li>
+                                <li>Android/iOS: Riavvia il dispositivo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 Comunità Italiana Kodi | t.me/kodiitalia</p>
+            <p>Le informazioni sono fornite a scopo educativo. Rispetta le leggi sul copyright del tuo paese.</p>
+        </footer>
+    </div>
+
+    <!-- Overlay per visualizzazione immagini -->
+    <div class="image-overlay" id="imageOverlay">
+        <div class="overlay-content">
+            <span class="close-btn">&times;</span>
+            <img id="overlayImage" src="" alt="Esempio DNS">
+            <p id="imageCaption"></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestione apertura/chiusura FAQ
+            const faqHeaders = document.querySelectorAll('.faq-header');
+            
+            faqHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const card = this.parentElement;
+                    card.classList.toggle('active');
+                });
+            });
+            
+            // Filtro categorie
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const faqCards = document.querySelectorAll('.faq-card');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Aggiorna bottoni attivi
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Mostra/nascondi FAQ
+                    faqCards.forEach(card => {
+                        if(category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Gestione degli esempi DNS
+            const exampleBtns = document.querySelectorAll('.example-btn');
+            const imageOverlay = document.getElementById('imageOverlay');
+            const overlayImage = document.getElementById('overlayImage');
+            const imageCaption = document.getElementById('imageCaption');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            // Immagini di esempio - solo Fastweb e Vodafone
+            const dnsExamples = {
+                fastweb: {
+                    image: 'fastweb-example.jpg',
+                    caption: 'Esempio disattivazione DNS sicuro su modem Fastweb'
+                },
+                vodafone: {
+                    image: 'vodafone-example.jpg',
+                    caption: 'Esempio disattivazione DNS sicuro su modem Vodafone'
+                }
+            };
+
+            exampleBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const exampleType = this.getAttribute('data-example');
+                    const example = dnsExamples[exampleType];
+                    
+                    if (example) {
+                        overlayImage.src = example.image;
+                        imageCaption.textContent = example.caption;
+                        imageOverlay.classList.add('active');
+                    }
+                });
+            });
+
+            // Chiudi overlay
+            closeBtn.addEventListener('click', function() {
+                imageOverlay.classList.remove('active');
+            });
+
+            // Chiudi overlay cliccando sullo sfondo
+            imageOverlay.addEventListener('click', function(e) {
+                if(e.target === imageOverlay) {
+                    imageOverlay.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
