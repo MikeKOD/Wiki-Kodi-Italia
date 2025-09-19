@@ -3,193 +3,1379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ</title>
+    <title>Kodi Italia - FAQ Complete</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        html {
+            background: #1a1a1a;
+            min-height: 100%;
+        }
+        
+        :root {
+            --primary: #12b2e7;
+            --primary-dark: #1286ad;
+            --accent: #FFFFFF;
+            --telegram: #0088cc;
+            --warning: #ff9800;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #1a1a1a;
-            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a;
+            color: #F0F0F0;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        h1, h2 {
-            color: #fff;
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 50px;
         }
-        .faq-section {
+        
+        header {
+            text-align: center;
+            padding: 30px 0 20px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--primary);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        }
+        
+        .logo-header {
+            text-align: center;
             margin-bottom: 20px;
         }
-        .faq-question {
-            cursor: pointer;
-            margin: 5px 0;
-            padding: 10px;
-            background-color: #333;
-            border: 1px solid #ccc;
-            color: #fff;
-        }
-        .faq-answer {
-            display: none;
-            padding: 10px;
-            border-left: 3px solid #fff;
-            background-color: #444;
-            color: #fff;
-        }
-        img {
-            max-width: 80%;
+        
+        .logo-header img {
+            max-width: 250px;
             height: auto;
+            margin: 0 auto 15px;
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        
+        .title-container {
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #bbb;
+            max-width: 600px;
+            margin: 0 auto 15px;
+        }
+        
+        .telegram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--telegram);
+            color: var(--accent);
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .telegram-link:hover {
+            background: #0077b5;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--telegram);
+            color: var(--accent);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 5px 5px 5px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+        }
+        
+        .telegram-btn:hover {
+            background: #0077b5;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .intro {
+            background: rgba(30, 30, 30, 0.8);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .intro p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .category-btn {
+            background: rgba(40, 40, 40, 0.8);
+            border: 2px solid var(--primary);
+            color: #F0F0F0;
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .faq-card {
+            background: rgba(40, 40, 40, 0.9);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .faq-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        
+        .faq-header {
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+        }
+        
+        .faq-header i {
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+            color: var(--accent);
+        }
+        
+        .faq-card.active .faq-header i {
+            transform: rotate(90deg);
+        }
+        
+        .faq-number {
+            background: var(--accent);
+            color: var(--primary);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+        
+        .faq-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent);
+            flex-grow: 1;
+        }
+        
+        .faq-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        
+        .faq-card.active .faq-content {
+            padding: 20px;
+            max-height: 10000px;
+        }
+        
+        .faq-answer {
+            color: #ddd;
+        }
+        
+        .faq-answer p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .faq-answer a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .faq-answer a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        .note {
+            background: rgba(18, 178, 231, 0.1);
+            border-left: 3px solid var(--primary);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 3px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .dns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .dns-card {
+            background: rgba(50, 50, 50, 0.6);
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid var(--primary);
+        }
+        
+        .dns-card h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .dns-card ul {
+            padding-left: 20px;
+        }
+        
+        .dns-card li {
+            margin-bottom: 8px;
+        }
+        
+        .dns-secure {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(50, 50, 50, 0.6);
+            border-radius: 8px;
+            border: 1px solid var(--primary);
+        }
+        
+        .dns-secure-content {
+            flex: 1;
+        }
+        
+        .example-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .example-btn {
+            background: var(--primary);
+            color: var(--accent);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .example-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .image-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .image-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .overlay-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--primary);
+        }
+        
+        .overlay-content img {
+            max-width: 100%;
+            max-height: 70vh;
             display: block;
             margin: 0 auto;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        #imageCaption {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 30px;
+            color: var(--accent);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            color: var(--primary);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--primary);
+        }
+        
+        .faq-answer ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .faq-answer ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .faq-answer ul li::before {
+            content: "-";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .instruction-box {
+            background: rgba(18, 134, 173, 0.15);
+            border-left: 3px solid var(--primary-dark);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .operator-box {
+            background: rgba(50, 50, 50, 0.6);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 25px 0;
+            border: 1px solid var(--primary);
+        }
+        
+        .operator-box h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .operator-box ul {
+            padding-left: 20px;
+        }
+        
+        .operator-box li {
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .logo-header img {
+                max-width: 200px;
+            }
+            
+            .dns-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-header {
+                padding: 12px 15px;
+            }
+            
+            .faq-title {
+                font-size: 1.1rem;
+            }
+            
+            .dns-secure {
+                flex-direction: column;
+            }
+            
+            .example-buttons {
+                flex-direction: column;
+            }
+            
+            .telegram-btn {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .faq-content {
+                padding: 0 15px;
+            }
+            
+            .faq-card.active .faq-content {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <img src="7ddd367fa7ac86ba6faf5.png" alt="Logo del canale Telegram t.me/kodiitalia">
-    <h1>Domande Frequenti</h1>
-    <div>Quando entri nel canale e hai bisogno di fare una domanda, prova prima a vedere le nostre guide scrivendo !aiuto sul canale Telegram @Kodiitalia. Qui di seguito troverai alcune domande frequenti che ci vengono fatte sul canale con le relative soluzioni.</div>
-    <h2>F.A.Q.</h2>
-    
-    <!-- FAQ corrette grammaticalmente -->
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(0)">Dove posso trovare delle liste IPTV?</div>
-        <div class="faq-answer" id="answer-0">Liste IPTV stabili sono difficili da trovare, ma ti possiamo consigliare un paio di addon che fanno al caso tuo: digita !addons sul canale Telegram e leggi i nostri consigli.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(1)">Non trovo addon che trattano sport, avete da suggerirmene qualcuno?</div>
-        <div class="faq-answer" id="answer-1">Basta vedere quelli che trattano eventi sportivi o eventi live come Stefano The Groovev360, Mandrakodi e Gruppo Italia.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(2)">Hai problemi con un determinato addon?</div>
-        <div class="faq-answer" id="answer-2">Prima di cercare qui, prova a chiedere nel gruppo di supporto (scrivi nel gruppo Kodiitalia !addons). Se nella guida non trovi l'addon, non è detto che qualcuno nel gruppo possa esserti d'aiuto.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(3)">Hai problemi con un addon, ma hai installato una build/mod?</div>
-        <div class="faq-answer" id="answer-3">Ti consigliamo di disinstallare tutto e ricominciare da capo seguendo i nostri consigli. Le Build/mod, infatti, spesso compromettono il funzionamento di Kodi nel lungo periodo.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(5)">Installando un addon, mi compare "impossibile installare, dipendenza di python 2.0 non soddisfatta"?</div>
-        <div class="faq-answer" id="answer-5">Hai ancora Kodi 18.x: installa l'ultima versione di Kodi dal sito kodi.tv.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(6)">Vuoi installare l'ultima versione di Kodi?</div>
-        <div class="faq-answer" id="answer-6">Puoi installarla dal sito ufficiale kodi.tv/download. Sul Play Store non sempre l'APK è aggiornato come quella sul sito ufficiale. Esistono versioni per iOS e WebOS, ma sono complicate da installare e non hanno ancora tutte le funzionalità al 100%. Poi ci sono le versioni Linux, LibreELEC e CoreELEC, sempre performanti e molto diffuse.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(7)">Come si installa Kodi su iOS?</div>
-        <div class="faq-answer" id="answer-7">Per iPhone hai tre opzioni: jailbreak, versione a pagamento o metodo AltStore.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(9)">Ho installato e avviato per la prima volta Kodi sul mio dispositivo, ma lo schermo è nero, come mai?</div>
-        <div class="faq-answer" id="answer-9">Se hai un dispositivo Android, devi impostare il refresh del tuo schermo a 60 Hz.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(10)">Come si installa Kodi sulla Fire Stick?</div>
-        <div class="faq-answer" id="answer-10">Abilita prima le opzioni sviluppatore, poi installa Downloader dallo store Fire. Naviga sul sito Kodi.tv (i caratteri : e / vanno resi visibili cliccando sul tasto #$%), seleziona la tua piattaforma Android: arm64-v8a per la versione 4K e armeabi-v7a per tutte le altre. Clicca Download e infine su Installa.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(11)">Mi compare "impossibile riprodurre controllare log", cosa devo fare?</div>
-        <div class="faq-answer" id="answer-11">Dal repo di Kodi installa Kodi LogFile Upload e scrivici qui il link che ti restituisce.</div>
+    <div class="container">
+        <header>
+            <div class="logo-header">
+                <img src="logo.png" alt="Logo Kodi Italia">
+            </div>
+            <div class="title-container">
+                <h1>Kodi Italia - FAQ Complete</h1>
+                <p class="subtitle">Tutte le risposte ai dubbi più comuni della community italiana</p>
+                <a href="https://t.me/kodiitalia" class="telegram-link" target="_blank">
+                    <i class="fab fa-telegram"></i> Unisciti al nostro canale Telegram
+                </a>
+            </div>
+        </header>
+        
+        <div class="intro">
+            <p>Queste domande coprono il 99% dei problemi comuni riscontrati dagli utenti Kodi. Prima di chiedere aiuto, controlla qui!</p>
+            <p>Scrivi <span class="highlight">!aiuto</span> sul canale Telegram <span class="highlight">@Kodiitalia</span> per ulteriori informazioni.</p>
+        </div>
+        
+        <div class="categories">
+            <button class="category-btn active" data-category="all">Tutte</button>
+            <button class="category-btn" data-category="install">Installazione</button>
+            <button class="category-btn" data-category="troubleshoot">Risoluzione Problemi</button>
+            <button class="category-btn" data-category="optimize">Ottimizzazione</button>
+            <button class="category-btn" data-category="streaming">Streaming</button>
+            <button class="category-btn" data-category="network">Rete & Sicurezza</button>
+        </div>
+        
+        <div class="faq-grid">
+            <!-- FAQ 1 -->
+            <div class="faq-card" data-category="streaming">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">1</div>
+                    <div class="faq-title">Dove posso trovare delle liste IPTV?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Liste IPTV stabili sono difficili da trovare, ma ti possiamo consigliare un paio di addon che fanno al caso tuo: digita <span class="highlight">!addons</span> sul canale Telegram e leggi i nostri consigli.</p>
+                        <div class="note">
+                            <strong>Nota:</strong> La disponibilità delle liste IPTV può variare nel tempo. Verifica sempre le fonti più recenti.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 2 -->
+            <div class="faq-card" data-category="streaming">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">2</div>
+                    <div class="faq-title">Non trovo addon che trattano sport, avete da suggerirmene qualcuno?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Basta vedere quelli che trattano eventi sportivi o eventi live come:</p>
+                        
+                        <div style="margin: 15px 0;">
+                            <ul>
+                                <li><a href="https://t.me/thegroove360group" target="_blank">The Groove 360</a><br></li>
+                                <li><a href="https://t.me/joinchat/Lkjo-xUTCNdY8FsChZOdHg" target="_blank"> The Crew</a><br></li>
+                                <li><a href="https://t.me/mandrakodi_support" target="_blank">Mandrakodi</a><br></li>
+                                <li><a href="https://t.me/joinchat/ETXTo1LHC4mkgdM1ysbH6g" target="_blank" target="_blank">SportHD</a><br></li>
+                            </ul>
+                        </div>
+                        
+                        <p>Altri addon sportivi popolari:</p>
+                        <ul>
+                            <li>Rising Tides</li>
+                            <li>Mad Titan Sports</li>
+                            <li>Gruppo Italia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 3 -->
+            <div class="faq-card" data-category="troubleshoot">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">3</div>
+                    <div class="faq-title">Hai problemi con un determinato addon?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Prima di cercare qui, prova a chiedere nel gruppo di supporto (scrivi nel gruppo Kodiitalia !addons). Se nella guida non trovi l'addon, non è detto che qualcuno nel gruppo possa esserti d'aiuto.</p>
+                        <div class="note">
+                            <strong>Suggerimento:</strong> Fornisci sempre il nome esatto dell'addon e la versione di Kodi che stai utilizzando.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 4 -->
+            <div class="faq-card" data-category="troubleshoot">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">4</div>
+                    <div class="faq-title">Hai problemi con un addon, ma hai installato una Build/Mod?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Ti consigliamo di disinstallare tutto e ricominciare da capo seguendo i nostri consigli. Le Build/Mod, infatti, spesso compromettono il funzionamento di Kodi nel lungo periodo.</p>
+                        <p>Le build preconfigurate presentano diversi problemi:</p>
+                        <ul>
+                            <li>Spesso contengono addon non ufficiali</li>
+                            <li>Possono rallentare il sistema nel tempo</li>
+                            <li>Rischio di malware o spyware</li>
+                            <li>Difficili da aggiornare</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 5 -->
+            <div class="faq-card" data-category="troubleshoot">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">5</div>
+                    <div class="faq-title">Installando un addon, mi compare "impossibile installare, dipendenza di python 2.0 non soddisfatta"?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Hai ancora Kodi 18.x: installa l'ultima versione di Kodi dal sito <a href="https://kodi.tv" target="_blank">kodi.tv</a>.</p>
+                        <div class="note">
+                            <strong>Importante:</strong> Per il corretto funzionamento della maggior parte degli addon è necessaria la versione più recente deKodi (21+).
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 6 -->
+            <div class="faq-card" data-category="install">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">6</div>
+                    <div class="faq-title">Vuoi installare l'ultima versione di Kodi?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Puoi installarla dal sito ufficiale <a href="https://kodi.tv/download" target="_blank">kodi.tv/download</a>. Sul Play Store non sempre l'APK è aggiornato come quella sul sito ufficiale. Esistono versioni per iOS e WebOS, ma sono complicate da installare e non hanno ancora tutte le funzionalità al 100%. Poi ci sono le versioni Linux, LibreELEC e CoreELEC, sempre performanti e molto diffuse.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 7 -->
+            <div class="faq-card" data-category="install">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">7</div>
+                    <div class="faq-title">Si può installare Kodi su iPhone o iPad?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Sì, esiste una versione di Kodi per iOS, il sistema operativo di iPhone e iPad, ma non si può installare a meno di avere il jailbreak (oppure se hai AltStore che supporta il repository BigBoss).</p>
+                        <p>Trovi maggiori informazioni nella guida ufficiale: <a href="https://kodi.wiki/view/HOW-TO:Install_Kodi_for_iOS" target="_blank">Install Kodi for iOS</a></p>
+                        <div class="note">
+                            <strong>Nota:</strong> L'installazione su iOS richiede procedure particolari che possono cambiare con gli aggiornamenti del sistema. Consulta sempre le guide più recenti.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 8 -->
+            <div class="faq-card" data-category="install">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">8</div>
+                    <div class="faq-title">Ho appena acquistato un box e c'è l'app Kodi preinstallata, va bene?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>In linea di massima, consigliamo di installare sempre una versione ufficiale, quelle preinstallate dalla casa madre sono sempre app modificate e questo non consente a noi di escludere che in futuro possiate avere problemi.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 9 -->
+            <div class="faq-card" data-category="troubleshoot">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">9</div>
+                    <div class="faq-title">Ho installato e avviato per la prima volta Kodi sul mio dispositivo, ma lo schermo è nero, come mai?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Questo problema era comune nelle versioni precedenti di Kodi ma è stato risolto nelle versioni recenti. Se stai ancora riscontrando questo problema:</p>
+                        <ul>
+                            <li>Assicurati di avere l'ultima versione di Kodi</li>
+                            <li>Se hai un dispositivo Android, prova a impostare il refresh del tuo schermo a 60 Hz</li>
+                            <li>Su PC: Premi <code>Ctrl+Shift+O</code> per aprire le impostazioni e verifica le impostazioni dello schermo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 10 -->
+            <div class="faq-card" data-category="install">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">10</div>
+                    <div class="faq-title">Come si installa Kodi sulla Fire Stick?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <ul>
+                            <li>Abilita "Opzioni sviluppatore" nelle impostazioni</li>
+                            <li>Installa l'app "Downloader" dallo store Amazon</li>
+                            <li>Apri Downloader e inserisci: <code>kodi.tv/download</code></li>
+                            <li>Scarica la versione Android (ARMv7A per Fire Stick standard, ARM64 per 4K)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 11 -->
+            <div class="faq-card" data-category="troubleshoot">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">11</div>
+                    <div class="faq-title">Mi compare "IMPOSSIBILE RIPRODURRE CONTROLLARE LOG", cosa devo fare?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Dal repo di Kodi installa Kodi LogFile Upload e scrivici qui il link che ti restituisce.</p>
+                        <p>Passaggi alternativi:</p>
+                        <ul>
+                            <li>Vai in Impostazioni > Registrazione</li>
+                            <li>Abilita la registrazione di debug</li>
+                            <li>Riproduci l'errore</li>
+                            <li>Invia il file di log</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 12 -->
+            <div class="faq-card" data-category="network">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">12</div>
+                    <div class="faq-title">Dove posso trovare una buona VPN?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Dipende dall'uso che vuoi farne. Per geolocalizzarti in un paese diverso da quello in cui ti stai connettendo ad internet, devi provare la VPN più efficente per il paese in cui ti trovi e per il paese in cui vuoi connetterti.</p>
+                        <p>Se vuoi nascondere la tua identità o non giocare al piccolo hacker, non esistono VPN che possano legalmente fare al caso tuo, tutte le VPN in commercio loggano i tuoi accessi e li consegnano alle autorità dietro richieste anche molto blande. In ogni caso, al netto di piccole differenze, tutti i maggiori provider di VPN sono più o meno equivalenti nelle stesse fasce di prezzo.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 13 -->
+            <div class="faq-card" data-category="optimize">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">13</div>
+                    <div class="faq-title">Il mio Kodi è lento, cancellando la cache si velocizzerà?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Kodi scarica tutte le informazioni dei film che aggiungi alla libreria e li salva nei dati, quindi cancellare la cache non risolve molto. La cache viene usata molto dagli addon, quindi rischi di rallentarne il funzionamento. Non cancellare i dati dalle impostazioni memoria dell'app (Android) perché resetti Kodi alle impostazioni di fabbrica.</p>
+                        <p>Per tenerlo pulito basta cancellare alcune cartelle non essenziali come Thumbnail (anteprime) e Packages (zip degli addon aggiornati). Questa operazione si può fare manualmente accedendo alla <a href="https://kodi.wiki/view/Kodi_data_folder" target="_blank">cartella principale di Kodi</a> o usando addon di manutenzione come quello di The Groove (!addons) oppure <a href="https://t.me/kodiitalia/379398" target="_blank">Rock Cleane</a>.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 14 -->
+            <div class="faq-card" data-category="troubleshoot">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">14</div>
+                    <div class="faq-title">Kodi aggiunge la copertina errata al film o serie TV che ho aggiunto in libreria, come mai?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Kodi si basa su The Movie Database. Se ha poche informazioni, si affida al contenuto più vecchio in archivio. Potresti trovarti un remake con la copertina dell'originale. Per risolvere clicca prolungatamente (o click destro da PC) per il menu contestuale e clicca su informazioni. In base alla skin, clicca su "ricarica" per selezionare il contenuto corretto.</p>
+                        <p>Passaggi dettagliati:</p>
+                        <ul>
+                            <li>Clicca prolungatamente sul titolo</li>
+                            <li>Seleziona "Informazioni"</li>
+                            <li>Clicca "Ricarica"</li>
+                            <li>Cerca manualmente su TheMovieDB</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 15 -->
+            <div class="faq-card" data-category="troubleshoot">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">15</div>
+                    <div class="faq-title">Su PC Kodi mi si avvia solo in modalità finestra e non mi va più in fullscreen, come risolvo?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Premendo il tasto <code>\</code> potrai passare da modalità finestra a tutto schermo e viceversa.</p>
+                        <p>Soluzioni alternative:</p>
+                        <ul>
+                            <li>Vai in Impostazioni > Interfaccia > Schermo</li>
+                            <li>Modifica la risoluzione</li>
+                            <li>Disabilita "Usa risoluzione desktop"</li>
+                            <li>Riavvia Kodi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 16 -->
+            <div class="faq-card" data-category="troubleshoot">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">16</div>
+                    <div class="faq-title">Kodi non mi riproduce più l'audio, come risolvo?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>PC: Premi F8 per togliere il mute. Android: Collega una tastiera e premi F8, o installa Yatse (telecomando virtuale) su un altro dispositivo. Linux: uguale ad Android.</p>
+                        <p>Altre soluzioni:</p>
+                        <ul>
+                            <li>Verifica le impostazioni audio in Sistema > Audio</li>
+                            <li>Prova diversi dispositivi di output</li>
+                            <li>Disinstalla plugin audio non ufficiali</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 17 - Elementum -->
+            <div class="faq-card" data-category="troubleshoot">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">17</div>
+                    <div class="faq-title">Elementum non mi funziona, rimane su "si sta avviando"</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Prova a riavviare Kodi o reinstalla Elementum. Nella maggior parte dei casi, è sufficiente eseguire questa procedura, ma non possiamo dare per certo che funzioni.</p>
+                        <p>Passaggi aggiuntivi:</p>
+                        <ul>
+                            <li>Installa Burst (dipendenza essenziale)</li>
+                            <li>Verifica di avere l'ultima versione</li>
+                            <li>Controlla le impostazioni dei provider</li>
+                        </ul>
+                        <p>Inoltre, per un corretto funzionamento di Elementum:</p>
+                        <ul>
+                            <li>Assicurati di avere un IP pubblico</li>
+                            <li>Configura correttamente il port forwarding se necessario</li>
+                            <li>Elementum funziona tramite tecnologia BitTorrent, quindi è importante condividere i file (SEED) per mantenere la rete sana</li>
+                        </ul>
+                        <div class="note">
+                            <strong>Importante:</strong> Elementum richiede di avere un IP pubblico e di condividere i file che scarichi (seed) per mantenere la rete BitTorrent funzionante per tutti.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 18 -->
+            <div class="faq-card" data-category="troubleshoot">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">18</div>
+                    <div class="faq-title">Ho Kodi che mi dà problemi dopo l'aggiornamento, come mai?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Se hai aggiornato da Kodi 18.x a 19.x, ti consigliamo una installazione pulita. Kodi 18 usa Python 2.x mentre la versione 19 usa Python 3.x: gli addon potrebbero avere problemi di compatibilità.</p>
+                        <p>Procedura consigliata:</p>
+                        <ul>
+                            <li>Fai backup dei tuoi dati</li>
+                            <li>Disinstalla completamente Kodi</li>
+                            <li>Installa la nuova versione</li>
+                            <li>Ripristina solo i dati essenziali</li>
+                        </ul>
+                        <div class="note">
+                            <strong>Nota:</strong> Per il corretto funzionamento degli addon più recenti è consigliabile utilizzare l'ultima versione di Kodi (21 o superiore).
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 19 - Disco modem (modificata) -->
+            <div class="faq-card" data-category="network">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">19</div>
+                    <div class="faq-title">Come posso accedere a un hard disk collegato al modem/router da Kodi?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Devi abilitare SMBv1: Kodi > Impostazioni > Servioni > Abilita modalità esperto > Imposta la versione minima e massima su SMBv1 e riavvia (2 volte). Poi abilita le fonti da Impostazioni > Gestione file > Aggiungi sorgente > inserisci il percorso di rete del modem.</p>
+                        <div class="note">
+                            <strong>Importante:</strong> Per alcuni operatori: Abilita "Condivisione file" nelle impostazioni del modem. Potrebbe essere necessario configurare impostazioni diverse a seconda del tuo operatore.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 20 - Impostazioni nascoste (modificata) -->
+            <div class="faq-card" data-category="troubleshoot">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">20</div>
+                    <div class="faq-title">Ho disattivato per errore una voce nel menu principale, come la ripristino?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Con l'app Kore (Android) o KodiRemote (iPhone) puoi aprire il menu impostazioni e modificare il menu della skin. In alternativa:</p>
+                        <ul>
+                            <li>Vai in Impostazioni > Aspetto > Skin</li>
+                            <li>Seleziona "Impostazioni skin"</li>
+                            <li>Cerca l'opzione per ripristinare le voci del menu</li>
+                            <li>Se non risolvi, resetta la skin alle impostazioni predefinite</li>
+                        </ul>
+                        <div class="note">
+                            <strong>Nota:</strong> Alcune skin nascondono automaticamente le voci se non sono presenti contenuti o addon correlati. Potrebbe non essere un errore ma un comportamento normale della skin.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 21 -->
+            <div class="faq-card" data-category="troubleshoot">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">21</div>
+                    <div class="faq-title">Ho installato Elementum, dalla ricerca non trova niente, cosa faccio?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Devi installare Burst, una dipendenza di Elementum (<a href="https://elementumorg.github.io/?ref_type=headsm" target="_blank">sito ufficiale</a>). Burst è lo scraper che legge i siti ed estrapola le informazioni per Elementum.</p>
+                        <p>Passaggi:</p>
+                        <ul>
+                            <li>Installa il repository Elementum</li>
+                            <li>Installa Burst dal repository</li>
+                            <li>Configura Elementum per usare Burst</li>
+                            <li>Riavvia Kodi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 22 - Buffer (modificata) -->
+            <div class="faq-card" data-category="streaming">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">22</div>
+                    <div class="faq-title">Continua a comparirmi il caricamento Buffer, cosa vuol dire?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Il buffer è un pre-caricamento di parte del video per garantire una riproduzione fluida. Dipende da vari fattori: dimensione del file, connessione del server e tua connessione.</p>
+                        <p>Soluzioni:</p>
+                        <ul>
+                            <li>Aumenta la dimensione del buffer in impostazioni avanzate</li>
+                            <li>Riduci la qualità dello streaming</li>
+                            <li>Verifica la tua connessione internet</li>
+                            <li>Modifica le impostazioni di InputStream Adaptive: imposta la risoluzione desiderata su 'Manual' e seleziona una risoluzione specifica</li>
+                        </ul>
+                        <div class="note">
+                            <strong>InputStream Adaptive:</strong> Questa impostazione ti permette di scegliere manualmente la risoluzione del video, evitando che il sistema tenti di adattarsi automaticamente e causi problemi di buffering.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 23 - Connessione lenta (modificata) -->
+            <div class="faq-card" data-category="streaming">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">23</div>
+                    <div class="faq-title">Lo streaming mi dà "connessione lenta", ma come mai?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Il problema può dipendere dalla tua connessione o da quella del server di streaming. Spesso il server non ha banda sufficiente per gestire il flusso.</p>
+                        <p>Consigli:</p>
+                        <ul>
+                            <li>Prova a ridurre la qualità del video</li>
+                            <li>Usa una VPN per aggirare eventuali limitazioni ISP</li>
+                            <li>Prova in orari diversi</li>
+                            <li>Modifica le impostazioni di InputStream Adaptive</li>
+                        </ul>
+                        <p>Il problema potrebbe anche essere causato da congestione della rete del tuo operatore o di un operatore secondario lungo il percorso.</p>
+                        <div class="note">
+                            <strong>Nota:</strong> Alcuni servizi di streaming limitano intenzionalmente la banda disponibile durante le ore di punta per gestire il carico degli utenti.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 24 - Risoluzione video (modificata) -->
+            <div class="faq-card" data-category="streaming">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">24</div>
+                    <div class="faq-title">Ho notato che la maggior parte dei contenuti hanno una risoluzione massima di 720p e in alcuni casi 1080p, perché?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Chi carica i filmati deve bilanciare spazio sul server e banda disponibile. Un film di alta qualità (30-40 GB) è raro sui server di streaming per diversi motivi:</p>
+                        <ul>
+                            <li><strong>Spazio di archiviazione:</strong> File più grandi occupano più spazio sui server</li>
+                            <li><strong>Banda richiesta:</strong> Lo streaming di contenuti in alta qualità richiede più banda</li>
+                            <li><strong>Destinatari:</strong> Molti utenti hanno connessioni non adatte a contenuti 4K</li>
+                            <li><strong>Risorse:</strong> Servono server più potenti per gestire lo streaming in alta qualità</li>
+                            <li><strong>Compressione:</strong> Alcuni siti di hosting gratuito applicano un'ulteriore compressione ai file, riducendo la qualità</li>
+                        </ul>
+                        <p>Per ottima qualità passa allo streaming tramite Elementum e torrent, dove è più facile trovare contenuti in alta definizione.</p>
+                        <div class="note">
+                            <strong>Hosting gratuito:</strong> I siti di hosting gratuito spesso applicano una compressione aggiuntiva ai file per risparmiare spazio, riducendo ulteriormente la qualità del video.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 25 -->
+            <div class="faq-card" data-category="network">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">25</div>
+                    <div class="faq-title">Come mai quando avvio Kodi compare "IMPOSSIBILE CONNETTERSI AL SERVER DI RETE", soluzioni?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Probabilmente hai inserito male il link della repository: ricontrolla di averlo scritto correttamente.</p>
+                        <p>Altre possibili cause:</p>
+                        <ul>
+                            <li>Problemi di connessione internet</li>
+                            <li>Server della repository offline</li>
+                            <li>Firewall o impostazioni di sicurezza che bloccano la connessione</li>
+                            <li>Problemi con i DNS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 26 -->
+            <div class="faq-card" data-category="optimize">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">26</div>
+                    <div class="faq-title">Come mai quando avvio Kodi compare "server comunicazione remota avvio fallito", soluzioni?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Si tratta del servizio del controllo remoto, basta disattivarlo da Impostazioni Servizi</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 27 - DNS (modificata) -->
+            <div class="faq-card" data-category="network">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-number">27</div>
+                    <div class="faq-title">Perché devo cambiare i miei DNS e come lo faccio?</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Il DNS (Domain Name System) è il servizio che traduce i nomi di dominio (come google.com) in indirizzi IP numerici che i computer possono comprendere. Alcuni gestori (TIM, Vodafone, Fastweb) utilizzano DNS proprietari che potrebbero bloccare l'accesso a determinati siti o servizi.</p>
+                        
+                        <h3>Vantaggi di cambiare DNS:</h3>
+                        <ul>
+                            <li>Accesso a siti e servizi altrimenti bloccati</li>
+                            <li>Miglioramenti nella velocità di navigazione</li>
+                            <li>Maggiore privacy online</li>
+                            <li>Filtraggio di contenuti indesiderati</li>
+                        </ul>
+                        
+                        <h3>DNS consigliati:</h3>
+                        <div class="dns-grid">
+                            <div class="dns-card">
+                                <h4><i class="fas fa-ipv4"></i> IPv4 - Google</h4>
+                                <ul>
+                                    <li>Primario: 8.8.8.8</li>
+                                    <li>Secondario: 8.8.4.4</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="dns-card">
+                                <h4><i class="fas fa-ipv6"></i> IPv6 - Google</h4>
+                                <ul>
+                                    <li>Primario: 2001:4860:4860::8888</li>
+                                    <li>Secondario: 2001:4860:4860::8844</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="dns-card">
+                                <h4><i class="fas fa-ipv4"></i> IPv4 - Cloudflare</h4>
+                                <ul>
+                                    <li>Primario: 1.1.1.1</li>
+                                    <li>Secondario: 1.0.0.1</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="dns-card">
+                                <h4><i class="fas fa-ipv6"></i> IPv6 - Cloudflare</h4>
+                                <ul>
+                                    <li>Primario: 2606:4700:4700::1111</li>
+                                    <li>Secondario: 2606:4700:4700::1001</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="dns-secure">
+                            <div class="dns-secure-content">
+                                <h3>DNS sicuro/protetto</h3>
+                                <p>Alcuni operatori hanno abilitato per impostazione predefinita il "DNS sicuro" o servizi simili che rendono inefficace il cambio dei DNS finché l'opzione non viene disattivata nel pannello di controllo del modem.</p>
+                                
+                                <div class="instruction-box">
+                                    <h4>Per disattivarlo:</h4>
+                                    <ul>
+                                        <li>Accedi al pannello di controllo del modem (es. 192.168.1.1)</li>
+                                        <li>Cerca la sezione "Sicurezza" o "Protezione famiglia"</li>
+                                        <li>Disabilita "DNS sicuro", "Safe Browsing" o opzioni simili</li>
+                                        <li><strong>Nota:</strong> Per alcuni operatori (es. TIM) potrebbe essere necessario utilizzare l'app mobile ufficiale per disattivare il "DNS sicuro", poiché l'opzione non è disponibile nel pannello web</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="instruction-box">
+                                    <h4>Modalità avanzata/esperto:</h4>
+                                    <ul>
+                                        <li>In alcuni modem, le opzioni DNS sono disponibili solo dopo aver abilitato la modalità avanzata/esperto</li>
+                                        <li>Cerca un'opzione "Modalità avanzata" o "Impostazioni esperto" nel pannello di controllo</li>
+                                        <li>Attiva questa modalità per accedere a tutte le opzioni di configurazione</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Pulsanti per gli esempi - Solo Fastweb e Vodafone -->
+                                <div class="example-buttons">
+                                    <button class="example-btn" data-example="fastweb">
+                                        <i class="fas fa-eye"></i> Guarda un esempio per Fastweb
+                                    </button>
+                                    <button class="example-btn" data-example="vodafone">
+                                        <i class="fas fa-eye"></i> Guarda un esempio per Vodafone
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <!-- Sezione per Wind Tre -->
+                        <div class="operator-box">
+                            <h4><i class="fas fa-tower-cell"></i> Configurazione DNS per Wind Tre (modem Zyxel)</h4>
+                            <p>Per gli utenti Wind Tre con modem router Zyxel, è necessario modificare le impostazioni DNS:</p>
+                            <ul>
+                                <li>Accedi al pannello di controllo del modem (192.168.1.1)</li>
+                                <li>Vai in <strong>Impostazioni di rete</strong> > <strong>Configurazione DNS</strong></li>
+                                <li><strong>Per IPv4:</strong> Cambia da "DNS Proxy" a "Statico"</li>
+                                <li><strong>Per IPv6:</strong> Cambia da "DNS Proxy" a "Statico"</li>
+                                <li>Inserisci manualmente i DNS scelti per entrambi i protocolli</li>
+                                <li>Salva le impostazioni e riavvia il modem</li>
+                            </ul>
+                            <div class="warning">
+                                <strong>Importante:</strong> Se non effettui questa modifica, il modem continuerà a utilizzare i DNS di Wind Tre anche se imposti DNS personalizzati.
+                            </div>
+                        </div>
+                        
+                        <!-- Sezione per Fastweb IPv6 -->
+                        <div class="operator-box">
+                            <h4><i class="fas fa-wifi"></i> Disattivazione IPv6 per Fastweb</h4>
+                            <p>Il protocollo IPv6 sui modem FastGate di Fastweb può causare problemi di connessione. È consigliabile disattivarlo:</p>
+                            
+                            <h5>Disattivazione tramite modem FastGate:</h5>
+                            <ul>
+                                <li>Accedi al pannello di controllo del modem (192.168.1.254)</li>
+                                <li>Vai in <strong>Impostazioni avanzate</strong> > <strong>Impostazioni IP</strong></li>
+                                <li>Trova la sezione "IPv6"</li>
+                                <li>Disabilita l'opzione "Abilita IPv6"</li>
+                                <li>Salva le impostazioni e riavvia il modem</li>
+                            </ul>
+                            
+                            <h5>Disattivazione tramite Area Clienti:</h5>
+                            <ul>
+                                <li>Accedi all'Area Clienti Fastweb</li>
+                                <li>Vai nella sezione "Gestione linea" o "Impostazioni modem"</li>
+                                <li>Cerca l'opzione per gestire il protocollo IPv6</li>
+                                <li>Disabilita IPv6 e salva le modifiche</li>
+                            </ul>
+                            
+                            <div class="warning">
+                                <strong>Avviso:</strong> La disattivazione di IPv6 può risolvere problemi di connessione intermittente e migliorare la stabilità della rete.
+                            </div>
+                        </div>
+                        
+                        <h3>Come cambiare i DNS:</h3>
+                        <p>Puoi impostare i DNS a due livelli diversi:</p>
+                        
+                        <h4>1. Sul modem/router:</h4>
+                        <div class="instruction-box">
+                            <ul>
+                                <li>Accedi al pannello di controllo del modem (di solito all'indirizzo 192.168.1.1)</li>
+                                <li>Cerca le impostazioni "DNS" nella sezione rete o connessione Internet</li>
+                                <li><strong>Nota:</strong> In alcuni modem (es. TIM) potrebbe essere necessario abilitare la modalità avanzata/esperto per vedere le opzioni DNS</li>
+                                <li>Sostituisci i DNS predefiniti con quelli scelti</li>
+                                <li>Salva le impostazioni e riavvia il modem</li>
+                            </ul>
+                        </div>
+                        
+                        <h4>2. Sul singolo dispositivo:</h4>
+                        <div class="instruction-box">
+                            <p><strong>Windows:</strong></p>
+                            <ul>
+                                <li>Pannello di controllo > Rete e Internet > Centro connessioni di rete</li>
+                                <li>Fai clic destro sulla connessione > Proprietà</li>
+                                <li>Seleziona "Protocollo Internet versione 4 (TCP/IPv4)" > Proprietà</li>
+                                <li>Seleziona "Utilizza i seguenti indirizzi server DNS"</li>
+                                <li>Inserisci i DNS scelti</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="instruction-box">
+                            <p><strong>Android:</strong></p>
+                            <ul>
+                                <li>Impostazioni > Rete e Internet > Wi-Fi</li>
+                                <li>Tocca a lungo sulla rete connessa > Modifica rete</li>
+                                <li>Mostra opzioni avanzate > Impostazioni IP > Statico</li>
+                                <li>Inserisci i DNS nei campi appositi</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="instruction-box">
+                            <p><strong>iOS:</strong></p>
+                            <ul>
+                                <li>Impostazioni > Wi-Fi</li>
+                                <li>Tocca l'icona ⓘ accanto alla rete connessa</li>
+                                <li>Scorri fino a "Configura DNS" > Manuale</li>
+                                <li>Aggiungi i server DNS</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="note">
+                            <strong>Suggerimento:</strong> Dopo aver cambiato i DNS, svuota la cache DNS sul tuo dispositivo per applicare immediatamente le modifiche:
+                            <ul>
+                                <li>Windows: <code>ipconfig /flushdns</code> nel prompt dei comandi</li>
+                                <li>macOS/Linux: <code>sudo dscacheutil -flushcache</code></li>
+                                <li>Android/iOS: Riavvia il dispositivo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 Comunità Italiana Kodi | t.me/kodiitalia</p>
+            <p>Le informazioni sono fornite a scopo educativo. Rispetta le leggi sul copyright del tuo paese.</p>
+        </footer>
     </div>
 
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(12)">Mi consigliate una buona VPN?</div>
-        <div class="faq-answer" id="answer-12">Le VPN servono solo per vedere contenuti bloccati nel proprio paese o che necessitano di geolocalizzazione in uno stato diverso da quello in cui ci si trova. Se le installi per la sicurezza di non essere tracciato, sappi che non servono per nascondersi come mostrato nei film.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(13)">Il mio Kodi è lento, cancellando la cache si velocizzerà?</div>
-        <div class="faq-answer" id="answer-13">Kodi scarica tutte le informazioni dei film che aggiungi alla libreria e li salva nei dati, quindi cancellare la cache non risolve molto. La cache viene usata molto dagli addon, quindi rischi di rallentarne il funzionamento. Non cancellare i dati dalle impostazioni memoria dell'app (Android) perché resetti Kodi alle impostazioni di fabbrica. Per tenerlo pulito basta cancellare alcune cartelle non essenziali come Thumbnail (anteprime) e Packages (zip degli addon aggiornati). Questa operazione si può fare manualmente accedendo alla <a href="https://kodi.wiki/view/Kodi_data_folder">cartella principale di Kodi</a> o usando addon di manutenzione come quello di The Groove (!addons) oppure <a href="https://t.me/kodiitalia/379398">Rock Cleane</a>.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(14)">Kodi aggiunge la copertina errata al film o serie TV che ho aggiunto in libreria, come mai?</div>
-        <div class="faq-answer" id="answer-14">Kodi si basa su The Movie Database. Se ha poche informazioni, si affida al contenuto più vecchio in archivio. Potresti trovarti un remake con la copertina dell'originale. Per risolvere clicca prolungatamente (o click destro da PC) per il menu contestuale e clicca su informazioni. In base alla skin, clicca su "ricarica" per selezionare il contenuto corretto.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(15)">Su PC Kodi mi si avvia solo in modalità finestra e non mi va più in fullscreen, come risolvo?</div>
-        <div class="faq-answer" id="answer-15">Premendo il tasto \ potrai passare da modalità finestra a tutto schermo e viceversa.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(16)">Kodi non mi riproduce più l'audio, come risolvo?</div>
-        <div class="faq-answer" id="answer-16">PC: Premi F8 per togliere il mute. Android: Collega una tastiera e premi F8, o installa Yatse (telecomando virtuale) su un altro dispositivo. Linux: uguale ad Android.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(17)">Elementum non mi funziona, rimane su "si sta avviando"</div>
-        <div class="faq-answer" id="answer-17">Prova a riavviare Kodi o reinstalla Elementum.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(18)">Ho Kodi che mi dà problemi dopo l'aggiornamento, come mai?</div>
-        <div class="faq-answer" id="answer-18">Se hai aggiornato da Kodi 18.x a 19.x, ti consigliamo una installazione pulita. Kodi 18 usa Python 2.x mentre la versione 19 usa Python 3.x: gli addon potrebbero avere problemi di compatibilità.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(19)">Come collego un HD al modem della Tim?</div>
-        <div class="faq-answer" id="answer-19">Devi abilitare SMBv1: Kodi > Impostazioni > Servioni > Abilita modalità esperto > Imposta la versione minima e massima su SMBv1 e riavvia (2 volte). Poi abilita le fonti da Impostazioni > Gestione file > Aggiungi sorgente > inserisci il percorso di rete del modem. In caso di errore ricontrolla il link.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(20)">Ho per sbaglio nascosto la scheda impostazioni della home, come la ripristino?</div>
-        <div class="faq-answer" id="answer-20">Con l'app Kore (Android) o KodiRemote (iPhone) puoi aprire il menu impostazioni e modificare il menu della skin.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(21)">Ho installato Elementum, dalla ricerca non trova niente, cosa faccio?</div>
-        <div class="faq-answer" id="answer-21">Devi installare Burst, una dipendenza di Elementum (<a href="https://elementumorg.github.io/?ref_type=headsm">sito ufficiale</a>). Burst è lo scraper che legge i siti ed estrapola le informazioni per Elementum.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(22)">Continua a comparirmi il caricamento Buffer, cosa vuol dire?</div>
-        <div class="faq-answer" id="answer-22">Il buffer è un pre-caricamento di parte del video per garantire una riproduzione fluida. Dipende da vari fattori: dimensione del file, connessione del server e tua connessione.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(23)">Lo streaming mi dà "connessione lenta", ma come mai?</div>
-        <div class="faq-answer" id="answer-23">Il problema può dipendere dalla tua connessione o da quella del server di streaming. Spesso il server non ha banda sufficiente per gestire il flusso.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(24)">Come mai i filmati che trovo a 1080 non sono in HD o comunque non ci sono film con qualità decente?</div>
-        <div class="faq-answer" id="answer-24">Chi carica i filmati deve bilanciare spazio sul server e banda disponibile. Un film di alta qualità (30-40 GB) è raro sui server di streaming. Per ottima qualità passa allo streaming tramite Elementum e torrent.</div>
-    </div>
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(25)">Come mai quando avvio Kodi compare "IMPOSSIBILE CONNETTERSI AL SERVER DI RETE", soluzioni?</div>
-        <div class="faq-answer" id="answer-25">Probabilmente hai inserito male il link della repository: ricontrolla di averlo scritto correttamente.</div>
-    </div>
-
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(26)">Mi compare "server comunicazione remota avvio fallito", cosa devo fare?</div>
-        <div class="faq-answer" id="answer-26">Si tratta del servizio del controllo remoto, basta disattivarlo da Impostazioni Servizi</div>
-    </div>
-
-    
-    <div class="faq-section">
-        <div class="faq-question" onclick="toggleAnswer(27)">Perché devo cambiare i miei DNS e come lo faccio?</div>
-        <div class="faq-answer" id="answer-27">Il DNS traduce i nomi di dominio in indirizzi IP. Alcuni gestori (TIM, Vodafone) impongono DNS che bloccano determinati siti. Per cambiarli: Google (8.8.8.8 primario - 8.8.4.4 secondario) o Cloudflare (1.1.1.1 primario - 1.0.0.1 secondario). Puoi impostarli sul modem o sui singoli dispositivi.</div>
+    <!-- Overlay per visualizzazione immagini -->
+    <div class="image-overlay" id="imageOverlay">
+        <div class="overlay-content">
+            <span class="close-btn">&times;</span>
+            <img id="overlayImage" src="" alt="Esempio DNS">
+            <p id="imageCaption"></p>
+        </div>
     </div>
 
     <script>
-        function toggleAnswer(index) {
-            var answer = document.getElementById('answer-' + index);
-            answer.style.display = (answer.style.display === 'none' || answer.style.display === '') 
-                ? 'block' 
-                : 'none';
-        }
-        
-        document.addEventListener("DOMContentLoaded", function() {
-            const faqQuestions = document.querySelectorAll(".faq-question");
-            faqQuestions.forEach((question, index) => {
-                question.innerHTML = `<strong>${index + 1}: </strong> ` + question.innerHTML;
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqHeaders = document.querySelectorAll('.faq-header');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const faqCards = document.querySelectorAll('.faq-card');
+            const exampleBtns = document.querySelectorAll('.example-btn');
+            const imageOverlay = document.getElementById('imageOverlay');
+            const overlayImage = document.getElementById('overlayImage');
+            const imageCaption = document.getElementById('imageCaption');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            faqHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const card = this.parentElement;
+                    const isActive = card.classList.contains('active');
+                    
+                    faqCards.forEach(otherCard => {
+                        if (otherCard !== card) {
+                            otherCard.classList.remove('active');
+                        }
+                    });
+                    
+                    card.classList.toggle('active');
+                });
+            });
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    faqCards.forEach(card => {
+                        if(category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            const dnsExamples = {
+                fastweb: {
+                    image: 'fastweb-example.jpg',
+                    caption: 'Esempio disattivazione DNS sicuro su modem Fastweb'
+                },
+                vodafone: {
+                    image: 'vodafone-example.jpg',
+                    caption: 'Esempio disattivazione DNS sicuro su modem Vodafone'
+                }
+            };
+
+            exampleBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const exampleType = this.getAttribute('data-example');
+                    const example = dnsExamples[exampleType];
+                    
+                    if (example) {
+                        overlayImage.src = example.image;
+                        imageCaption.textContent = example.caption;
+                        imageOverlay.classList.add('active');
+                    }
+                });
+            });
+
+            closeBtn.addEventListener('click', function() {
+                imageOverlay.classList.remove('active');
+            });
+
+            imageOverlay.addEventListener('click', function(e) {
+                if(e.target === this) {
+                    this.classList.remove('active');
+                }
             });
         });
     </script>
