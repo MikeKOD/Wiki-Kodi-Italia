@@ -747,6 +747,9 @@
                             <li>Assicurati di avere l'ultima versione di Kodi</li>
                             <li>Se hai un dispositivo Android, prova a impostare il refresh del tuo schermo a 60 Hz</li>
                             <li>Su PC: Premi <code>Ctrl+Shift+O</code> per aprire le impostazioni e verifica le impostazioni dello schermo</li>
+                                    <div class="example-buttons">
+                        <button class="example-btn" data-example="Ambient">
+                                    </div>
                         </ul>
                     </div>
                 </div>
@@ -1381,6 +1384,10 @@
                 vodafone: {
                     image: 'vodafone-example.jpg',
                     caption: 'Esempio disattivazione DNS sicuro su modem Vodafone'
+                },
+                ambient: {
+                    image: 'Ambient.jpg',
+                    caption: 'Esempio soluzione schermata nera Kodi al primo avvio'
                 }
             };
 
@@ -1396,7 +1403,7 @@
                     }
                 });
             });
-
+            
             closeBtn.addEventListener('click', function() {
                 imageOverlay.classList.remove('active');
             });
@@ -1410,11 +1417,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
