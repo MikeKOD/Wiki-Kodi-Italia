@@ -12,12 +12,12 @@
         }
         
         :root {
-            var(--primary): #12b2e7;
-            var(--primary-dark): #1286ad;
-            var(--accent): #FFFFFF;
-            var(--telegram): #0088cc;
-            var(--warning): #ff9800;
-            var(--danger): #ef5350;
+            --primary: #12b2e7;
+            --primary-dark: #1286ad;
+            --accent: #FFFFFF;
+            --telegram: #0088cc;
+            --warning: #ff9800;
+            --danger: #ef5350;
         }
         
         * {
@@ -115,25 +115,6 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
-
-        .telegram-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--telegram);
-            color: var(--accent);
-            padding: 6px 14px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.2s ease;
-            font-size: 0.85rem;
-            margin-top: 10px;
-        }
-
-        .telegram-btn:hover {
-            background: #0077b5;
-        }
         
         .note {
             background: rgba(18, 178, 231, 0.1);
@@ -164,6 +145,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
+            margin-top: 30px;
             margin-bottom: 25px;
         }
         
@@ -192,6 +174,13 @@
             gap: 15px;
             margin-bottom: 30px;
         }
+
+        .fixed-methods {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
         
         .faq-card {
             background: rgba(45, 45, 45, 0.9);
@@ -219,7 +208,7 @@
         .faq-header i.fa-chevron-right {
             font-size: 1rem;
             transition: transform 0.3s ease;
-            color: #fff;
+            color: #ffffff;
         }
         
         .faq-card.active .faq-header i.fa-chevron-right {
@@ -229,7 +218,7 @@
         .faq-title {
             font-size: 1.15rem;
             font-weight: 600;
-            color: #fff;
+            color: #ffffff;
             flex-grow: 1;
         }
         
@@ -304,7 +293,7 @@
         }
 
         .static-sections {
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
 
         .static-sections h2 {
@@ -355,19 +344,10 @@
             <p>Gli addon si dividono in due metodologie di installazione:</p>
         </div>
 
-        <!-- Filtri Categoria -->
-        <div class="categories">
-            <button class="category-btn active" data-category="all">Tutti</button>
-            <button class="category-btn" data-category="guide">Guide & Impostazioni</button>
-            <button class="category-btn" data-category="official">Addon Ufficiali</button>
-            <button class="category-btn" data-category="unofficial">Addon Esterni</button>
-        </div>
-
-        <!-- Griglia Accordion -->
-        <div class="faq-grid">
-
+        <!-- Guide di Installazione Fisse (Sopra ai filtri e non filtrabili) -->
+        <div class="fixed-methods">
             <!-- METODO A: REPOSITORY -->
-            <div class="faq-card" data-category="guide">
+            <div class="faq-card">
                 <div class="faq-header">
                     <i class="fas fa-chevron-right"></i>
                     <div class="faq-title">A. Installazione da Repository (Raccomandata)</div>
@@ -381,7 +361,7 @@
             </div>
 
             <!-- METODO B: ZIP -->
-            <div class="faq-card" data-category="guide">
+            <div class="faq-card">
                 <div class="faq-header">
                     <i class="fas fa-chevron-right"></i>
                     <div class="faq-title">B. Installazione Manuale via ZIP (Sconsigliata)</div>
@@ -393,6 +373,17 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Filtri Categoria -->
+        <div class="categories">
+            <button class="category-btn active" data-category="all">Tutti</button>
+            <button class="category-btn" data-category="official">Addon Ufficiali</button>
+            <button class="category-btn" data-category="unofficial">Addon Esterni</button>
+        </div>
+
+        <!-- Griglia Cataloghi Addon (Soggetta a Filtri) -->
+        <div class="faq-grid">
 
             <!-- CARD: KODINERDS -->
             <div class="faq-card" data-category="unofficial">
@@ -543,7 +534,7 @@
                 <div class="faq-content">
                     <div class="faq-answer">
                         <p>Addon focalizzato sulla raccolta di link for manifestazioni sportive in diretta. Presenta una sezione VOD di film (anche storici o per adulti) e flussi live regionali, nazionali, Pluto TV e Samsung TV.</p>
-                        <p>I gestori mettono a disposizione anche una sezione "VIP" accessibile tramite esplicita richiesta nel loro canale di supporto <a href="https://t.me/mandrakodi_support" target="_blank" rel="nofollow">@mandrakodi_support</a>.</p>
+                        <p>I gestori mettono a dispositione anche una sezione "VIP" accessibile tramite esplicita richiesta nel loro canale di supporto <a href="https://t.me/mandrakodi_support" target="_blank" rel="nofollow">@mandrakodi_support</a>.</p>
                     </div>
                 </div>
             </div>
@@ -608,22 +599,23 @@
             </div>
 
         </div> <!-- Fine faq-grid -->
+    </div>
 
-    <!-- Script per la gestione dei filtri e delle schede Accordion -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.faq-card');
+            const allCards = document.querySelectorAll('.faq-card');
+            const gridCards = document.querySelectorAll('.faq-grid .faq-card');
             const filterButtons = document.querySelectorAll('.category-btn');
 
-            // Logica Accordion (Apri/Chiudi)
-            cards.forEach(card => {
+            // Gestione apertura/chiusura per TUTTI gli accordion (fissi e in griglia)
+            allCards.forEach(card => {
                 const header = card.querySelector('.faq-header');
                 header.addEventListener('click', () => {
                     card.classList.toggle('active');
                 });
             });
 
-            // Logica di Filtraggio Categorie
+            // Gestione dei filtri solo sulle card presenti dentro .faq-grid
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     filterButtons.forEach(btn => btn.classList.remove('active'));
@@ -631,7 +623,7 @@
 
                     const selectedCategory = button.getAttribute('data-category');
 
-                    cards.forEach(card => {
+                    gridCards.forEach(card => {
                         const cardCategory = card.getAttribute('data-category');
                         
                         card.classList.remove('active');
