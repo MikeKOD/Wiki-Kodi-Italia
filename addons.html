@@ -595,6 +595,79 @@
                 </div>
             </div>
 
+         <footer>
+            <p>© 2025 Comunità Italiana Kodi | t.me/kodiitalia</p>
+            <p>Le informazioni sono fornite a scopo educativo. Rispetta le leggi sul copyright del tuo paese.</p>
+        </footer>
+    </div>
+
+    <!-- Overlay per visualizzazione immagini -->
+    <div class="image-overlay" id="imageOverlay">
+        <div class="overlay-content">
+            <span class="close-btn">&times;</span>
+            <img id="overlayImage" src="" alt="Esempio DNS">
+            <p id="imageCaption"></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqHeaders = document.querySelectorAll('.faq-header');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const faqCards = document.querySelectorAll('.faq-card');
+            const exampleBtns = document.querySelectorAll('.example-btn');
+            const imageOverlay = document.getElementById('imageOverlay');
+            const overlayImage = document.getElementById('overlayImage');
+            const imageCaption = document.getElementById('imageCaption');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            faqHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const card = this.parentElement;
+                    const isActive = card.classList.contains('active');
+                    
+                    faqCards.forEach(otherCard => {
+                        if (otherCard !== card) {
+                            otherCard.classList.remove('active');
+                        }
+                    });
+                    
+                    card.classList.toggle('active');
+                });
+            });
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    faqCards.forEach(card => {
+                        if(category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            const dnsExamples = {
+                fastweb: {
+                    image: 'fastweb-example.jpg',
+                    caption: 'Esempio disattivazione DNS sicuro su modem Fastweb'
+                },
+                vodafone: {
+                    image: 'vodafone-example.jpg',
+                    caption: 'Esempio disattivazione DNS sicuro su modem Vodafone'
+                },
+                ambient: {
+                    image: 'Ambient.jpg',
+                    caption: 'Esempio soluzione schermata nera Kodi al primo avvio'
+                }
+            };
+
             exampleBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     const exampleType = this.getAttribute('data-example');
