@@ -388,7 +388,7 @@
             <button class="category-btn active" data-category="all">Tutti</button>
             <button class="category-btn" data-category="official">Addon Ufficiali</button>
             <button class="category-btn" data-category="unofficial">Addon Esterni</button>
-            <a href="https://mikekod.github.io/Wiki-Kodi-Italia/" class="category-btn" >Faq</a>
+            <a href="https://mikekod.github.io/Wiki-Kodi-Italia/" class="category-btn no-filter">Faq</a> >Faq</a>
         </div>
 
         <!-- Griglia Cataloghi Addon (Soggetta a Filtri) -->
@@ -632,6 +632,11 @@
             // Gestione dei filtri solo sulle card presenti dentro .faq-grid
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
+            // Se il pulsante ha la classe 'no-filter', fermiamo l'esecuzione qui
+            // e lasciamo che il browser apra il link normalmente.
+        if (button.classList.contains('no-filter')) {
+            return; 
+        }
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
 
