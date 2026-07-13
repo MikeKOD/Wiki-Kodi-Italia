@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kodi Italia - FAQ Complete</title>
+    <title>Kodi Italia - Addon Kodi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         html {
@@ -17,6 +17,7 @@
             --accent: #FFFFFF;
             --telegram: #0088cc;
             --warning: #ff9800;
+            --danger: #ef5350;
         }
         
         * {
@@ -43,8 +44,8 @@
         
         header {
             text-align: center;
-            padding: 30px 0 20px;
-            background: #1a1a1a;
+            padding: 40px 20px;
+            background: #222222;
             border-radius: 15px;
             margin-bottom: 25px;
             position: relative;
@@ -61,24 +62,6 @@
             width: 100%;
             height: 5px;
             background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-        }
-        
-        .logo-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .logo-header img {
-            max-width: 250px;
-            height: auto;
-            margin: 0 auto 15px;
-            background: #1a1a1a;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        
-        .title-container {
-            padding: 0 20px;
         }
         
         h1 {
@@ -118,48 +101,48 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
-        
+
         .telegram-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: var(--telegram);
             color: var(--accent);
-            padding: 10px 20px;
+            padding: 6px 14px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            transition: all 0.3s ease;
-            margin: 5px 5px 5px 0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            font-size: 0.85rem;
+            margin-top: 10px;
         }
-        
+
         .telegram-btn:hover {
             background: #0077b5;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
         
-        .intro {
-            background: rgba(30, 30, 30, 0.8);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
+        .note {
+            background: rgba(18, 178, 231, 0.1);
             border-left: 4px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            text-align: center;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
         }
         
-        .intro p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+        .warning {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
         }
-        
-        .highlight {
-            color: var(--primary);
-            font-weight: bold;
+
+        .danger {
+            background: rgba(239, 83, 80, 0.1);
+            border-left: 4px solid var(--danger);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
         }
         
         .categories {
@@ -184,66 +167,60 @@
         
         .category-btn:hover, .category-btn.active {
             background: var(--primary);
-            transform: translateY(-3px);
+            color: #fff;
+            transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .faq-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 15px;
             margin-bottom: 30px;
         }
         
         .faq-card {
-            background: rgba(40, 40, 40, 0.9);
+            background: rgba(45, 45, 45, 0.9);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .faq-card:hover {
-            transform: translateY(-5px);
             border-color: var(--primary);
         }
         
         .faq-header {
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            padding: 15px 20px;
+            background: #252525;
+            padding: 18px 20px;
             display: flex;
             align-items: center;
             gap: 15px;
             cursor: pointer;
+            user-select: none;
         }
         
-        .faq-header i {
-            font-size: 1.3rem;
+        .faq-header i.fa-chevron-right {
+            font-size: 1rem;
             transition: transform 0.3s ease;
-            color: var(--accent);
+            color: var(--primary);
         }
         
-        .faq-card.active .faq-header i {
+        .faq-card.active .faq-header i.fa-chevron-right {
             transform: rotate(90deg);
         }
         
-        .faq-number {
-            background: var(--accent);
-            color: var(--primary);
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            flex-shrink: 0;
-            font-size: 0.9rem;
+        .faq-icon-type {
+            color: #bbb;
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
         }
         
         .faq-title {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: var(--accent);
             flex-grow: 1;
@@ -253,12 +230,14 @@
             padding: 0 20px;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background: rgba(35, 35, 35, 0.5);
         }
         
         .faq-card.active .faq-content {
             padding: 20px;
-            max-height: 10000px;
+            max-height: 2000px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .faq-answer {
@@ -266,14 +245,18 @@
         }
         
         .faq-answer p {
-            margin-bottom: 15px;
-            line-height: 1.7;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
         }
         
         .faq-answer a {
             color: var(--primary);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
             font-weight: 600;
         }
         
@@ -284,411 +267,379 @@
         
         .faq-answer code {
             background: rgba(18, 178, 231, 0.15);
-            padding: 2px 8px;
+            padding: 2px 6px;
             border-radius: 4px;
             font-family: 'Courier New', monospace;
             color: var(--primary);
-            font-size: 0.95em;
+            font-size: 0.9em;
         }
-        
-        .note {
-            background: rgba(18, 178, 231, 0.1);
-            border-left: 3px solid var(--primary);
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .warning {
-            background: rgba(255, 152, 0, 0.1);
-            border-left: 3px solid var(--warning);
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .dns-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin: 15px 0;
-        }
-        
-        .dns-card {
-            background: rgba(50, 50, 50, 0.6);
-            border-radius: 8px;
-            padding: 15px;
-            border: 1px solid var(--primary);
-        }
-        
-        .dns-card h4 {
-            color: var(--primary);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .dns-card ul {
-            padding-left: 20px;
-        }
-        
-        .dns-card li {
-            margin-bottom: 8px;
-        }
-        
-        .dns-secure {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(50, 50, 50, 0.6);
-            border-radius: 8px;
-            border: 1px solid var(--primary);
-        }
-        
-        .dns-secure-content {
-            flex: 1;
-        }
-        
-        .example-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .example-btn {
-            background: var(--primary);
-            color: var(--accent);
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .example-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .image-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .image-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .overlay-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            background: rgba(30, 30, 30, 0.95);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 2px solid var(--primary);
-        }
-        
-        .overlay-content img {
-            max-width: 100%;
-            max-height: 70vh;
-            display: block;
-            margin: 0 auto;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        #imageCaption {
-            text-align: center;
-            margin-top: 15px;
-            color: var(--accent);
-            font-weight: 600;
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 30px;
-            color: var(--accent);
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        
-        .close-btn:hover {
-            color: var(--primary);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 60px;
-            color: var(--accent);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--primary);
-        }
-        
-        .faq-answer ul {
-            list-style-type: none;
-            padding-left: 20px;
-        }
-        
-        .faq-answer ul li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 10px;
-        }
-        
-        .faq-answer ul li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
             font-weight: bold;
+            text-transform: uppercase;
+            margin-left: 10px;
+        }
+
+        .badge-official {
+            background: rgba(18, 178, 231, 0.2);
             color: var(--primary);
-        }
-        
-        .instruction-box {
-            background: rgba(18, 134, 173, 0.15);
-            border-left: 3px solid var(--primary-dark);
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .operator-box {
-            background: rgba(50, 50, 50, 0.6);
-            border-radius: 8px;
-            padding: 15px;
-            margin: 25px 0;
             border: 1px solid var(--primary);
         }
-        
-        .operator-box h4 {
-            color: var(--primary);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .operator-box ul {
-            padding-left: 20px;
-        }
-        
-        .operator-box li {
-            margin-bottom: 8px;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .logo-header img {
-                max-width: 200px;
-            }
-            
-            .dns-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .faq-header {
-                padding: 12px 15px;
-            }
-            
-            .faq-title {
-                font-size: 1.1rem;
-            }
-            
-            .dns-secure {
-                flex-direction: column;
-            }
-            
-            .example-buttons {
-                flex-direction: column;
-            }
-            
-            .telegram-btn {
-                padding: 8px 15px;
-                font-size: 0.85rem;
-            }
-            
-            .faq-content {
-                padding: 0 15px;
-            }
-            
-            .faq-card.active .faq-content {
-                padding: 15px;
-            }
+
+        .badge-unofficial {
+            background: rgba(255, 152, 0, 0.2);
+            color: var(--warning);
+            border: 1px solid var(--warning);
         }
     </style>
 </head>
 <body>
+
     <div class="container">
+        
         <header>
-            <div class="logo-header">
-                <img src="logo.png" alt="Logo Kodi Italia">
-            </div>
-            <div class="title-container">
-                <h1>Kodi Italia - FAQ Complete</h1>
-                <p class="subtitle">Tutte le risposte ai dubbi più comuni della community italiana</p>
-                <a href="https://t.me/kodiitalia" class="telegram-link" target="_blank">
-                    <i class="fab fa-telegram"></i> Unisciti al nostro canale Telegram
-                </a>
-            </div>
+            <h1>Addon Kodi</h1>
+            <p class="subtitle">by kodiitalia &bull; Guida alla configurazione e catalogo dei migliori addon</p>
+            <a href="https://t.me/kodiitalia" target="_blank" class="telegram-link">
+                <i class="fab fa-telegram"></i> Entra nel Gruppo Telegram
+            </a>
         </header>
-        
-        <div class="intro">
-            <p>Queste domande coprono il 99% dei problemi comuni riscontrati dagli utenti Kodi. Prima di chiedere aiuto, controlla qui!</p>
-            <p>Scrivi <span class="highlight">!aiuto</span> sul canale Telegram <span class="highlight">@Kodiitalia</span> per ulteriori informazioni.</p>
+
+        <!-- Disclaimer Legale -->
+        <div class="danger">
+            <p><i class="fas fa-gavel"></i> <strong>AVVISO LEGALE:</strong> Ricordiamo che gli eventi sportivi, i live, i film, le serie TV e tutto ciò che viene trasmesso online senza esserne titolare del copyright configura una violazione della legge sul diritto d'autore. Chi ne usufruisce potrebbe doverne rispondere legalmente.</p>
         </div>
-        
+
+        <!-- Sequestri della Guardia di Finanza -->
+        <div class="warning">
+            <p><i class="fas fa-exclamation-triangle"></i> <strong>REPOSITORY DA EVITARE:</strong> Evitate repository come <em>Androidaba, Guruhitech, Evilking, kodi-mod, addon-kodi</em> e applicazioni extra-market correlate. Oltre a compromettere la stabilità di Kodi, i relativi siti sono sotto sequestro a causa di un'indagine della Guardia di Finanza di Gorizia. Ci risultano chiusi anche gli addon del repository <strong>MOTB</strong>.</p>
+            <p style="margin-top: 10px; font-size: 0.95rem;"><em>I suddetti canali contenevano script obsoleti. Consigliamo di NON seguire video su YouTube che spingono all'installazione di sorgenti di dubbia provenienza. Servitevi unicamente di fonti pulite (GitHub o sviluppatori ufficiali).</em></p>
+        </div>
+
+        <!-- Filtri Categoria -->
         <div class="categories">
-            <button class="category-btn active" data-category="all">Tutte</button>
-            <button class="category-btn" data-category="install">Installazione</button>
-            <button class="category-btn" data-category="troubleshoot">Risoluzione Problemi</button>
-            <button class="category-btn" data-category="optimize">Ottimizzazione</button>
-            <button class="category-btn" data-category="streaming">Streaming</button>
-            <button class="category-btn" data-category="network">Rete & Sicurezza</button>
-            <a href="/addons.html" class="category-btn" >Addons</a>
+            <button class="category-btn active" data-category="all">Tutti</button>
+            <button class="category-btn" data-category="guide">Guide & Impostazioni</button>
+            <button class="category-btn" data-category="official">Addon Ufficiali</button>
+            <button class="category-btn" data-category="unofficial">Addon Esterni</button>
         </div>
-        
+
+        <!-- Griglia Accordion -->
         <div class="faq-grid">
-            <!-- FAQ 0 -->
-            <div class="faq-card" data-category="streaming">
+
+            <!-- CARD: SORGENTI SCONOSCIUTE -->
+            <div class="faq-card" data-category="guide">
                 <div class="faq-header">
                     <i class="fas fa-chevron-right"></i>
-                    <div class="faq-number">0</div>
-                    <div class="faq-title">Come vedere i sottotitoli?</div>
+                    <i class="fas fa-gear faq-icon-type"></i>
+                    <div class="faq-title">1. Abilitare le "Sorgenti Sconosciute"</div>
                 </div>
                 <div class="faq-content">
                     <div class="faq-answer">
-                        <p>Per recuperare i sottotitoli è possibile usare l'addon opensubtitles.com reperibile nella repo ufficiale di Kodi. Lo puoi trovare cliccando su impostazioni, Add-on, Installa da repository, cerca la voce sottotitoli e infine cerca e installa opensubtitles.com.</p>
-                        <p>Nota: Hanno aggiunto dei limiti di download per gli utenti che non hanno creato e configurato un account, recati sul sito e crea un account gratuito, successivamente effettua il login tramite l'addon <a href="https://www.opensubtitles.com/it#modal-register" target="_blank">Link per la registrazione</a>.</p>
+                        <p>Kodi permette di espandere le proprie funzioni tramite gli Addon. Di base sono attivi solo quelli del repository ufficiale. Per installare addon di terze parti, devi prima abilitare i permessi dedicati.</p>
+                        <div class="note">
+                            <p>Naviga in: <code>Impostazioni</code> &rarr; <code>Sistema</code> &rarr; <code>Add-on</code> e attiva la voce <strong>"Sorgenti sconosciute"</strong>. Conferma la presa visione del messaggio di avviso.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-         <footer>
-            <p>© 2025 Comunità Italiana Kodi | t.me/kodiitalia</p>
-            <p>Le informazioni sono fornite a scopo educativo. Rispetta le leggi sul copyright del tuo paese.</p>
-        </footer>
-    </div>
+            <!-- CARD: GUIDA INSTALLAZIONE -->
+            <div class="faq-card" data-category="guide">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-book faq-icon-type"></i>
+                    <div class="faq-title">2. Come installare gli Addon (Zip vs Repository)</div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Gli addon si dividono in due metodologie di installazione:</p>
+                        <p><strong>A. Installazione da Repository (Raccomandata):</strong> Garantisce aggiornamenti automatici e file non manomessi da terzi. Vai su <code>Impostazioni</code> &rarr; <code>File</code> &rarr; <code>Aggiungi Sorgente</code>, inserisci l'URL fornito dal developer e nominalo. Successivamente, vai su <code>Addon</code> &rarr; <code>Installa da repository</code>, seleziona la sorgente creata e scegli l'addon.</p>
+                        <p><strong>B. Installazione Manuale via ZIP (Sconsigliata):</strong> Scarica il file <code>.zip</code> sul dispositivo. Vai su <code>Impostazioni</code> &rarr; <code>Addon</code> &rarr; <code>Installa da file Zip</code>, individua il pacchetto e selezionalo.</p>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Overlay per visualizzazione immagini -->
-    <div class="image-overlay" id="imageOverlay">
-        <div class="overlay-content">
-            <span class="close-btn">&times;</span>
-            <img id="overlayImage" src="" alt="Esempio DNS">
-            <p id="imageCaption"></p>
+            <!-- CARD: KODINERDS -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">Kodinerds Repository <span class="badge badge-unofficial">Esterno</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Suggeriamo caldamente l'installazione di questa rinomata repository della community tedesca.</p>
+                        <p><strong>Come procedere:</strong> Scarica il file zip direttamente dal sito ufficiale <a href="https://repo.kodinerds.net/index.php?version=matrix/" target="_blank" rel="nofollow">kodinerds</a> e installalo manualmente (vedi guida all'installazione ZIP). Include addon aggiornati costantemente come <em>DAZN, DMax, Playlist Loader, Youtube-dl Control</em> e molti altri.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: YOUTUBE -->
+            <div class="faq-card" data-category="official">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">YouTube <span class="badge badge-official">Ufficiale</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Disponibile all'interno del repository predefinito di Kodi. Ottimizza l'integrazione della piattaforma video sul mediacenter.</p>
+                        <p>Per sbloccare completamente i servizi di ricerca e non fermarsi alla sola riproduzione casuale, è necessario configurare le proprie ApiKey personali seguendo le istruzioni disponibili su <a href="https://github.com/jdf76/plugin.video.youtube" target="_blank" rel="nofollow">GitHub</a>. Puoi anche consultare una guida rapida passo-passo <a href="/Api-Youtube-Personali-10-20" rel="nofollow">cliccando qui</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: LA7 -->
+            <div class="faq-card" data-category="official">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">La7 e Rivedi La7 <span class="badge badge-official">Ufficiale</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Componente presente nel repository nativo di Kodi. Permette sia la visione del flusso in diretta streaming del canale televisivo La7, sia l'accesso completo al catalogo on-demand dei programmi già andati in onda.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: MEDIASET -->
+            <div class="faq-card" data-category="official">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">Mediaset Video <span class="badge badge-official">Ufficiale</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Garantisce l'accesso alle trasmissioni e alle serie on-demand delle reti Mediaset. È presente nella repository ufficiale.</p>
+                        <div class="warning">
+                            <p><strong>Nota di servizio:</strong> Qualora l'addon ufficiale mostrasse problemi o instabilità nel caricamento dei flussi, consigliamo di installare l'ultima release aggiornata direttamente dalla pagina <a href="https://github.com/phate89/Mediaset-Play-plugin.video.videomediaset" target="_blank" rel="nofollow">GitHub dello sviluppatore</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: RAIPLAY -->
+            <div class="faq-card" data-category="official">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">RaiPlay <span class="badge badge-official">Ufficiale</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Inserito nel repository di base. Abilita la sintonizzazione con i canali Live di casa RAI e l'intero archivio on-demand della piattaforma.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: STREAM4ME -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">Stream4Me (S4Me) <span class="badge badge-unofficial">Esterno</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Evoluzione del vecchio e celebre addon KOD. Questo motore di ricerca indicizza flussi multimediali appoggiandosi ai principali portali di streaming italiani per film e serie TV.</p>
+                        <p>Non dispone attualmente di un forum o canale di assistenza centralizzato. Per tracciare bug o ricevere supporto sul codice, fai riferimento al <a href="https://github.com/Stream4me/addon" target="_blank" rel="nofollow">repository GitHub dedicato</a>. Per le novità puoi iscriverti al <a href="https://t.me/S4MeChannel" target="_blank" rel="nofollow">Canale Telegram</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: TIVUSTREAM PROJECT -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">TivuStream Project <span class="badge badge-unofficial">Esterno</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Il team distribuisce liste IPTV stabili relative ai canali del Digitale Terrestre nazionale in chiaro, fornendo uno strumento ad hoc per interfacciarsi con il modulo PVR Simple Client di Kodi. Include anche elenchi di canali internazionali.</p>
+                        <p>Per reperire i file sorgente e consultare la guida all'uso entra nel loro <a href="https://t.me/tivustream" target="_blank" rel="nofollow">Gruppo Telegram Ufficiale</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: WLTV HELPER -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">WLTV Helper <span class="badge badge-unofficial">Esterno</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Acronimo di World Live TV. La nuova variante di questo componente offre un pannello snello per importare e catalogare la lista IPTV dei canali in chiaro sul PVR Simple Client. Offre una vasta gamma di emittenti estere e webcam pubbliche mondiali.</p>
+                        <p>La community si ritrova per scambiare file e configurazioni sul gruppo di riferimento <a href="https://t.me/WorldLiveTV" target="_blank" rel="nofollow">@worldlivetv</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: ELEMENTUM -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">Elementum <span class="badge badge-unofficial">Esterno</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Famoso add-on basato sul protocollo BitTorrent (già integrato nativamente anche dentro Stream4Me/KOD). Esegue lo streaming in tempo reale di contenuti video appoggiandosi alla rete Torrent senza dover scaricare preventivamente l'intero file.</p>
+                        <p>Puoi provvedere all'installazione leggendo <a href="https://howtomediacenter.com/en/install-elementum-kodi/" target="_blank" rel="nofollow">questa guida dettagliata</a>. Per dubbi tecnici ti invitiamo a chiedere sul nostro gruppo <a href="https://t.me/kodiitalia" target="_blank" rel="nofollow">@kodiitalia</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: STEFANO THE GROOVE -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">Stefano The Groove 360 <span class="badge badge-unofficial">Esterno</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Questo modulo agisce da contenitore per vari script interni volti a setacciare link multimediali sul web. Integra sezioni specifiche dedicate a liste TV free e pay-tv di varia natura.</p>
+                        <p>Tutte le informazioni sul download e la configurazione iniziale sono disponibili nel <a href="https://t.me/thegroove360group" target="_blank" rel="nofollow">gruppo Telegram ufficiale @thegroove360group</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: MANDRAKODI -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">Mandrakodi <span class="badge badge-unofficial">Esterno</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Addon focalizzato sulla raccolta di link per manifestazioni sportive in diretta. Presenta una sezione VOD di film (anche storici o per adulti) e flussi live regionali, nazionali, Pluto TV e Samsung TV.</p>
+                        <p>I gestori mettono a disposizione anche una sezione "VIP" accessibile tramite esplicita richiesta nel loro canale di supporto <a href="https://t.me/mandrakodi_support" target="_blank" rel="nofollow">@mandrakodi_support</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: GRUPPO ITALIA -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">Gruppo Italia <span class="badge badge-unofficial">Esterno</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Offre un ventaglio di contenuti diversificati: eventi sportivi in tempo reale, flussi radiofonici, canali in chiaro, pay-tv ed elenchi di film on-demand.</p>
+                        <p>Il gruppo di supporto è reperibile su <a href="https://t.me/+RqqDJON3BbO4cTJI" target="_blank" rel="nofollow">questo link Telegram</a>.</p>
+                        <div class="warning">
+                            <p><strong>ATTENZIONE:</strong> Questo addon non ha ricevuto aggiornamenti recenti ed è compatibile unicamente con la vecchia release <strong>Kodi 18 (Leia)</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: NETFLIX -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">Netflix <span class="badge badge-unofficial">Esterno</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Plugin non ufficiale ma sviluppato da coder fidati. Consente l'accesso nativo a Netflix usando le proprie credenziali regolari dell'abbonamento.</p>
+                        <p>Per via delle misure di sicurezza della piattaforma, è tassativo eseguire l'autenticazione tramite la procedura descritta passo-passo su <a href="https://github.com/CastagnaIT/plugin.video.netflix" target="_blank" rel="nofollow">GitHub CastagnaIT</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: AMAZON VOD -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">Amazon VOD <span class="badge badge-unofficial">Esterno</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Consente la riproduzione del catalogo di Amazon Prime Video direttamente dentro l'interfaccia di Kodi. È richiesto un regolare account attivo.</p>
+                        <p>Istruzioni per il corretto login ed esportazione dei cookie di sessione disponibili su <a href="https://github.com/Sandmann79/xbmc/tree/master/plugin.video.amazon-test" target="_blank" rel="nofollow">GitHub Sandmann79</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: BUGATSINHO -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <i class="fas fa-puzzle-piece faq-icon-type"></i>
+                    <div class="faq-title">Bugatsinho (SportHD) <span class="badge badge-unofficial">Esterno</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Un addon molto leggero dedicato ai flussi legati agli eventi sportivi in diretta e repliche.</p>
+                        <p>Puoi monitorare lo stato di aggiornamento e chiedere aiuto direttamente sul canale telegram dello sviluppatore raggiungibile cliccando <a href="http://bit.ly/bug_telegram" target="_blank" rel="nofollow">qui</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- Fine faq-grid -->
+
+        <!-- Alert Versioni Recenti di Kodi -->
+        <div class="note">
+            <p><i class="fas fa-info-circle"></i> <strong>INFO KODI MATRIX (E SUCCESSIVI):</strong> Con il passaggio a Kodi 19 e versioni superiori, i plugin hanno cambiato il linguaggio in Python 3. Molti vecchi moduli non sono più compatibili. Verifica sempre sul sito del rispettivo produttore o chiedi ai ragazzi del gruppo <a href="https://t.me/kodiitalia" target="_blank">@kodiitalia</a> prima di procedere con vecchi pacchetti.</p>
         </div>
-    </div>
 
+    </div> <!-- Fine container -->
+
+    <!-- Script per la gestione dei filtri e delle schede Accordion -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const faqHeaders = document.querySelectorAll('.faq-header');
-            const categoryBtns = document.querySelectorAll('.category-btn');
-            const faqCards = document.querySelectorAll('.faq-card');
-            const exampleBtns = document.querySelectorAll('.example-btn');
-            const imageOverlay = document.getElementById('imageOverlay');
-            const overlayImage = document.getElementById('overlayImage');
-            const imageCaption = document.getElementById('imageCaption');
-            const closeBtn = document.querySelector('.close-btn');
-            
-            faqHeaders.forEach(header => {
-                header.addEventListener('click', function() {
-                    const card = this.parentElement;
-                    const isActive = card.classList.contains('active');
-                    
-                    faqCards.forEach(otherCard => {
-                        if (otherCard !== card) {
-                            otherCard.classList.remove('active');
-                        }
-                    });
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.faq-card');
+            const filterButtons = document.querySelectorAll('.category-btn');
+
+            // Logica Accordion (Apri/Chiudi)
+            cards.forEach(card => {
+                const header = card.querySelector('.faq-header');
+                header.addEventListener('click', () => {
+                    // Se vuoi che se ne apra solo uno alla volta scommenta le due righe sotto:
+                    // cards.forEach(c => { if(c !== card) c.classList.remove('active'); });
                     
                     card.classList.toggle('active');
                 });
             });
-            
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
-                    
-                    categoryBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    faqCards.forEach(card => {
-                        if(category === 'all' || card.getAttribute('data-category') === category) {
+
+            // Logica di Filtraggio Categorie
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Rimuovi classe active dagli altri bottoni
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const selectedCategory = button.getAttribute('data-category');
+
+                    cards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+                        
+                        // Chiudi la scheda quando si cambia filtro per pulizia visiva
+                        card.classList.remove('active');
+
+                        if (selectedCategory === 'all' || cardCategory === selectedCategory) {
                             card.style.display = 'block';
                         } else {
                             card.style.display = 'none';
                         }
                     });
                 });
-            });
-            
-            const dnsExamples = {
-                fastweb: {
-                    image: 'fastweb-example.jpg',
-                    caption: 'Esempio disattivazione DNS sicuro su modem Fastweb'
-                },
-                vodafone: {
-                    image: 'vodafone-example.jpg',
-                    caption: 'Esempio disattivazione DNS sicuro su modem Vodafone'
-                },
-                ambient: {
-                    image: 'Ambient.jpg',
-                    caption: 'Esempio soluzione schermata nera Kodi al primo avvio'
-                }
-            };
-
-            exampleBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const exampleType = this.getAttribute('data-example');
-                    const example = dnsExamples[exampleType];
-                    
-                    if (example) {
-                        overlayImage.src = example.image;
-                        imageCaption.textContent = example.caption;
-                        imageOverlay.classList.add('active');
-                    }
-                });
-            });
-            
-            closeBtn.addEventListener('click', function() {
-                imageOverlay.classList.remove('active');
-            });
-
-            imageOverlay.addEventListener('click', function(e) {
-                if(e.target === this) {
-                    this.classList.remove('active');
-                }
             });
         });
     </script>
