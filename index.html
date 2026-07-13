@@ -1499,6 +1499,12 @@
             });
             
             categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+        // SE IL TASTO HA LA CLASSE 'no-filter', ABORTISCI IL FILTRAGGIO
+        // Questo permette al link di aprirsi normalmente senza far sparire nulla
+        if (this.classList.contains('no-filter')) {
+            return; 
+        }
                 btn.addEventListener('click', function() {
                     const category = this.getAttribute('data-category');
                     
