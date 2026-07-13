@@ -1,0 +1,6 @@
+<!-- Alert Versioni Recenti di Kodi -->
+        <div class="note">
+            <p><i class="fas fa-info-circle"></i> <strong>INFO KODI MATRIX (E SUCCESSIVI):</strong> Con il passaggio a Kodi 19 e versioni superiori, i plugin hanno cambiato il linguaggio in Python 3. Molti vecchi moduli non sono più compatibili. Verifica sempre sul sito del rispettivo produttore o chiedi ai ragazzi del gruppo <a href="https://t.me/kodiitalia" target="_blank">@kodiitalia</a> prima di procedere con vecchi pacchetti.</p>
+        </div>
+
+    </div> <!-- Fine container -->
