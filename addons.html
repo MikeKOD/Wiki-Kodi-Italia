@@ -12,12 +12,12 @@
         }
         
         :root {
-            --primary: #12b2e7;
-            --primary-dark: #1286ad;
-            --accent: #FFFFFF;
-            --telegram: #0088cc;
-            --warning: #ff9800;
-            --danger: #ef5350;
+            var(--primary): #12b2e7;
+            var(--primary-dark): #1286ad;
+            var(--accent): #FFFFFF;
+            var(--telegram): #0088cc;
+            var(--warning): #ff9800;
+            var(--danger): #ef5350;
         }
         
         * {
@@ -302,6 +302,19 @@
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.6);
         }
+
+        .static-sections {
+            margin-bottom: 30px;
+        }
+
+        .static-sections h2 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -321,13 +334,25 @@
 
         <!-- Disclaimer Legale -->
         <div class="danger">
-            <p><i class="fas fa-gavel"></i> <strong>AVVISO LEGALE:</strong> Ricordiamo che gli eventi sportivi, i live, i film, le serie TV e tutto ciò che viene trasmesso online senza esserne titolare del copyright configura una violazione della legge sul diritto d'autore. Chi ne usufruisce potrebbe doverne rispondere legalmente.</p>
+            <p><strong>AVVISO LEGALE:</strong> Ricordiamo che gli eventi sportivi, i live, i film, le serie TV e tutto ciò che viene trasmesso online senza esserne titolare del copyright configura una violazione della legge sul diritto d'autore. Chi ne usufruisce potrebbe doverne rispondere legalmente.</p>
         </div>
 
         <!-- Sequestri della Guardia di Finanza -->
         <div class="warning">
-            <p><i class="fas fa-exclamation-triangle"></i> <strong>REPOSITORY DA EVITARE:</strong> Evitate repository come <em>Androidaba, Guruhitech, Evilking, kodi-mod, addon-kodi</em> e applicazioni extra-market correlate. Oltre a compromettere la stabilità di Kodi, i relativi siti sono sotto sequestro a causa di un'indagine della Guardia di Finanza di Gorizia. Ci risultano chiusi anche gli addon del repository <strong>MOTB</strong>.</p>
+            <p><strong>REPOSITORY DA EVITARE:</strong> Evitate repository come <em>Androidaba, Guruhitech, Evilking, kodi-mod, addon-kodi</em> e applicazioni extra-market correlate. Oltre a compromettere la stabilità di Kodi, i relativi siti sono sotto sequestro a causa di un'indagine della Guardia di Finanza di Gorizia. Ci risultano chiusi anche gli addon del repository <strong>MOTB</strong>.</p>
             <p style="margin-top: 10px; font-size: 0.95rem;"><em>I suddetti canali contenevano script obsoleti. Consigliamo di NON seguire video su YouTube che spingono all'installazione di sorgenti di dubbia provenienza. Servitevi unicamente di fonti pulite (GitHub o sviluppatori ufficiali).</em></p>
+        </div>
+
+        <!-- Sezione Testo Guide Introduttive -->
+        <div class="static-sections">
+            <h2>1. Abilitare le "Sorgenti Sconosciute"</h2>
+            <p>Kodi permette di espandere le proprie funzioni tramite gli Addon. Di base sono attivi solo quelli del repository ufficiale. Per installare addon di terze parti, devi prima abilitare i permessi dedicati.</p>
+            <div class="note">
+                <p>Naviga in: <code>Impostazioni</code> &rarr; <code>Sistema</code> &rarr; <code>Add-on</code> e attiva la voce <strong>"Sorgenti sconosciute"</strong>. Conferma la presa visione del messaggio di avviso.</p>
+            </div>
+
+            <h2>2. Come installare gli Addon</h2>
+            <p>Gli addon si dividono in due metodologie di installazione:</p>
         </div>
 
         <!-- Filtri Categoria -->
@@ -341,33 +366,30 @@
         <!-- Griglia Accordion -->
         <div class="faq-grid">
 
-            <!-- CARD: SORGENTI SCONOSCIUTE -->
+            <!-- METODO A: REPOSITORY -->
             <div class="faq-card" data-category="guide">
                 <div class="faq-header">
                     <i class="fas fa-chevron-right"></i>
-                    <div class="faq-title">1. Abilitare le "Sorgenti Sconosciute"</div>
+                    <div class="faq-title">A. Installazione da Repository (Raccomandata)</div>
                 </div>
                 <div class="faq-content">
                     <div class="faq-answer">
-                        <p>Kodi permette di espandere le proprie funzioni tramite gli Addon. Di base sono attivi solo quelli del repository ufficiale. Per installare addon di terze parti, devi prima abilitare i permessi dedicati.</p>
-                        <div class="note">
-                            <p>Naviga in: <code>Impostazioni</code> &rarr; <code>Sistema</code> &rarr; <code>Add-on</code> e attiva la voce <strong>"Sorgenti sconosciute"</strong>. Conferma la presa visione del messaggio di avviso.</p>
-                        </div>
+                        <p>Garantisce aggiornamenti automatici e file non manomessi da terzi.</p>
+                        <p>Vai su <code>Impostazioni</code> &rarr; <code>File</code> &rarr; <code>Aggiungi Sorgente</code>, inserisci l'URL fornito dal developer e nominalo. Successivamente, vai su <code>Addon</code> &rarr; <code>Installa da repository</code>, seleziona la sorgente creata e scegli l'addon.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- CARD: GUIDA INSTALLAZIONE -->
+            <!-- METODO B: ZIP -->
             <div class="faq-card" data-category="guide">
                 <div class="faq-header">
                     <i class="fas fa-chevron-right"></i>
-                    <div class="faq-title">2. Come installare gli Addon (Zip vs Repository)</div>
+                    <div class="faq-title">B. Installazione Manuale via ZIP (Sconsigliata)</div>
                 </div>
                 <div class="faq-content">
                     <div class="faq-answer">
-                        <p>Gli addon si dividono in due metodologie di installazione:</p>
-                        <p><strong>A. Installazione da Repository (Raccomandata):</strong> Garantisce aggiornamenti automatici e file non manomessi da terzi. Vai su <code>Impostazioni</code> &rarr; <code>File</code> &rarr; <code>Aggiungi Sorgente</code>, inserisci l'URL fornito dal developer e nominalo. Successivamente, vai su <code>Addon</code> &rarr; <code>Installa da repository</code>, seleziona la sorgente creata e scegli l'addon.</p>
-                        <p><strong>B. Installazione Manuale via ZIP (Sconsigliata):</strong> Scarica il file <code>.zip</code> sul dispositivo. Vai su <code>Impostazioni</code> &rarr; <code>Addon</code> &rarr; <code>Installa da file Zip</code>, individua il pacchetto e selezionalo.</p>
+                        <p>Scarica il file <code>.zip</code> sul dispositivo.</p>
+                        <p>Vai su <code>Impostazioni</code> &rarr; <code>Addon</code> &rarr; <code>Installa da file Zip</code>, individua il pacchetto e selezionalo.</p>
                     </div>
                 </div>
             </div>
@@ -520,7 +542,7 @@
                 </div>
                 <div class="faq-content">
                     <div class="faq-answer">
-                        <p>Addon focalizzato sulla raccolta di link per manifestazioni sportive in diretta. Presenta una sezione VOD di film (anche storici o per adulti) e flussi live regionali, nazionali, Pluto TV e Samsung TV.</p>
+                        <p>Addon focalizzato sulla raccolta di link for manifestazioni sportive in diretta. Presenta una sezione VOD di film (anche storici o per adulti) e flussi live regionali, nazionali, Pluto TV e Samsung TV.</p>
                         <p>I gestori mettono a disposizione anche una sezione "VIP" accessibile tramite esplicita richiesta nel loro canale di supporto <a href="https://t.me/mandrakodi_support" target="_blank" rel="nofollow">@mandrakodi_support</a>.</p>
                     </div>
                 </div>
@@ -536,7 +558,7 @@
                     <div class="faq-answer">
                         <p>Offre un ventaglio di contenuti diversificati: eventi sportivi in tempo reale, flussi radiofonici, canali in chiaro, pay-tv ed elenchi di film on-demand.</p>
                         <p>Il gruppo di supporto è reperibile su <a href="https://t.me/+RqqDJON3BbO4cTJI" target="_blank" rel="nofollow">questo link Telegram</a>.</p>
-                        <div class="warning">
+                        <div class="danger">
                             <p><strong>ATTENZIONE:</strong> Questo addon non ha ricevuto aggiornamenti recenti ed è compatibile unicamente con la vecchia release <strong>Kodi 18 (Leia)</strong>.</p>
                         </div>
                     </div>
