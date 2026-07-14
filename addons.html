@@ -144,7 +144,7 @@
             background: rgba(239, 83, 80, 0.1);
             border-left: 4px solid var(--danger);
             padding: 15px;
-            margin: 20px 0;
+            margin: 0;
             border-radius: 0 8px 8px 0;
         }
         
@@ -257,6 +257,38 @@
         .faq-answer p:last-child {
             margin-bottom: 0;
         }
+
+        /* Stile Bottone Torna alla Wiki - Identico alle Categorie */
+        .back-to-wiki-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(40, 40, 40, 0.8);
+            border: 2px solid var(--primary);
+            color: #F0F0F0;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-bottom: 15px; /* Spazio per non farlo appiccicare all'intro */
+            width: fit-content;
+        }
+
+/* Hover identico alle categorie */
+        .back-to-wiki-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #F0F0F0; /* Mantiene il testo chiaro su sfondo primary */
+}
+
+/* Allineamento icona freccia */
+        .back-to-wiki-btn svg {
+            display: block;
+            flex-shrink: 0;
+        }
         
         .faq-answer a {
             color: var(--primary);
@@ -329,6 +361,15 @@
                 <i class="fab fa-telegram"></i> Entra nel Gruppo Telegram
             </a>
         </header>
+
+        <!-- BOTTONE TORNA ALLA WIKI -->
+    <a href="index.html" class="back-to-wiki-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Torna alla Wiki
+    </a>
 
         <!-- Disclaimer Legale -->
         <div class="danger">
