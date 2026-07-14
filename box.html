@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodi Italia - Guida all'Acquisto TV Box</title>
+    <style>
+        :root {
+            --primary: #12b2e7;
+            --primary-dark: #1286ad;
+            --bg-main: #1a1a1a;
+            --bg-card: #242424;
+            --text-main: #F0F0F0;
+            --text-muted: #bbb;
+            --telegram: #0088cc;
+            --warning: #ff9800;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 50px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-main);
+            border-radius: 15px;
+            margin-bottom: 40px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--primary);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        }
+        
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        
+        .telegram-link {
+            display: inline-block;
+            background: var(--telegram);
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .telegram-link:hover {
+            background: #0077b5;
+            transform: translateY(-2px);
+        }
+        
+        .intro {
+            background: rgba(36, 36, 36, 0.6);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .intro p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .highlight:hover {
+            text-decoration: underline;
+        }
+        
+        .article-section {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #e0e0e0;
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 5px;
+            margin-bottom: 20px;
+        }
+        
+        ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: #e0e0e0;
+        }
+        
+        ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            top: -2px;
+        }
+        
+        .note {
+            background: rgba(18, 178, 231, 0.08);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning {
+            background: rgba(255, 152, 0, 0.08);
+            border-left: 4px solid var(--warning);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .sub-block {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        
+        .sub-block h3 {
+            color: var(--primary);
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.9rem;
+            }
+            
+            .article-section {
+                padding: 20px;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Guida all'Acquisto TV Box</h1>
+            <p class="subtitle">Quali box e a quale prezzo si dovrebbero acquistare per avere un TV BOX decente?</p>
+            <a href="https://t.me/kodiitalia" class="telegram-link" target="_blank">
+                Unisciti al nostro canale Telegram
+            </a>
+        </header>
+        
+        <div class="intro">
+                <strong>Attenzione:</strong> Le informazioni contenute in questo articolo potrebbero subire variazioni nel tempo o risultare obsolete per i modelli più recenti.
+            </div>
+        </div>
+        
+        <!-- SEZIONE 1 -->
+        <div class="article-section">
+            <h2>Posso usare Linux sui Box Android?</h2>
+            <p>I box che nativamente vengono venduti equipaggiati con Android, normalmente possono essere convertiti installando Linux in modo relativamente semplice.</p>
+            <p>In generale, qualsiasi box su cui possa girare Linux - anche vecchio e con solo <strong>1GB di RAM</strong> - è in grado di supportare Kodi e garantire prestazioni ragionevoli. Al massimo potresti riscontrare difficoltà nel supportare nativamente le codifiche hardware delle compressioni video più moderne, ma per un utilizzo medio senza troppe pretese non c'è da preoccuparsi.</p>
+            
+            <div class="warning">
+                <strong>Nota di compatibilità:</strong> Purtroppo non tutti i BOX Android possono essere equipaggiati facilmente con una distribuzione Linux in dual boot o NAND. Se hai già un box, non ti resta che cercare informazioni online sulla sua compatibilità. Se invece stai acquistando un vecchio box per risparmiare, ti consigliamo vivamente di orientarti verso quelli con processore <strong>Amlogic</strong> supportato ufficialmente da LibreELEC.
+            </div>
+            
+            <p>Per approfondire l'installazione e la compatibilità, consulta questi link:</p>
+            <ul>
+                <li><a href="https://forum.libreelec.tv/board/38-amlogic/" target="_blank">Forum Ufficiale LibreELEC (Sezione Amlogic)</a></li>
+            </ul>
+        </div>
+        
+        <!-- SEZIONE 2 -->
+        <div class="article-section">
+            <h2>Quali sono i limiti dei Box Android economici?</h2>
+            <p>Se oltre a Kodi sei interessato ad altre applicazioni Android ottimizzate per la TV, un vecchio box con Linux non sarà sufficiente e dovrai acquistare un dispositivo più moderno.</p>
+            
+            <div class="warning">
+                <strong>Nota bene:</strong> I box Android generici ed economici montano quasi tutti un sistema operativo pensato per <strong>Tablet/Smartphone</strong> e non sono affatto comodi da usare con il telecomando. Spesso richiedono l'uso di mouse e tastiere (comprese le mini-tastiere Bluetooth) offrendo comunque scarsi risultati di usabilità.
+            </div>
+            
+            <p>Inoltre, moltissime delle applicazioni pensate espressamente per la TV o nate per il cellulare semplicemente non funzioneranno su questi box economici per diversi motivi come la presenza di permessi di root nativi, la mancanza di certificazioni Google o blocchi DRM.</p>
+            
+            <div class="note">
+                <strong>Caso Netflix:</strong> Netflix funzionerà su quasi tutti i box Android generici, ma <strong>sempre in bassa risoluzione (SD - No HD, No 4K)</strong> e richiederà l'uso di un puntatore o mouse per poter navigare all'interno dei menu dell'applicazione.
+            </div>
+        </div>
+        
+        <!-- SEZIONE 3 -->
+        <div class="article-section">
+            <h2>Perché dovrei preferire un dispositivo con Android TV?</h2>
+            <p>Se la tua priorità è utilizzare regolarmente applicazioni di streaming ufficiali come <strong>Now TV, Netflix, Rai Play, Infinity</strong>, ecc., non hai altra scelta se non quella di acquistare un dispositivo con sistema operativo <strong>Android TV</strong>.</p>
+            <p>A diferencia del classico Android per tablet, Android TV è un sistema operativo progettato appositamente per le TV. È dotato di un'interfaccia ottimizzata per schermi di grandi dimensioni ed è perfettamente controllabile tramite un normale telecomando da divano.</p>
+        </div>
+        
+        <!-- SEZIONE 4 -->
+        <div class="article-section">
+            <h2>Quali dispositivi consiglia la community di Kodi Italia?</h2>
+            <p>I dispositivi consigliati dal nostro gruppo, che supportano nativamente Android TV e dispongono delle certificazioni necessarie per lo streaming in <strong>Full HD / 4K (incluso Netflix HD)</strong>:</p>
+            
+            <div class="sub-block">
+                <h3>Fascia Budget (Intorno ai 60€) - Consigliati per Qualità/Prezzo</h3>
+                <ul>
+                    <li><a href="http://www.mi.com/en/mibox/" target="_blank"><strong>Xiaomi Mi Box / Mi TV Box</strong></a></li>
+                    <li><a href="https://www.amazon.it/" target="_blank"><strong>Amazon Fire TV Stick</strong></a></li>
+                </ul>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">Rappresentano la scelta ideale per la maggior parte degli utenti. Offrono ottime prestazioni e pochissime limitazioni a un prezzo accessibile.</p>
+            </div>
+            
+            <div class="sub-block">
+                <h3>Fuori produzione (Ottimi se trovati usati)</h3>
+                <ul>
+                    <li><a href="https://www.asus.com/us/Home-Entertainment/Nexus_Player/" target="_blank"><strong>Nexus Player</strong> di Asus per Google</a></li>
+                    <li><a href="https://www.android.com/intl/it_it/tv/razer-forge/" target="_blank"><strong>Razer Forge TV</strong> di Weitek</a></li>
+                </ul>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">Due ottimi hardware, indicati anche per gli appassionati di retrogaming e piccoli giochi Android.</p>
+            </div>
+            
+            <div class="sub-block">
+                <h3>Il Top di Gamma (Intorno ai 200€)</h3>
+                <ul>
+                    <li><a href="https://shield.nvidia.it/android-tv" target="_blank"><strong>Nvidia Shield TV</strong></a></li>
+                </ul>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">Il massimo assoluto attualmente disponibile sul mercato. Perfetto sia per l'intrattenimento multimediale più esigente che per il gaming, supportato costantemente con aggiornamenti ufficiali.</p>
+            </div>
+        </div>
+        
+        <!-- SEZIONE 5 -->
+        <div class="article-section">
+            <h2>Conviene acquistare un Raspberry Pi?</h2>
+            <p><strong>Se non hai bisogno dell'ecosistema Android</strong> o delle app di streaming protette da DRM (come Netflix HD ufficiale), dovresti assolutamente considerare l'acquisto di un <strong>Raspberry Pi 3 o superiore</strong>.</p>
+            <p>Puoi installare sistemi operativi dedicati leggerissimi e totalmente incentrati sul mondo multimediale:</p>
+            <ul>
+                <li><a href="https://osmc.tv/" target="_blank"><strong>OSMC:</strong></a> Fornisce un intero mediacenter basato su Kodi, costantemente aggiornato e facilissimo da usare.</li>
+                <li><a href="https://www.retropie.it/" target="_blank"><strong>RetroPie:</strong></a> Perfetto se vuoi affiancare a Kodi la possibilità di emulare e giocare sulla TV ai grandi classici dei videogiochi del passato.</li>
+            </ul>
+            
+            <div class="note">
+                <p><strong>Vantaggi Tecnici del Raspberry Pi:</strong></p>
+                <ul>
+                    <li><strong>HDMI-CEC:</strong> Funzione supportata in modo eccellente che ti permette di controllare Kodi direttamente con il telecomando della tua TV attuale tramite il cavo HDMI.</li>
+                    <li><strong>Hardware Solido:</strong> Dispone di una scheda di rete Gigabit LAN e un modulo Wi-Fi integrato molto affidabile.</li>
+                    <li><strong>Risoluzione:</strong> Supporta senza problemi la riproduzione fluida in Full HD 1080p.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2026 Comunità Italiana Kodi | t.me/kodiitalia</p>
+            <p>Le informazioni sono fornite a scopo puramente educativo. Rispetta sempre le leggi sul copyright vigenti nel tuo paese.</p>
+        </footer>
+    </div>
+</body>
+</html>
