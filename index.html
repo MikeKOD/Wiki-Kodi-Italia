@@ -86,6 +86,7 @@
             margin-bottom: 10px;
             background: linear-gradient(90deg, var(--primary), var(--primary-dark));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
@@ -578,6 +579,7 @@
             <button class="category-btn" data-category="streaming">Streaming</button>
             <button class="category-btn" data-category="network">Rete & Sicurezza</button>
             <a href="addons.html" class="category-btn no-filter">Addons</a>
+            <a href="box.html" class="category-btn no-filter">Box Consigliati</a>
         </div>
         
         <div class="faq-grid">
@@ -1498,14 +1500,15 @@
                 });
             });
             
+            // BLOCCO CATEGORIE CORRETTO
             categoryBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
-        // SE IL TASTO HA LA CLASSE 'no-filter', ABORTISCI IL FILTRAGGIO
-        // Questo permette al link di aprirsi normalmente senza far sparire nulla
-        if (this.classList.contains('no-filter')) {
-            return; 
-        }
-                btn.addEventListener('click', function() {
+                    // SE IL TASTO HA LA CLASSE 'no-filter', ABORTISCI IL FILTRAGGIO
+                    // Questo permette al link di aprirsi normalmente senza far sparire nulla
+                    if (this.classList.contains('no-filter')) {
+                        return; 
+                    }
+                    
                     const category = this.getAttribute('data-category');
                     
                     categoryBtns.forEach(b => b.classList.remove('active'));
