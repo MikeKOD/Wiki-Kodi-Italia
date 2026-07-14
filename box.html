@@ -94,7 +94,7 @@
             background: rgba(36, 36, 36, 0.6);
             padding: 25px;
             border-radius: 12px;
-            margin-bottom: 40px;
+            margin-bottom: 3px;
             border-left: 4px solid var(--primary);
         }
         
@@ -242,7 +242,7 @@
         </header>
         
         <div class="intro">
-                <strong>Attenzione:</strong> Le informazioni contenute in questo articolo potrebbero subire variazioni nel tempo o risultare obsolete per i modelli più recenti.
+                <strong>Attenzione:</strong> Le informazioni contenute in questo articolo potrebbero subire variazioni nel tempo o risultare obsolete per i modelli più recenti. In questo periodo siamo in piena crisi RAM, causa IA, e i prezzi sono saliti alle stelle e altri box invece che fino a mesi fa erano reperibili ad ottimi prezzi sono spariti completamente.
             </div>
         </div>
         
@@ -282,7 +282,7 @@
         <div class="article-section">
             <h2>Perché dovrei preferire un dispositivo con Android TV?</h2>
             <p>Se la tua priorità è utilizzare regolarmente applicazioni di streaming ufficiali come <strong>Now TV, Netflix, Rai Play, Infinity</strong>, ecc., non hai altra scelta se non quella di acquistare un dispositivo con sistema operativo <strong>Android TV</strong>.</p>
-            <p>A diferencia del classico Android per tablet, Android TV è un sistema operativo progettato appositamente per le TV. È dotato di un'interfaccia ottimizzata per schermi di grandi dimensioni ed è perfettamente controllabile tramite un normale telecomando da divano.</p>
+            <p>A diferenza del classico Android per tablet, Android TV è un sistema operativo progettato appositamente per le TV. È dotato di un'interfaccia ottimizzata per schermi di grandi dimensioni ed è perfettamente controllabile tramite un normale telecomando da divano.</p>
         </div>
         
         <!-- SEZIONE 4 -->
@@ -291,10 +291,10 @@
             <p>I dispositivi consigliati dal nostro gruppo, che supportano nativamente Android TV e dispongono delle certificazioni necessarie per lo streaming in <strong>Full HD / 4K (incluso Netflix HD)</strong>:</p>
             
             <div class="sub-block">
-                <h3>Fascia Budget (Intorno ai 60€) - Consigliati per Qualità/Prezzo</h3>
+                <h3>Fascia Budget (Intorno ai 70€) - Consigliati per Qualità/Prezzo</h3>
                 <ul>
                     <li><a href="http://www.mi.com/en/mibox/" target="_blank"><strong>Xiaomi Mi Box / Mi TV Box</strong></a></li>
-                    <li><a href="https://www.amazon.it/" target="_blank"><strong>Amazon Fire TV Stick</strong></a></li>
+                    <li><a href="https://www.amazon.it/s?k=fire+stick+tv" target="_blank"><strong>Amazon Fire TV Stick (non la versione Select)</strong></a></li>
                 </ul>
                 <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">Rappresentano la scelta ideale per la maggior parte degli utenti. Offrono ottime prestazioni e pochissime limitazioni a un prezzo accessibile.</p>
             </div>
@@ -304,8 +304,10 @@
                 <ul>
                     <li><a href="https://www.asus.com/us/Home-Entertainment/Nexus_Player/" target="_blank"><strong>Nexus Player</strong> di Asus per Google</a></li>
                     <li><a href="https://www.android.com/intl/it_it/tv/razer-forge/" target="_blank"><strong>Razer Forge TV</strong> di Weitek</a></li>
+                    <li><a href="https://www.pccomponentes.it/strong-leap-s3-pro-premium-4k-ultrahd-streaming-tv-box-google-tv-dolby-vision-atmos-32gb-nero" target="_blank"><strong>S3 Pro Premium 4K</strong> di Strong LEAP</a></li>
+                    
                 </ul>
-                <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">Due ottimi hardware, indicati anche per gli appassionati di retrogaming e piccoli giochi Android.</p>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">Ottimi hardware, indicati anche per gli appassionati di retrogaming e piccoli giochi Android.</p>
             </div>
             
             <div class="sub-block">
@@ -333,6 +335,14 @@
                     <li><strong>HDMI-CEC:</strong> Funzione supportata in modo eccellente che ti permette di controllare Kodi direttamente con il telecomando della tua TV attuale tramite il cavo HDMI.</li>
                     <li><strong>Hardware Solido:</strong> Dispone di una scheda di rete Gigabit LAN e un modulo Wi-Fi integrato molto affidabile.</li>
                     <li><strong>Risoluzione:</strong> Supporta senza problemi la riproduzione fluida in Full HD 1080p.</li>
+                </ul>
+            </div> <div class="warning">
+                <p></p><strong>Nota bene:</strong> Sui Raspberry potresti avere problemi con alcuni flussi e non poter fruire di una buona usabilità tra cui:</p>
+                <ul>
+                <li><strong>Raspberry Pi 5 manca di decodifica hardware H.264</strong> Anche se la CPU riesce a gestire lato software, i flussi fullHDad altro bitrate e IPTV instabili, possono causare blocchi ed instabilità a meno che non si aumenti la memoria dedicata su config,txt.</li>
+                <li><strong>Problemi con VP9 e AV1:</strong> I codec usati di più da piattaforme come Youtube (maggiormente il 4k) può causare blocco del video, mentre l'audio continiua ad andare.</li>
+                <li><strong>Raspberry Pi 3 e inferiori:</strong> non supportano la decodifica hardware di H.265/HEVC. Da kodi 19 in poi, l'ottimizzazione software è stata rimossa, quindi la riproduzione non sara fluida ma a scatti.</li>
+                <li><strong>Problemi con i DRM:</strong> Sono i certificati per far vedere i flussi protetti (ad esempio Netflix, Rai, Mediaset), senza dei quali ci scordiamio il 4k o l'hd nativo. I flussi degli addon vengono decoficati lato software, ma limitano la risolzuone a 720p o al massimo a 1080p appensantendo l'uso della CPU.</li>
                 </ul>
             </div>
         </div>
