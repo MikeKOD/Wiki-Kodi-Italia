@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodi Italia - Guida Installazione e Configurazione</title>
+    <style>
+        :root {
+            --primary: #12b2e7;
+            --primary-dark: #1286ad;
+            --bg-main: #1a1a1a;
+            --bg-card: #242424;
+            --text-main: #F0F0F0;
+            --text-muted: #bbb;
+            --telegram: #0088cc;
+            --warning: #ff9800;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 50px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-main);
+            border-radius: 15px;
+            margin-bottom: 40px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--primary);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        }
+        
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        
+        .telegram-link {
+            display: inline-block;
+            background: var(--telegram);
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .telegram-link:hover {
+            background: #0077b5;
+            transform: translateY(-2px);
+        }
+        
+        .intro {
+            background: rgba(36, 36, 36, 0.6);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .intro p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        /* Stile Bottone Torna alla Wiki */
+        .back-to-wiki-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(40, 40, 40, 0.8);
+            border: 2px solid var(--primary);
+            color: #F0F0F0;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            width: fit-content;
+        }
+
+        .back-to-wiki-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #F0F0F0;
+        }
+
+        .back-to-wiki-btn svg {
+            display: block;
+            flex-shrink: 0;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .highlight:hover {
+            text-decoration: underline;
+        }
+        
+        .article-section {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #e0e0e0;
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 5px;
+            margin-bottom: 20px;
+        }
+        
+        ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: #e0e0e0;
+        }
+        
+        ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            top: -2px;
+        }
+        
+        .note {
+            background: rgba(18, 178, 231, 0.08);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning {
+            background: rgba(255, 152, 0, 0.08);
+            border-left: 4px solid var(--warning);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .sub-block {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        
+        .sub-block h3 {
+            color: var(--primary);
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+        
+        .path-badge {
+            background: rgba(18, 178, 231, 0.15);
+            color: var(--primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid rgba(18, 178, 231, 0.3);
+            display: inline-block;
+            margin: 2px 0;
+        }
+
+        .path-arrow {
+            color: var(--text-muted);
+            margin: 0 4px;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.9rem;
+            }
+            
+            .article-section {
+                padding: 20px;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Installazione e Configurazione di Kodi</h1>
+            <p class="subtitle">Guida completa per avviare il tuo mediacenter, impostare la lingua, abilitare il controllo remoto e catalogare i tuoi file multimediali.</p>
+            <a href="https://t.me/kodiitalia" class="telegram-link" target="_blank">
+                Unisciti al nostro canale Telegram
+            </a>
+        </header>
+
+        <!-- BOTTONE TORNA ALLA WIKI -->
+        <a href="index.html" class="back-to-wiki-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Torna alla Wiki
+        </a>
+        
+        <div class="intro">
+            <p><strong>Benvenuto nella guida introduttiva di Kodi!</strong> In questa pagina troverai tutti i passaggi fondamentali per scaricare il mediacenter sul tuo dispositivo, localizzarlo correttamente in lingua italiana, configurare il controllo remoto tramite il tuo smartphone e impostare la scansione automatica della tua libreria video personale.</p>
+            <p>Per iniziare, scarica l'ultima versione di Kodi direttamente dal sito ufficiale: <a href="https://kodi.tv/download" class="highlight" target="_blank">kodi.tv/download</a> e avvia l'applicazione sul tuo sistema.</p>
+            
+            <div class="warning" style="margin: 15px 0 0 0; padding: 15px;">
+                <strong>Importante per utenti Windows:</strong> Evitate assolutamente di scaricare Kodi tramite il Microsoft Store ufficiale. Vi consigliamo caldamente di scaricare l'eseguibile classico (Installer) direttamente dal sito ufficiale kodi.tv per evitare limitazioni di sistema e problemi di permessi/compatibilità con svariati addon.
+            </div>
+        </div>
+        
+        <!-- SEZIONE 1 -->
+        <div class="article-section">
+            <h2>1. Impostare la Lingua Italiana</h2>
+            <p>Al primo avvio, l'interfaccia di Kodi si presenterà interamente in lingua inglese. Se desideri impostarla in italiano, segui questo percorso:</p>
+            
+            <div class="note">
+                <strong>Percorso di sistema:</strong><br>
+                <span class="path-badge">Settings</span> <span class="path-arrow">➔</span> <span class="path-badge">Interface</span> <span class="path-arrow">➔</span> <span class="path-badge">Regional</span>
+            </div>
+            
+            <p>Clicca sulla voce <strong>"Language"</strong> e seleziona <strong>"Italiano"</strong> dalla lista. Kodi scaricherà e installerà automaticamente il pacchetto di localizzazione italiano.</p>
+            <p>Subito dopo, ti consigliamo di regolare anche il layout di scrittura cliccando su <strong>"Keyboard Layouts"</strong> per impostarlo secondo le tue preferenze (es. tastiera italiana QWERTY).</p>
+            
+            <div class="sub-block">
+                <h3>Impostare la lingua di riproduzione predefinita</h3>
+                <p>È un'ottima idea impostare fin da ora la lingua preferita per i flussi audio e per i sottotitoli dei tuoi filmati in modo che partano sempre in italiano quando disponibili:</p>
+                
+                <div class="note" style="margin: 10px 0;">
+                    <span class="path-badge">Impostazioni</span> <span class="path-arrow">➔</span> <span class="path-badge">Lettore</span> <span class="path-arrow">➔</span> <span class="path-badge">Lingua</span>
+                </div>
+                
+                <p>Imposta il valore <strong>"Italiano"</strong> per le seguenti opzioni:</p>
+                <ul>
+                    <li><strong>Lingua preferita per l'audio</strong></li>
+                    <li><strong>Lingua preferita per i sottotitoli</strong></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- SEZIONE 2 -->
+        <div class="article-section">
+            <h2>2. Abilitare il Controllo Remoto</h2>
+            <p>In questa sezione vedremo come impostare il controllo remoto del tuo mediacenter. Abilitando questo servizio sarai in grado di comandare e navigare i menu di Kodi direttamente dal tuo smartphone o tablet come se fosse un normale telecomando da divano.</p>
+            
+            <div class="note">
+                <strong>Percorso di sistema:</strong><br>
+                <span class="path-badge">Impostazioni</span> <span class="path-arrow">➔</span> <span class="path-badge">Servizi</span>
+            </div>
+            
+            <p>Naviga fino al menu laterale <strong>"Controllo"</strong> e abilita le seguenti voci:</p>
+            <ul>
+                <li><strong>Abilita il controllo remoto via HTTP:</strong> questa opzione sblocca la possibilità di connettersi a Kodi usando le app per cellulare ufficiali ed eccellenti come <em>Kore</em> (per sistemi Android) e <em>Kodi Remote</em> (per iPhone/iPad).</li>
+                <li><strong>Consenti controllo da applicazioni su questo dispositivo</strong></li>
+                <li><strong>Consenti controllo da applicazioni su altri dispositivi</strong></li>
+            </ul>
+            <p>Una volta spuntate queste opzioni, il tuo Kodi è pronto a ricevere input dai dispositivi collegati alla stessa rete locale.</p>
+        </div>
+        
+        <!-- SEZIONE 3 -->
+        <div class="article-section">
+            <h2>3. Espandere le funzionalità tramite gli Addon</h2>
+            <p>Kodi è un mediacenter potente proprio grazie alla sua estrema flessibilità ed estendibilità. Ciò avviene tramite l'installazione degli <strong>Addon</strong>.</p>
+            <p>Gli addon sono estensioni software create dalla community, interamente gratuite, che ti permettono di visualizzare contenuti Web, integrare servizi di streaming terzi, personalizzare le grafiche (skin) e molto altro.</p>
+            
+            <div class="warning">
+                <strong>Avviso di sicurezza:</strong> Sconsigliamo vivamente l'installazione di mod precostruite e build pre-configurate pronte all'uso (come Guruhitech e pacchetti simili). Vi suggeriamo caldamente l'installazione manuale, una alla volta, dei singoli addon seguendo esclusivamente le guide ufficiali della community. In questo modo garantirete stabilità e sicurezza al vostro sistema.
+            </div>
+            
+            <p>Se vuoi consultare la nostra prima selezione accurata degli addon migliori consigliati dal nostro team, visita la guida dedicata:</p>
+            <ul>
+                <li><a href="addons.html"><strong>Guida Completa e Lista Addon Consigliati</strong></a></li>
+            </ul>
+        </div>
+        
+        <!-- SEZIONE 4 -->
+        <div class="article-section">
+            <h2>4. Configurare la Libreria Multimediale Personale</h2>
+            <p><em>Nota: segui questa parte della guida solo nel caso in cui tu disponga di file video personali archiviati localmente (su Hard Disk esterno, NAS o cartella di rete) da voler visualizzare all'interno del catalogo multimediale di Kodi.</em></p>
+            <p>Per fare in modo che Kodi scansioni e cataloghi i tuoi file multimediali scaricando locandine, trame e dettagli dal web, devi prima di tutto indicare i percorsi in cui si trovano:</p>
+            
+            <div class="note">
+                <strong>Percorso di sistema:</strong><br>
+                <span class="path-badge">Impostazioni</span> <span class="path-arrow">➔</span> <span class="path-badge">Elemento</span> <span class="path-arrow">➔</span> <span class="path-badge">Libreria</span>
+            </div>
+            
+            <div class="sub-block">
+                <h3>Aggiungere una sorgente e definire il contenuto</h3>
+                <ul>
+                    <li>Seleziona la voce <strong>"Video"</strong> e clicca su <strong>"Aggiungi Video..."</strong>.</li>
+                    <li>Clicca su <strong>"Esplora"</strong> per individuare e selezionare la cartella in cui risiedono i tuoi film o serie.</li>
+                    <li>Accedi alla voce <strong>"Questo percorso contiene"</strong> e indica la tipologia dei file (es. seleziona <strong>"Film"</strong> se la cartella contiene film, oppure <strong>"Serie TV"</strong> se contiene serie televisive).</li>
+                    <li>Conferma cliccando su <strong>"OK"</strong>.</li>
+                </ul>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 10px;">Consigliamo caldamente di ripetere questi passaggi separatamente, creando una sorgente distinta per la cartella dei Film e una distinta per le Serie TV, permettendo così agli scraper automatici di Kodi di identificare i file in maniera impeccabile.</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2026 Comunità Italiana Kodi | t.me/kodiitalia</p>
+            <p>Le informazioni sono fornite a scopo puramente educativo. Rispetta sempre le leggi sul copyright vigenti nel tuo paese.</p>
+        </footer>
+    </div>
+</body>
+</html>
