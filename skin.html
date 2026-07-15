@@ -1,0 +1,587 @@
+HTML
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodi Italia - Skin Kodi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html {
+            background: #1a1a1a;
+            min-height: 100%;
+        }
+        
+        :root {
+            --primary: #12b2e7;
+            --primary-dark: #1286ad;
+            --accent: #FFFFFF;
+            --telegram: #0088cc;
+            --warning: #ff9800;
+            --danger: #ef5350;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a;
+            color: #F0F0F0;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 10px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--primary);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        }
+        
+        .logo-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo-header img {
+            max-width: 100%;
+            height: auto;
+            max-height: 150px;
+            margin: 0 auto 15px;
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 10px;
+        }
+         footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 25px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--primary);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #bbb;
+            max-width: 600px;
+            margin: 0 auto 15px;
+        }
+        
+        .telegram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--telegram);
+            color: var(--accent);
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .telegram-link:hover {
+            background: #0077b5;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .note {
+            background: rgba(18, 178, 231, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .danger {
+            background: rgba(239, 83, 80, 0.1);
+            border-left: 4px solid var(--danger);
+            padding: 15px;
+            margin: 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .category-btn {
+            background: rgba(40, 40, 40, 0.8);
+            border: 2px solid var(--primary);
+            color: #F0F0F0;
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .fixed-methods {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .faq-card {
+            background: rgba(45, 45, 45, 0.9);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-card:hover {
+            border-color: var(--primary);
+        }
+        
+        .faq-header {
+            background: var(--primary);
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .faq-header i.fa-chevron-right {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+            color: #ffffff;
+        }
+        
+        .faq-card.active .faq-header i.fa-chevron-right {
+            transform: rotate(90deg);
+        }
+        
+        .faq-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #ffffff;
+            flex-grow: 1;
+        }
+        
+        .faq-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background: rgba(35, 35, 35, 0.5);
+        }
+        
+        .faq-card.active .faq-content {
+            padding: 20px;
+            max-height: 2000px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-answer {
+            color: #ddd;
+        }
+        
+        .faq-answer p {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .back-to-wiki-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(40, 40, 40, 0.8);
+            border: 2px solid var(--primary);
+            color: #F0F0F0;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+
+        .back-to-wiki-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #F0F0F0;
+        }
+
+        .back-to-wiki-btn svg {
+            display: block;
+            flex-shrink: 0;
+        }
+        
+        .faq-answer a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-weight: 600;
+        }
+        
+        .faq-answer a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        .faq-answer code {
+            background: rgba(18, 178, 231, 0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--primary);
+            font-size: 0.9em;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-left: 10px;
+        }
+
+        .badge-official {
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            border: 1px solid #fff;
+        }
+
+        .badge-unofficial {
+            background: rgba(0, 0, 0, 0.2);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .static-sections {
+            margin-bottom: 15px;
+        }
+
+        .static-sections h2 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+        }
+        
+        /* Lista puntata personalizzata dentro le info */
+        .faq-answer ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        .faq-answer li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <h1>Skin Kodi</h1>
+            <p class="subtitle">by kodiitalia &bull; Guida introduttiva alla scelta e catalogo delle migliori skin</p>
+            <a href="https://t.me/kodiitalia" target="_blank" class="telegram-link">
+                <i class="fab fa-telegram"></i> Entra nel Gruppo Telegram
+            </a>
+        </header>
+
+        <!-- BOTTONE TORNA ALLA HOME -->
+        <a href="index.html" class="back-to-wiki-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            TORNA ALLA HOME
+        </a>
+
+        <!-- Avviso di Compatibilità -->
+        <div class="danger">
+            <p><strong>ATTENZIONE SULLA COMPATIBILITÀ:</strong> Molte skin storiche create per le versioni precedenti di Kodi non sono compatibili con <strong>Kodi 19 Matrix</strong> e release successive a causa del passaggio globale dei componenti di sistema da Python 2 a Python 3. Verificate attentamente la versione in uso prima di procedere con l'installazione.</p>
+        </div>
+
+        <!-- Sezione Testo Guide Introduttive -->
+        <div class="static-sections">
+            <h2>Guida Introduttiva alla scelta della Skin</h2>
+            <p>La scelta della skin su Kodi è un aspetto estremamente soggettivo e dipende in larga parte dal dispositivo che utilizzate e dalle vostre preferenze personali di navigazione.</p>
+            
+            <div class="note">
+                <p><strong>Fattori chiave da considerare prima di installare:</strong></p>
+                <ol style="margin-left: 20px; margin-top: 10px;">
+                    <li style="margin-bottom: 8px;"><strong>Dispositivi e controller:</strong> Alcune skin sono specificamente ottimizzate per l'uso con telecomando o tastiera. L'uso del mouse in queste interfacce potrebbe risultare lento, impreciso o frustrante.</li>
+                    <li style="margin-bottom: 8px;"><strong>Livello di personalizzazione:</strong> Interfacce avanzate consentono di modellare interamente ogni sezione (Film, Serie TV, Musica, Add-on) inserendo widget dedicati. Altre skin offrono una struttura fissa e statica che favorisce velocità ed estrema stabilità a scapito delle modifiche grafiche.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Guide di Installazione Fisse (Sopra ai filtri e non filtrabili) -->
+        <div class="fixed-methods">
+            <!-- SEZIONE FORUM UFFICIALE -->
+            <div class="fixed-methods">
+            <!-- SEZIONE FORUM UFFICIALE (STATICA) -->
+            <div style="background: rgba(45, 45, 45, 0.9); border-radius: 12px; padding: 22px 20px; border: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 5px;">
+                <h3 style="color: #fff; font-size: 1.25rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-info-circle" style="color: var(--primary);"></i> Dove trovare supporto e segnalare Bug
+                </h3>
+                <div style="color: #ddd; line-height: 1.6;">
+                    <p style="margin-bottom: 12px;">Il forum ufficiale di Kodi è il punto di riferimento principale per monitorare lo sviluppo delle skin, scaricare aggiornamenti beta o segnalare anomalie agli sviluppatori:</p>
+                    <ul style="margin-left: 20px;">
+                        <li style="margin-bottom: 8px;">Sezione discussioni sulle <strong>Skin Ufficiali</strong> (già rilasciate): <a href="https://forum.kodi.tv/forumdisplay.php?fid=67" target="_blank" rel="nofollow" style="color: var(--primary); text-decoration: none; font-weight: 600;">Forum Kodi - Released Skins</a></li>
+                        <li style="margin-bottom: 8px;">Sezione discussioni sulle <strong>Skin in fase di Sviluppo</strong> (WIP): <a href="https://forum.kodi.tv/forumdisplay.php?fid=160" target="_blank" rel="nofollow" style="color: var(--primary); text-decoration: none; font-weight: 600;">Forum Kodi - Skins in Progress</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Filtri Categoria -->
+        <div class="categories">
+            <button class="category-btn active" data-category="all">Tutte</button>
+            <button class="category-btn" data-category="official">Skin Ufficiali</button>
+            <button class="category-btn" data-category="unofficial">Skin Esterne</button>
+        </div>
+
+        <!-- Griglia Cataloghi Skin (Soggetta a Filtri) -->
+        <div class="faq-grid">
+
+            <!-- CARD: CONFLUENCE -->
+            <div class="faq-card" data-category="official">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-title">Confluence <span class="badge badge-official">Ufficiale</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>La storica skin predefinita di Kodi fino alla versione 16 (Jarvis). Rappresenta uno dei layout più amati e iconici.</p>
+                        <p>È probabilmente la skin più longeva e compatibile in assoluto, pienamente funzionante anche con le versioni più recenti di Kodi. Permette di configurare agevolmente tutte le categorie ed è estremamente fluida sia con telecomando che con il mouse. Consente inoltre di impostare fino a un massimo di 6 widget nel menu principale per ciascuna sezione.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: ESTUARY -->
+            <div class="faq-card" data-category="official">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-title">Estuary / Estouchy <span class="badge badge-official">Ufficiale</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>L'interfaccia standard ufficiale a partire da Kodi 17 (Krypton) in avanti. Viene distribuita in versione standard (Estuary) o ottimizzata per dispositivi mobili e schermi touch (Estouchy).</p>
+                        <p>Si tratta di un'interfaccia molto stabile ma rigida dal punto di vista della personalizzazione. Offre comunque un rapido accesso a tutte le configurazioni base del media-center in modo intuitivo, rapido ed estremamente reattivo sia se si naviga con telecomando che con il mouse.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: BELLO -->
+            <div class="faq-card" data-category="official">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-title">Bello <span class="badge badge-official">Ufficiale</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Inserita direttamente all'interno della repository ufficiale di Kodi, questa raffinata skin è sviluppata e aggiornata con costanza dallo sviluppatore <em>Nessus</em>.</p>
+                        <p>Permette una personalizzazione grafica totale del media-center. Si distingue per un design pulito, minimale e moderno. Nota di rilievo: è studiata ed ottimizzata per l'uso esclusivo tramite telecomando o tastiera.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: AURA -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-title">Aura <span class="badge badge-unofficial">Esterna</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Una skin estremamente flessibile e dal design curato che trasforma l'esperienza di Kodi in un vero e proprio sistema di catalogazione in stile Netflix o Plex.</p>
+                        <p>Permette di modificare a piacimento ogni singola categoria di Kodi, inclusa la visualizzazione del layout delle pagine. È concepita per la navigazione tramite telecomando (l'uso del mouse è abilitabile ma potrebbe comportare lievi rallentamenti).</p>
+                        <div class="danger" style="margin-top: 10px;">
+                            <p><strong>COMPATIBILITÀ:</strong> Questa skin non è compatibile con Kodi 19 Matrix.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: ARCTIC ZEPHYR 2 -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-title">Arctic Zephyr 2 <span class="badge badge-unofficial">Esterna</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Non inclusa nella repository nativa di Kodi, ma estremamente popolare tra gli utenti. Offre una personalizzazione minuziosa di ogni menu e si dimostra nettamente più reattiva e scattante rispetto ad Aura, pur mantenendo uno stile visivo simile.</p>
+                        <p><strong>Come procedere all'installazione:</strong> Scarica manualmente l'archivio ZIP direttamente dalla pagina ufficiale su <a href="https://github.com/fatshotty/skin.arctic.zephyr.2" target="_blank" rel="nofollow">GitHub di fatshotty</a>.</p>
+                        <div class="danger" style="margin-top: 10px;">
+                            <p><strong>COMPATIBILITÀ:</strong> Questa skin non è compatibile con Kodi 19 Matrix.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: ARCTIC HORIZON -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-title">Arctic Horizon <span class="badge badge-unofficial">Esterna</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Nata sulla scia della fortunata Arctic Zephyr 2, questa skin eleva la personalizzazione estetica a un livello superiore senza inficiare la fluidità dell'interfaccia di navigazione.</p>
+                        <p>Per la configurazione principale consigliamo di seguire i thread sul <a href="https://forum.kodi.tv/showthread.php?tid=351756" target="_blank" rel="nofollow">forum ufficiale di Kodi</a>.</p>
+                        <p><strong>Versioni stabili per Kodi 19 Matrix:</strong></p>
+                        <ul>
+                            <li>Versione ufficiale per Matrix scaricabile da <a href="https://github.com/jurialmunkey/skin.arctic.horizon" target="_blank" rel="nofollow">GitHub di jurialmunkey</a>.</li>
+                            <li>Versione alternativa modificata con traduzioni in italiano ottimizzate a cura di <a href="https://github.com/peppenamir/skin.arctic.horizon" target="_blank" rel="nofollow">peppenamir su GitHub</a> (assicurati di scaricare la versione dedicata a Matrix).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD: AURA MOD -->
+            <div class="faq-card" data-category="unofficial">
+                <div class="faq-header">
+                    <i class="fas fa-chevron-right"></i>
+                    <div class="faq-title">Aura MOD <span class="badge badge-unofficial">Esterna</span></div>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p>Basata sull'integrazione di moduli avanzati come <code>skinshortcuts</code> e <code>skinvariables</code>, questa estensione della skin Aura originale mette a disposizione degli utenti un ventaglio ricchissimo di widget e layout personalizzabili.</p>
+                        <p>Per ricevere assistenza, istruzioni o consultare i file di installazione, rimandiamo direttamente al loro <a href="https://t.me/joinchat/TEjR6UjnpFIyZTM0" target="_blank" rel="nofollow">gruppo ufficiale Telegram</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- Fine faq-grid -->
+    </div>
+    
+    <footer>
+        <p>© 2026 Comunità Italiana Kodi | t.me/kodiitalia</p>
+        <p>Le informazioni sono fornite a scopo educativo. Rispetta le leggi sul copyright del tuo paese.</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const allCards = document.querySelectorAll('.faq-card');
+            const gridCards = document.querySelectorAll('.faq-grid .faq-card');
+            const filterButtons = document.querySelectorAll('.category-btn');
+
+            // Gestione apertura/chiusura per TUTTI gli accordion (fissi e in griglia)
+            allCards.forEach(card => {
+                const header = card.querySelector('.faq-header');
+                header.addEventListener('click', () => {
+                    card.classList.toggle('active');
+                });
+            });
+
+            // Gestione dei filtri solo sulle card presenti dentro .faq-grid
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Se il pulsante ha la classe 'no-filter', lascia che il browser apra il link normalmente
+                    if (button.classList.contains('no-filter')) {
+                        return; 
+                    }
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const selectedCategory = button.getAttribute('data-category');
+
+                    gridCards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+                        
+                        card.classList.remove('active');
+
+                        if (selectedCategory === 'all' || cardCategory === selectedCategory) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
