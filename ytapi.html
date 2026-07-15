@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kodi Italia - API YouTube Personali</title>
+    <style>
+        :root {
+            --primary: #12b2e7;
+            --primary-dark: #1286ad;
+            --bg-main: #1a1a1a;
+            --bg-card: #242424;
+            --text-main: #F0F0F0;
+            --text-muted: #bbb;
+            --telegram: #0088cc;
+            --warning: #ff9800;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 50px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-main);
+            border-radius: 15px;
+            margin-bottom: 40px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--primary);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        }
+        
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        
+        .telegram-link {
+            display: inline-block;
+            background: var(--telegram);
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .telegram-link:hover {
+            background: #0077b5;
+            transform: translateY(-2px);
+        }
+        
+        .intro {
+            background: rgba(36, 36, 36, 0.6);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .intro p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        /* Stile Bottone Torna alla Wiki */
+        .back-to-wiki-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(40, 40, 40, 0.8);
+            border: 2px solid var(--primary);
+            color: #F0F0F0;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            width: fit-content;
+        }
+
+        .back-to-wiki-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #F0F0F0;
+        }
+
+        .back-to-wiki-btn svg {
+            display: block;
+            flex-shrink: 0;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .highlight:hover {
+            text-decoration: underline;
+        }
+        
+        .article-section {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-number {
+            background: var(--primary);
+            color: #1a1a1a;
+            font-size: 1.1rem;
+            font-weight: bold;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #e0e0e0;
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .note {
+            background: rgba(18, 178, 231, 0.08);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Stile per gli Screenshot della Guida */
+        .screenshot-container {
+            background: #1e1e1e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .screenshot-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: block;
+            margin: 0 auto 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-container img:hover {
+            transform: scale(1.02);
+        }
+
+        .screenshot-caption {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.9rem;
+            }
+            
+            .article-section {
+                padding: 20px;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Generare API YouTube Personali</h1>
+            <p class="subtitle">Guida passo-passo per configurare le proprie chiavi API di YouTube e sbloccare l'add-on ufficiale su Kodi senza limiti di quota.</p>
+            <a href="https://t.me/kodiitalia" class="telegram-link" target="_blank">
+                Unisciti al nostro canale Telegram
+            </a>
+        </header>
+
+        <!-- BOTTONE TORNA ALLA WIKI -->
+        <a href="index.html" class="back-to-wiki-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Torna alla Wiki
+        </a>
+
+        <div class="intro">
+            <strong>Perché servono le API personali?</strong><br>
+            L'add-on YouTube ufficiale di Kodi condivide un limite di richieste (quota) globale tra tutti gli utenti. Generando le tue credenziali personali, otterrai un canale di accesso esclusivo, privo di interruzioni ("Quota limit exceeded") e potrai effettuare il login in totale sicurezza con il tuo account.
+        </div>
+        
+        <!-- STEP 1 -->
+        <div class="article-section">
+            <h2><span class="step-number">1</span>Accedere alla console sviluppatori</h2>
+            <p>Per iniziare la procedura di creazione, effettua l'accesso con il tuo account Google principale sul portale sviluppatori di Google:</p>
+            <p><a href="https://console.developers.google.com/" target="_blank" class="highlight">https://console.developers.google.com/</a></p>
+            
+            <div class="screenshot-container">
+                <img src="api/8fdb10bb9806b1175c2ad.jpg" alt="Crea un nuovo progetto">
+                <div class="screenshot-caption">Figura 1: Crea un nuovo progetto (Create Project)</div>
+            </div>
+            <p>Dalla dashboard principale, clicca sulla tendina dei progetti o direttamente su <strong>"Create Project"</strong> (Crea Progetto), assegna un nome facoltativo e conferma.</p>
+        </div>
+        
+        <!-- STEP 2 -->
+        <div class="article-section">
+            <h2><span class="step-number">2</span>Abilitare le API di YouTube</h2>
+            <p>Una volta creato ed entrati nel nuovo progetto, è necessario attivare nello specifico le librerie adatte alla visualizzazione dei video.</p>
+            
+            <div class="screenshot-container">
+                <img src="api/e3e02b462b5d39ea1f7b0.jpg" alt="Abilita le API">
+                <div class="screenshot-caption">Figura 2: Clicca su Abilita API e Servizi</div>
+            </div>
+
+            <div class="screenshot-container">
+                <img src="api/146c6c6840609628c11a1.jpg" alt="YouTube Data API v3">
+                <div class="screenshot-caption">Figura 3: Seleziona la libreria YouTube Data API v3</div>
+            </div>
+
+            <p>Cerca <strong>"YouTube Data API v3"</strong> utilizzando la barra di ricerca in alto (oppure sfogliando la libreria delle API), selezionala e fai clic su di essa.</p>
+
+            <div class="screenshot-container">
+                <img src="api/a39dacc7dfcc9b819bff3.jpg" alt="Abilita YouTube Data API v3">
+                <div class="screenshot-caption">Figura 4: Clicca sul pulsante Abilita</div>
+            </div>
+            <p>Clicca sul pulsante azzurro <strong>"Abilita"</strong> (Enable). Una volta completata l'attivazione, la console ti reindirizzerà alla schermata di gestione da cui potremo generare le credenziali.</p>
+        </div>
+        
+        <!-- STEP 3 -->
+        <div class="article-section">
+            <h2><span class="step-number">3</span>Generare la Chiave API (API Key)</h2>
+            <p>Spostati nel menu laterale a sinistra, fai clic su <strong>Credenziali</strong> (Credentials), poi sul pulsante in alto <strong>"+ Crea Credenziali"</strong> e seleziona <strong>API key</strong>.</p>
+            
+            <div class="screenshot-container">
+                <img src="api/6a67842d31a002ceff80b.jpg" alt="Creiamo le credenziali">
+                <div class="screenshot-caption">Figura 5: Menu Creazione Credenziali</div>
+            </div>
+
+            <div class="screenshot-container">
+                <img src="api/056da0936bc0be8f8498c.jpg" alt="APIkey">
+                <div class="screenshot-caption">Figura 6: Generazione della prima chiave API Key</div>
+            </div>
+            <p>La console ti mostrerà subito la stringa della tua chiave (un lungo codice alfanumerico). Copiala e salvala temporaneamente in un blocco note: sarà la tua prima credenziale da inserire su Kodi.</p>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="article-section">
+            <h2><span class="step-number">4</span>Configurare la schermata di consenso (OAuth)</h2>
+            <p>Per creare le successive credenziali (Client ID e Secret) necessarie per l'accesso all'account, dobbiamo prima inizializzare una semplice schermata di consenso obbligatoria.</p>
+            
+            <div class="screenshot-container">
+                <img src="api/05d244fef7e1a16d88a24.jpg" alt="Creazione Credenziali OAuth">
+                <div class="screenshot-caption">Figura 7: Creazione Client ID OAuth</div>
+            </div>
+
+            <div class="screenshot-container">
+                <img src="api/75cac0efcdfc0c7775521.jpg" alt="Configurazione Schermata Consenso">
+                <div class="screenshot-caption">Figura 8: Richiesta di configurazione della schermata di consenso</div>
+            </div>
+
+            <div class="screenshot-container">
+                <img src="api/d706aff0ebacb2f428668.jpg" alt="Configurazione dati">
+                <div class="screenshot-caption">Figura 9: Clicca per inserire i dati della schermata</div>
+            </div>
+            
+            <p>Sulla schermata di configurazione che si aprirà:</p>
+            <ul>
+                <li>Seleziona il tipo di utente <strong>Esterno</strong> (External) e clicca su <strong>Crea</strong> (Create).</li>
+                <li>Fornisci un nome a piacimento per l'applicazione (es. <em>Kodi YouTube</em> o <em>Project 9155</em>).</li>
+                <li>Inserisci la tua email nei campi richiesti (supporto utente e informazioni sviluppatore).</li>
+                <li>Scorri fino in fondo, clicca su <strong>Salva e continua</strong> e completa la procedura ignorando le altre sezioni.</li>
+            </ul>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="article-section">
+            <h2><span class="step-number">5</span>Creare il Client ID e il Client Secret</h2>
+            <p>Torna alla scheda <strong>Credenziali</strong> dal menu a sinistra, fai clic su <strong>"+ Crea Credenziali"</strong> e questa volta seleziona <strong>Client ID OAuth</strong>.</p>
+            
+            <div class="screenshot-container">
+                <img src="api/52b5e45a051dcb0bdf628.jpg" alt="Client ID TV">
+                <div class="screenshot-caption">Figura 10: Impostazione Client ID per TV e dispositivi limitati</div>
+            </div>
+            <p>Nel tipo di applicazione, seleziona <strong>"TV e dispositivi con input limitato"</strong> (TV and Limited Input Devices), inserisci un nome identificativo e conferma cliccando su <strong>Crea</strong>.</p>
+
+            <div class="screenshot-container">
+                <img src="api/e64576814bedebd3db164.jpg" alt="ID Client e Segreto">
+                <div class="screenshot-caption">Figura 11: Generazione completata delle chiavi private</div>
+            </div>
+            <p>A schermo compariranno le tue due chiavi finali: l'<strong>ID Client</strong> (Client ID) e il <strong>Segreto Client</strong> (Client Secret). Copia e conserva anche queste due chiavi.</p>
+        </div>
+
+        <!-- STEP 6 -->
+        <div class="article-section">
+            <h2><span class="step-number">6</span>Configurare l'Add-on YouTube su Kodi</h2>
+            <p>Avvia Kodi, posizionati sull'add-on YouTube, apri il menu contestuale (tasto destro o pressione prolungata) e scegli <strong>Impostazioni</strong>.</p>
+            <p>Spostati sulla scheda <strong>API</strong> nel menu a sinistra, abilita la configurazione delle API personali (se necessario) e compila i tre campi dedicati con i codici salvati nei passaggi precedenti:</p>
+            <ul>
+                <li><strong>API Key:</strong> Incolla qui la chiave generata allo Step 3.</li>
+                <li><strong>API ID Client:</strong> Incolla qui l'ID Client generato allo Step 5.</li>
+                <li><strong>API Secret Client:</strong> Incolla qui il Segreto Client generato allo Step 5.</li>
+            </ul>
+            
+            <div class="screenshot-container">
+                <img src="api/b0f21226c602ebe8e15f2.jpg" alt="Configurazione Kodi">
+                <div class="screenshot-caption">Figura 12: Abilitazione e inserimento chiavi su Kodi</div>
+            </div>
+
+            <div class="note">
+                <strong>Hai bisogno di rivedere le chiavi generate?</strong><br>
+                Se perdi uno di questi dati, puoi tornare in qualunque momento nella sezione "Credenziali" della Google Developer Console, selezionare il tuo Client ID cliccando sull'icona della <strong>matita</strong> e visualizzare nuovamente tutti i codici segreti.
+                <div class="screenshot-container" style="margin-top:15px; margin-bottom:0;">
+                    <img src="api/ca3b0196c885def3983c5.png" alt="Modifica OAuth">
+                </div>
+                <div class="screenshot-container" style="margin-top:15px; margin-bottom:0;">
+                    <img src="api/45623fc7269285ff03fe0.png" alt="Dati visibili">
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 7 -->
+        <div class="article-section">
+            <h2><span class="step-number">7</span>Completare il Login dell'Account</h2>
+            <p>Una volta salvate le impostazioni su Kodi, avvia l'add-on YouTube. Seleziona la lingua italiana ad ogni eventuale wizard iniziale, dopodiché seleziona la voce <strong>Accedi</strong> (Sign In).</p>
+            <p>L'add-on genererà un codice temporaneo alfanumerico di sblocco sul tuo schermo.</p>
+
+            <div class="screenshot-container">
+                <img src="api/9e077dcaf4cef021dee9e.jpg" alt="Codice dispositivo">
+                <div class="screenshot-caption">Figura 13: Esempio di richiesta inserimento codice su Kodi</div>
+            </div>
+
+            <p>Utilizzando il tuo smartphone o PC, visita la pagina ufficiale di autenticazione Google:</p>
+            <p><a href="https://google.com/device" target="_blank" class="highlight">google.com/device</a></p>
+            <p>Inserisci il codice visualizzato in TV, seleziona il tuo account Google e consenti l'accesso all'applicazione. <strong>Importante:</strong> l'add-on richiede due attivazioni consecutive; ripeti quindi lo stesso passaggio non appena Kodi ti mostrerà il secondo codice a schermo.</p>
+            <p>Complimenti! Ora hai abilitato con successo YouTube sul tuo media center Kodi con le tue API personali, pronte all'uso e senza limiti di visualizzazione.</p>
+        </div>
+
+        <footer>
+            <p>© 2026 Comunità Italiana Kodi | t.me/kodiitalia</p>
+            <p>Le informazioni sono fornite a scopo puramente educativo e illustrativo.</p>
+        </footer>
+    </div>
+</body>
+</html>
