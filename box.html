@@ -104,37 +104,35 @@
             font-size: 1.1rem;
         }
         
-/* Stile Bottone TORNA ALLA HOME - Identico alle Categorie */
-.back-to-wiki-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(40, 40, 40, 0.8);
-    border: 2px solid var(--primary);
-    color: #F0F0F0;
-    padding: 8px 16px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    margin-bottom: 25px; /* Spazio per non farlo appiccicare all'intro */
-    width: fit-content;
-}
+        /* Stile Bottone TORNA ALLA HOME */
+        .back-to-wiki-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(40, 40, 40, 0.8);
+            border: 2px solid var(--primary);
+            color: #F0F0F0;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            width: fit-content;
+        }
 
-/* Hover identico alle categorie */
-.back-to-wiki-btn:hover {
-    background: var(--primary);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    color: #F0F0F0; /* Mantiene il testo chiaro su sfondo primary */
-}
+        .back-to-wiki-btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #F0F0F0;
+        }
 
-/* Allineamento icona freccia */
-.back-to-wiki-btn svg {
-    display: block;
-    flex-shrink: 0;
-}
+        .back-to-wiki-btn svg {
+            display: block;
+            flex-shrink: 0;
+        }
         
         .highlight {
             color: var(--primary);
@@ -275,17 +273,16 @@
         </header>
 
         <!-- BOTTONE TORNA ALLA HOME -->
-    <a href="index.html" class="back-to-wiki-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
-        TORNA ALLA HOME
-    </a>
+        <a href="index.html" class="back-to-wiki-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            TORNA ALLA HOME
+        </a>
         
         <div class="intro">
-                <strong>Attenzione:</strong> Le informazioni contenute in questo articolo potrebbero subire variazioni nel tempo o risultare obsolete per i modelli più recenti. In questo periodo siamo in piena crisi RAM, causa IA, e i prezzi sono saliti alle stelle e altri box invece che fino a mesi fa erano reperibili ad ottimi prezzi sono spariti completamente.
-
+            <strong>Attenzione:</strong> Le informazioni contenute in questo articolo potrebbero subire variazioni nel tempo o risultare obsolete per i modelli più recenti. In questo periodo siamo in piena crisi RAM, causa IA, e i prezzi sono saliti alle stelle e altri box invece che fino a mesi fa erano reperibili ad ottimi prezzi sono spariti completamente.
         </div>
         
         <!-- SEZIONE 1 -->
@@ -340,6 +337,15 @@
                 </ul>
                 <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">Rappresentano la scelta ideale per la maggior parte degli utenti. Offrono ottime prestazioni e pochissime limitazioni a un prezzo accessibile.</p>
             </div>
+
+            <div class="sub-block">
+                <h3>Fascia Media (Intorno ai 100€ - 120€)</h3>
+                <ul>
+                    <li><a href="https://www.androidtv-guide.com/streaming-gaming/google-tv-streamer/" target="_blank"><strong>Google TV Streamer</strong></a></li>
+                    <li><a href="https://www.androidtv-guide.com/streaming-gaming/rocktek-gx1-streamer/" target="_blank"><strong>RockTek GX1 Streamer</strong></a></li>
+                </ul>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">Modelli di nuova generazione dotati di 4GB di RAM, 32GB di memoria interna e porta Ethernet integrata. Ideali per chi desidera maggiore reattività e supporto avanzato ai nuovi codec (come l'AV1) rispetto ai box entry-level.</p>
+            </div>
             
             <div class="sub-block">
                 <h3>Fuori produzione (Ottimi se trovati usati)</h3>
@@ -347,7 +353,6 @@
                     <li><a href="https://www.asus.com/us/Home-Entertainment/Nexus_Player/" target="_blank"><strong>Nexus Player</strong> di Asus per Google</a></li>
                     <li><a href="https://www.android.com/intl/it_it/tv/razer-forge/" target="_blank"><strong>Razer Forge TV</strong> di Weitek</a></li>
                     <li><a href="https://www.pccomponentes.it/strong-leap-s3-pro-premium-4k-ultrahd-streaming-tv-box-google-tv-dolby-vision-atmos-32gb-nero" target="_blank"><strong>S3 Pro Premium 4K</strong> di Strong LEAP</a></li>
-                    
                 </ul>
                 <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">Ottimi hardware, indicati anche per gli appassionati di retrogaming e piccoli giochi Android.</p>
             </div>
@@ -378,13 +383,14 @@
                     <li><strong>Hardware Solido:</strong> Dispone di una scheda di rete Gigabit LAN e un modulo Wi-Fi integrato molto affidabile.</li>
                     <li><strong>Risoluzione:</strong> Supporta senza problemi la riproduzione fluida in Full HD 1080p.</li>
                 </ul>
-            </div> <div class="warning">
-                <p></p><strong>Nota bene:</strong> Sui Raspberry potresti avere problemi con alcuni flussi e non poter fruire di una buona usabilità tra cui:</p>
+            </div>
+            <div class="warning">
+                <p><strong>Nota bene:</strong> Sui Raspberry potresti avere problemi con alcuni flussi e non poter fruire di una buona usabilità tra cui:</p>
                 <ul>
-                <li><strong>Raspberry Pi 5 manca di decodifica hardware H.264</strong> Anche se la CPU riesce a gestire lato software, i flussi fullHDad altro bitrate e IPTV instabili, possono causare blocchi ed instabilità a meno che non si aumenti la memoria dedicata su config,txt.</li>
-                <li><strong>Problemi con VP9 e AV1:</strong> I codec usati di più da piattaforme come Youtube (maggiormente il 4k) può causare blocco del video, mentre l'audio continiua ad andare.</li>
-                <li><strong>Raspberry Pi 3 e inferiori:</strong> non supportano la decodifica hardware di H.265/HEVC. Da kodi 19 in poi, l'ottimizzazione software è stata rimossa, quindi la riproduzione non sara fluida ma a scatti.</li>
-                <li><strong>Problemi con i DRM:</strong> Sono i certificati per far vedere i flussi protetti (ad esempio Netflix, Rai, Mediaset), senza dei quali ci scordiamio il 4k o l'hd nativo. I flussi degli addon vengono decoficati lato software, ma limitano la risolzuone a 720p o al massimo a 1080p appensantendo l'uso della CPU.</li>
+                    <li><strong>Raspberry Pi 5 manca di decodifica hardware H.264:</strong> Anche se la CPU riesce a gestire lato software, i flussi fullHD ad altro bitrate e IPTV instabili, possono causare blocchi ed instabilità a meno che non si aumenti la memoria dedicata su config.txt.</li>
+                    <li><strong>Problemi con VP9 e AV1:</strong> I codec usati di più da piattaforme come Youtube (maggiormente il 4k) può causare blocco del video, mentre l'audio continua ad andare.</li>
+                    <li><strong>Raspberry Pi 3 e inferiori:</strong> non supportano la decodifica hardware di H.265/HEVC. Da kodi 19 in poi, l'ottimizzazione software è stata rimossa, quindi la riproduzione non sarà fluida ma a scatti.</li>
+                    <li><strong>Problemi con i DRM:</strong> Sono i certificati per far vedere i flussi protetti (ad esempio Netflix, Rai, Mediaset), senza dei quali ci scordiamo il 4k o l'hd nativo. I flussi degli addon vengono decodificati lato software, ma limitano la risoluzione a 720p o al massimo a 1080p appesantendo l'uso della CPU.</li>
                 </ul>
             </div>
         </div>
